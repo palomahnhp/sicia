@@ -29,6 +29,7 @@
 /tmp
 /.project
 /spec/examples.txt
+*~
 
 # Ignore public/docs
 /public/docs/*
