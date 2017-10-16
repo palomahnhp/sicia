@@ -16,37 +16,37 @@ ActiveRecord::Schema.define(version: 20171014155940) do
   enable_extension "plpgsql"
 
   create_table "internal_control_actions", force: :cascade do |t|
-    t.string   "trading_year"
-    t.string   "code"
+    t.integer  "trading_year"
+    t.integer  "code"
     t.string   "description"
     t.integer  "internal_control_procedure_id"
-    t.string   "updated_by"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.string   "updated_by"
     t.index ["code"], name: "index_internal_control_actions_on_code", using: :btree
     t.index ["internal_control_procedure_id"], name: "index_internal_control_actions_on_internal_control_procedure_id", using: :btree
     t.index ["trading_year"], name: "index_internal_control_actions_on_trading_year", using: :btree
   end
 
   create_table "internal_control_areas", force: :cascade do |t|
-    t.string   "trading_year"
+    t.integer  "trading_year"
     t.string   "code"
     t.string   "description"
-    t.string   "updated_by"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "updated_by"
     t.index ["code"], name: "index_internal_control_areas_on_code", using: :btree
     t.index ["trading_year"], name: "index_internal_control_areas_on_trading_year", using: :btree
   end
 
   create_table "internal_control_procedures", force: :cascade do |t|
-    t.string   "trading_year"
-    t.string   "code"
+    t.integer  "trading_year"
+    t.integer  "code"
     t.string   "description"
     t.integer  "internal_control_area_id"
-    t.string   "updated_by"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "updated_by"
     t.index ["code"], name: "index_internal_control_procedures_on_code", using: :btree
     t.index ["internal_control_area_id"], name: "index_internal_control_procedures_on_internal_control_area_id", using: :btree
     t.index ["trading_year"], name: "index_internal_control_procedures_on_trading_year", using: :btree

@@ -10,10 +10,6 @@ Setting["ayre_url"] = "http://ayre.munimadrid.es/"
 Setting["org_name"] = "Intervención General del Ayuntamiento de Madrid"
 Setting["app_name"] = "Sistema de gestión de Control Interno"
 
-Setting.create(key: 'ayre_url', value: 'http://ayre.munimadrid.es')
-Setting.create(key: 'org_name', value: 'Intervención General del Ayuntamiento de Madrid')
-Setting.create(key: 'app_name', value: 'Sistema de gestión de Control Interno')
-
 puts " ✅"
 print "Creating Internal Control Areas"
 (1..5).each do |n|

@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :sap_code do
-    sequence(:code) { |n| "#{n}" }
-    sequence(:description) { |n| "Description of code #{n}" }
+    sequence(:field) { |n| "Field#{n}" }
+    sequence(:code) { |n| n }
+    description  "Description of sap code"
 
     trait :tipo_intervencion do
       field 'ZTIPO_INTERV'
