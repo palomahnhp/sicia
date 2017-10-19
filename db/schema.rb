@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003055709) do
+ActiveRecord::Schema.define(version: 20171011120053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "requeriment_checks", force: :cascade do |t|
+    t.string   "kind"
+    t.integer  "code"
+    t.string   "description"
+    t.string   "non_observance_level"
+    t.string   "discrepancy_allowed"
+    t.string   "legal_reference"
+    t.string   "trading_year"
+    t.string   "updated_by"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["code"], name: "index_requeriment_checks_on_code", using: :btree
+    t.index ["kind"], name: "index_requeriment_checks_on_kind", using: :btree
+    t.index ["trading_year"], name: "index_requeriment_checks_on_trading_year", using: :btree
+  end
 
   create_table "settings", force: :cascade do |t|
     t.string   "key"
