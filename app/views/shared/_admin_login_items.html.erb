@@ -6,12 +6,6 @@
     </li>
   <% end %>
 
-  <% if (current_user.has_role? :manager, :any) %>
-    <li>
-      <%= link_to t('layouts.header.manager'), supervisor_root_path %>
-    </li>
-  <% end %>
-
   <li>
     <%= link_to  session_path, method: :DELETE do %>
         <span class="icon-power-off"></span>

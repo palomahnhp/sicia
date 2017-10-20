@@ -1,13 +1,32 @@
+---
 en:
+  admin:
+    menu:
+      admin: Administración
+  aplication:
+    back: Volver
   application:
-    chrome: Google Chrome
-    firefox: Firefox
-    ie: Hemos detectado que estás navegando desde Internet Explorer. Para una mejor experiencia te recomendamos utilizar %{firefox} o %{chrome}.
-    ie_title: Esta web no está optimizada para tu navegador
-    footer:
-      copyright: Ayuntamiento de Madrid, %{year}
+    close: Desconectar
+    menu: Menú
   layouts:
+    admin:
+      watch_form_message: Ver mensaje
+    application:
+      chrome: Google Chrome
+      firefox: Firefox
+      ie: Hemos detectado que estás navegando desde Internet Explorer. Para una mejor
+        experiencia te recomendamos utilizar %{firefox} o %{chrome}.
+      ie_title: Esta web no está optimizada para tu navegador
+    footer:
+      copyright: Copyrigth %{year} Ayuntamiento de Madrid.
     header:
-      administration: "admin"
-      manager: "Gestor"
-
+      administration: admin
+      logo: Madrid
+  mailers:
+    no_reply: no_reply.madrid.es
+  shared:
+    print:
+      print_button: Imprimir
+    target_blank_html: Nueva pestaña
+    top_links:
+      no_user: Ningun usuario conectado
