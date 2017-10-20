@@ -4,5 +4,6 @@ FactoryGirl.define do
     sequence(:code, 1, 99 ) { |n| n }
     description "Description of procedure"
     association :internal_control_area
+    updated_by 'FACTORY'
   end
 end
