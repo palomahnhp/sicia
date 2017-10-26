@@ -1,4 +1,4 @@
-class InternalControlArea < ApplicationRecord
+class InternalControlFile < ApplicationRecord
   include Annualizable
   include Codifiable
 

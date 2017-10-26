@@ -42,9 +42,7 @@ gem 'rubyzip', '~> 1.2', '>= 1.2.1' # is a ruby module for reading and writing z
 gem 'simple_form', '~> 3.5' # Forms made easy!
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'savon', '~> 2.11', '>= 2.11.2' # Heavy metal SOAP client
-gem 'sidekiq', '~> 5.0', '>= 5.0.5' # Simple, efficient background processing for Ruby.
-# gem 'tinymce-rails' # TODO estaá en agendas
-# gem 'tinymce-rails-langs'  # TODO estaá en agendas
+gem 'sidekiq', '~> 5.0', '>= 5.0.5' # Simple, efficient background processing for Ruby
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 

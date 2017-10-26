@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InternalControlArea, type: :model do
+RSpec.describe InternalControlFile, type: :model do
   describe "#Area (validations)" do
     let(:area) { build(:internal_control_area) }
 
