@@ -1,6 +1,6 @@
-class CreateInternalControlAreas < ActiveRecord::Migration[5.0]
+class CreateInternalControlFiles < ActiveRecord::Migration[5.0]
   def change
-    create_table :internal_control_areas do |t|
+    create_table :internal_control_files do |t|
       t.integer :trading_year, index: true
       t.string :code, index: true
       t.string :description

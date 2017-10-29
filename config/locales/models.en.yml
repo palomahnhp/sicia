@@ -1,0 +1,64 @@
+---
+en:
+  model:
+    proposal:
+      one: Propuesta SICI
+      other: Propuestas SICI
+      trading_year: Ejercicio
+      internal_control_file: Expediente
+      internal_control_procedure: Proedimiento
+      internal_control_action: Trámite
+      sap_proposal: Número de propuesta SAP
+      sap_kind: Clase de propuesta SAP
+      file_number: Número de expediente
+      budget_manager: Centro
+      budget_section: Seccion
+      manager_body: Órgano gestor
+      approval_body: Órgano de aprobación
+      title: Título
+      accounting_document: Documento contable
+      expense_nature: Naturaleza del gasto
+      contract_type: Tipo de contrato
+      adjudication_way: Forma de adjudicación
+      amount: Importe total
+      third_party: Tercero
+      third_party_name: Nombre
+      third_party_id: NIF/CIF
+      third_party_nit: NIT
+      observations: Observaciones
+    requeriment:
+      one: Requisito
+      other: Requisitos
+      kind:
+        name: Tipo
+        code: Código
+        description: Descripción
+        non_observance_level: Grado de cumplimiento
+        discrepancy_allowed: Admite discrepancias
+        RB:
+          one: Requisito básico
+          other: Requisitos básicos
+        CP:
+          one: Requisito de control permanente
+          other: Requisitos de control permanente
+        DOC:
+          one: Documento
+          other: Documentos
+    internal_control_file:
+      one: Tipo de expediente
+      others: Tipos de expediente
+      code: Código
+      description: Descripción
+    internal_control_procedure:
+      one: Procedimiento
+      others: Procedimientos
+      code: Código
+      description: Descripción
+    internal_control_action:
+      one: Trámite
+      others: Trámite
+      code: Código
+      description: Descripción
+    setting:
+      key: Clave
+      value: Valor

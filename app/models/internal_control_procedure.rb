@@ -4,8 +4,10 @@ class InternalControlProcedure < ApplicationRecord
 
   belongs_to :internal_control_file
   has_many :internal_control_actions
+  has_many :proposals
+
   validates :code, length: { minimum: 1, maximum: 2 },
             numericality: { only_integer: true }
-  validates :update_by, presence: true
+  validates :updated_by, presence: true
 
 end

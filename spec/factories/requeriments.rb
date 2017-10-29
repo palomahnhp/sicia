@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :requeriment_check do
+  factory :requeriment do
     trading_year Date.today.year
     sequence(:code, 1, 9999 ) { |n| n }
     sequence(:description) { |n| "Description of area #{n}" }
@@ -18,6 +18,12 @@ FactoryGirl.define do
       kind 'CP'
       non_observance_level true
       discrepancy_allowed  false
+    end
+
+    trait :document do
+      kind 'DOC'
+      non_observance_level false
+      discrepancy_allowed  true
     end
   end
 end

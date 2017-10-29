@@ -28,27 +28,27 @@ ActiveRecord::Schema.define(version: 20171026123323) do
     t.index ["trading_year"], name: "index_internal_control_actions_on_trading_year", using: :btree
   end
 
-  create_table "internal_control_files", id: :integer, default: -> { "nextval('internal_control_areas_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "internal_control_files", force: :cascade do |t|
     t.integer  "trading_year"
     t.string   "code"
     t.string   "description"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "updated_by"
-    t.index ["code"], name: "index_internal_control_areas_on_code", using: :btree
-    t.index ["trading_year"], name: "index_internal_control_areas_on_trading_year", using: :btree
+    t.index ["code"], name: "index_internal_control_files_on_code", using: :btree
+    t.index ["trading_year"], name: "index_internal_control_files_on_trading_year", using: :btree
   end
 
   create_table "internal_control_procedures", force: :cascade do |t|
     t.integer  "trading_year"
     t.integer  "code"
     t.string   "description"
-    t.integer  "internal_control_area_id"
+    t.integer  "internal_control_file_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "updated_by"
     t.index ["code"], name: "index_internal_control_procedures_on_code", using: :btree
-    t.index ["internal_control_area_id"], name: "index_internal_control_procedures_on_internal_control_area_id", using: :btree
+    t.index ["internal_control_file_id"], name: "index_internal_control_procedures_on_internal_control_file_id", using: :btree
     t.index ["trading_year"], name: "index_internal_control_procedures_on_trading_year", using: :btree
   end
 
@@ -60,8 +60,7 @@ ActiveRecord::Schema.define(version: 20171026123323) do
     t.string   "sap_proposal"
     t.string   "sap_kind"
     t.string   "file_number"
-    t.string   "budget_manager"
-    t.string   "budget_section"
+    t.string   "manager_body"
     t.string   "title"
     t.string   "approval_body"
     t.string   "accounting_document"
@@ -69,10 +68,10 @@ ActiveRecord::Schema.define(version: 20171026123323) do
     t.string   "contract_type"
     t.string   "adjudication_way"
     t.decimal  "amount",                        precision: 15, scale: 2
-    t.decimal  "decimal",                       precision: 15, scale: 2
     t.string   "third_party_name"
     t.string   "third_party_id"
     t.string   "third_party_nit"
+    t.string   "gexap_task"
     t.text     "observations"
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
@@ -96,7 +95,7 @@ ActiveRecord::Schema.define(version: 20171026123323) do
     t.index ["requeriments_check_id"], name: "index_proposals_requeriments_on_requeriments_check_id", using: :btree
   end
 
-  create_table "requeriment_checks", force: :cascade do |t|
+  create_table "requeriments", force: :cascade do |t|
     t.string   "kind"
     t.integer  "code"
     t.string   "description"
@@ -107,20 +106,22 @@ ActiveRecord::Schema.define(version: 20171026123323) do
     t.string   "updated_by"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.index ["code"], name: "index_requeriment_checks_on_code", using: :btree
-    t.index ["kind"], name: "index_requeriment_checks_on_kind", using: :btree
-    t.index ["trading_year"], name: "index_requeriment_checks_on_trading_year", using: :btree
+    t.index ["code"], name: "index_requeriments_on_code", using: :btree
+    t.index ["kind"], name: "index_requeriments_on_kind", using: :btree
+    t.index ["trading_year"], name: "index_requeriments_on_trading_year", using: :btree
   end
 
   create_table "sap_codes", force: :cascade do |t|
-    t.string   "field"
+    t.string   "sap_field"
+    t.string   "sicia_att"
     t.string   "code"
     t.string   "description"
     t.string   "updated_by"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["code"], name: "index_sap_codes_on_code", using: :btree
-    t.index ["field"], name: "index_sap_codes_on_field", using: :btree
+    t.index ["sap_field"], name: "index_sap_codes_on_sap_field", using: :btree
+    t.index ["sicia_att"], name: "index_sap_codes_on_sicia_att", using: :btree
   end
 
   create_table "settings", force: :cascade do |t|
@@ -131,7 +132,7 @@ ActiveRecord::Schema.define(version: 20171026123323) do
   end
 
   add_foreign_key "internal_control_actions", "internal_control_procedures"
-  add_foreign_key "internal_control_procedures", "internal_control_files", column: "internal_control_area_id"
+  add_foreign_key "internal_control_procedures", "internal_control_files"
   add_foreign_key "proposals", "internal_control_actions"
   add_foreign_key "proposals", "internal_control_files"
   add_foreign_key "proposals", "internal_control_procedures"
