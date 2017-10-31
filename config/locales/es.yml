@@ -1,5 +1,7 @@
 ---
 es:
+  actions:
+    new: Crear %{resource}
   admin:
     menu:
       admin: Administración

@@ -19,6 +19,7 @@ class Proposal < ApplicationRecord
             :manager_body,
             :title,
             :approval_body,
+            :received_at,
             presence: true
 
   validates :amount, presence: true, numericality: true
@@ -29,5 +30,63 @@ class Proposal < ApplicationRecord
 
   def manual_proposal?
     !sap_proposal.present?
+  end
+
+  def self.main_columns_automatic_sap
+    %i(trading_year
+       sap_kind
+       file_number
+       accounting_document
+       amount
+       expense_nature
+       manager_body
+       approval_body
+       adjudication_way
+       third_party_name
+       third_party_id
+       third_party_nit
+       contract_type
+       title)
+  end
+
+  def self.main_columns_manual
+    %i(trading_year
+       file_number
+       title
+       amount
+       manager_body
+       approval_body
+       third_party_name
+       third_party_id
+       third_party_nit)
+  end
+
+  def self.main_columns_all
+    %i(id
+         id_number
+         name
+         last_name
+         last_name_alt
+         phone_number
+         phone_number_alt
+         email
+         )
+  end
+
+  def fill_sap_proposal
+    self.trading_year = 2017
+    self.sap_kind = 'CONTA'
+    self.file_number = '300/2017/012356'
+    self.accounting_document = 'ADO'
+    self.amount = 1729.20
+    self.title = Faker::Company.catch_phrase
+    self.manager_body = '001010'
+    self.approval_body = '01'
+    self.expense_nature = 'ANUAL'
+    self.contract_type = 'no procede'
+    self.adjudication_way = 'Adjudicación directa'
+    self.third_party_name = Faker::Name.name
+    self.third_party_id = '50987323W'
+    self.third_party_nit = '1627635'
   end
 end

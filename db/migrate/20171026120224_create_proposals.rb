@@ -14,6 +14,8 @@ class CreateProposals < ActiveRecord::Migration[5.0]
       t.string :approval_body
       t.decimal :amount, :precision => 15, :scale => 2
 
+      t.string :received_at
+
       t.string :sap_kind
       t.string :accounting_document
       t.string :expense_nature

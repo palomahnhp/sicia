@@ -31,7 +31,7 @@ print "Creating Internal Control Procedures"
   InternalControlProcedure.create!(code: n,
                                  trading_year: Date.today.year,
                                  description: description,
-                                 file: InternalControlFile.reorder("RANDOM()").first,
+                                 internal_control_file: InternalControlFile.reorder("RANDOM()").first,
                                  created_at: rand((Time.current - 1.week)..Time.current),
                                  updated_at:  rand((Time.current - 1.week)..Time.current),
                                  updated_by: 'DEV_SEED')
@@ -44,7 +44,7 @@ print "Creating Internal Control Actions"
   InternalControlAction.create!(code: n,
                                 trading_year: Date.today.year,
                                 description: description,
-                                procedure: InternalControlProcedure.reorder("RANDOM()").first,
+                                internal_control_procedure: InternalControlProcedure.reorder("RANDOM()").first,
                                 created_at: rand((Time.current - 1.week)..Time.current),
                                 updated_at:  rand((Time.current - 1.week)..Time.current),
                                 updated_by: 'DEV_SEED')
@@ -73,16 +73,15 @@ print "Creating Requeriment checks"
     discrepancy_allowed  = true
   end
 
-  check = Requeriment.create!(kind: kind,
-                              code: n,
-                              trading_year: Date.today.year,
-                              description: description,
-                              non_observance_level: non_observance_level,
-                              discrepancy_allowed: discrepancy_allowed,
-                              legal_reference: legal_reference.shuffle.first,
-                              created_at: rand((Time.current - 1.week)..Time.current),
-                              updated_at: rand((Time.current - 1.week)..Time.current),
-                              updated_by: 'DEV_SEED')
+  Requeriment.create!(kind: kind,
+                      code: n,
+                      trading_year: Date.today.year,
+                      description: description,
+                      non_observance_level: non_observance_level,
+                      discrepancy_allowed: discrepancy_allowed,
+                      created_at: rand((Time.current - 1.week)..Time.current),
+                      updated_at: rand((Time.current - 1.week)..Time.current),
+                      updated_by: 'DEV_SEED')
 end
 
 puts " ✅"

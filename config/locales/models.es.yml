@@ -6,7 +6,7 @@ es:
       other: Propuestas SICI
       trading_year: Ejercicio
       internal_control_file: Expediente
-      internal_control_procedure: Proedimiento
+      internal_control_procedure: Procedimiento
       internal_control_action: Trámite
       sap_proposal: Número de propuesta SAP
       sap_kind: Clase de propuesta SAP
@@ -62,3 +62,5 @@ es:
     setting:
       key: Clave
       value: Valor
+  action:
+    new: "Alta %{model}"

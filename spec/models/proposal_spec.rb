@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Proposal, type: :model do
 
   describe "#Proposal (common validations)" do
-    let(:proposal) { build(:proposal) }
+    let(:proposals) { build(:proposals) }
 
     it "is valid with a valid trading year " do
       proposal.trading_year = 2017
@@ -65,7 +65,7 @@ RSpec.describe Proposal, type: :model do
   end
 
   describe "#SAP Proposal  ( validations)" do
-    let(:proposal) { build(:proposal, :sap_proposal) }
+    let(:proposals) { build(:proposals, :sap_proposal) }
 
     it "is valid automatic_proposal with a sap_proposal, internal_control type, accounting_document ..." do
       expect(proposal).to be_valid
