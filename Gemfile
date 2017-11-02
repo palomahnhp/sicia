@@ -28,14 +28,14 @@ gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.
 gem 'jquery-rails' # Use jquery as the JavaScript library
 gem "jquery-ui-rails"
 gem 'nested_form', '~> 0.3.2' # TODO Gem to conveniently handle multiple models in a single form with Rails 3 and jQuery or Prototype. o cocoon
-# gem 'newrelic_rpm'
+gem 'newrelic_rpm'
 gem 'pg', '~> 0.21.0' #  Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]. It works with {PostgreSQL 9.1 and later}
 gem 'pg_search', '~> 2.1', '>= 2.1.1'
 gem 'paperclip' # Easy upload management for ActiveRecord
 gem 'paranoia', '~> 2.3', '>= 2.3.1' # when you called destroy on an Active Record object that it didn't actually destroy it, but just "hid" the record.
 gem 'public_activity', '~> 1.5' # Easy activity tracking for your ActiveRecord models.
 gem 'rails-i18n', :git => 'https://github.com/svenfuchs/rails-i18n.git', branch: 'master' # For 4.x
-# gem 'ransack', '~> 1.8', '>= 1.8.3' # TODO MetaSearch's functionality, usado en volun
+# gem 'ransack', '~> 1.8', '>= 1.8.3'
 gem 'responders', '~> 2.4' # A set of Rails responders to dry up your application
 gem 'rollbar', '~> 2.15', '>= 2.15.4' # Easy and powerful exception tracking for Ruby
 gem 'rubyzip', '~> 1.2', '>= 1.2.1' # is a ruby module for reading and writing zip files

@@ -1,48 +1,51 @@
-<div class= "row" >
+<div class= "row proposal" >
   <div class= "small-12 columns">
     <%= form_for @proposal do |f| %>
-      <table>
-        <% if @proposal.automatic_proposal? %>
-            <tr><th colspan="4"><h5> Datos de la propuesta SAP: <%= @proposal.sap_proposal %> </h5></th></tr>
-            <tr>
-             <td>
-               <div class="sap-proposal panel">
-                 <% Proposal.main_columns_automatic_sap.each_with_index do |field, index| %>
-                     <div class="medium-3 small-12 columns end" ><b><%= t("model.proposal.#{field}") %> : </b><%= @proposal.send(field) %></div>
-                 <% end %>
-               </div>
-             </td>
-            </tr>
-        <% else %>
-          <% Proposal.main_columns_manual.each do |field| %>
-              <tr>
-                <th class="text-left"><%= t("model.proposal.#{field}") %> </th>
-                <td><%= f.text_field send(field) %></td>
-              </tr>
-          <% end %>
-        <% end %>
-      </table>
-      <div class="panel">
-        <fieldset class="panel-group">
-          <div class="medium-4 small-12 columns">
-            <legend> <h5>Tipo de expediente:</h5> </legend> <br>
-            <%= f.label :internal_control_file_id, t("model.proposal.internal_control_file") %>
-            <%= f.collection_select(:internal_control_file_id, InternalControlFile.order(:code), :id, :description,
-                                    include_blank: true, label: false)  %> <br>
+      <%= render "sap_proposal_data", f: f %>
+      <div class= "row" >
+        <div class= "small-12 columns panel">
+          <fieldset class="panel-group">
+            <legend>Tipo de expediente:</h5> </legend> <br>
+            <div class="medium-3 small-12 columns">
+              <%= f.label :internal_control_file_id, t("model.proposal.internal_control_file") %>
+              <%= f.collection_select(:internal_control_file_id, InternalControlFile.order(:code), :id, :description,
+                                      include_blank: true, label: false)  %>
+            </div>
             <% if @proposal.sap_proposal.present? %>
+              <div class="medium-3 small-12 columns">
                 <%= f.label :internal_control_procedure_id, t("model.proposal.internal_control_procedure") %>
-                <%= f.collection_select(:internal_control_procedure, InternalControlProcedure.order(:code), :id, :description,
-                                        include_blank: true, label: false)  %> <br>
+                <%= f.grouped_collection_select(:internal_control_procedure_id, InternalControlFile.order(:code),
+                                               :internal_control_procedures, :description, :id, :description,
+                                               include_blank: true, label: false)  %>
+              </div>
+              <div class="medium-3 small-12 columns">
                 <%= f.label :internal_control_action_id, t("model.proposal.internal_control_action") %>
-                <%= f.collection_select(:internal_control_action, InternalControlAction.order(:code), :id, :description,
-                                        include_blank: true, label: false)  %> <br>
+                <%= f.grouped_collection_select(:internal_control_action_id, InternalControlProcedure.order(:code),
+                                               :internal_control_actions, :description, :id, :description,
+                                                include_blank: true, label: false)  %>
+              </div>
             <% end %>
-          </div>
-
-        </fieldset>
-
+          </fieldset>
+        </div>
+      </div>
+      <div class= "row" >
+        <div class= "small-12 columns panel">
+          <fieldeset>
+            <legend> Otra información</legend>
+            <div class="medium-3 small-12 columns">
+              <%= f.label :received_at, t("model.proposal.received_at") %>
+              <%= f.date_field(:received_at,  label: false)  %>
+            </div>
+            <div class="medium-3 small-12 columns end">
+              <%= f.label :notify__to, t("model.proposal.notify_to") %>
+              <%= f.text_field(:notify_to, label: false)  %>
+              <%= f.text_field(:notify_to_confirmation, label: false)  %>
+            </div>
+        </fieldeset>
+        </div>
       </div>
 
+      <%= f.submit t("actions.new", resource: 'propuesta'), class: "button hollow" %>
    </div>
 </div>
 <% end %>

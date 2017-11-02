@@ -14,7 +14,6 @@ class CreateProposals < ActiveRecord::Migration[5.0]
       t.string :approval_body
       t.decimal :amount, :precision => 15, :scale => 2
 
-      t.string :received_at
 
       t.string :sap_kind
       t.string :accounting_document
@@ -25,6 +24,9 @@ class CreateProposals < ActiveRecord::Migration[5.0]
       t.string :third_party_id
       t.string :third_party_nit
       t.string :gexap_task
+
+      t.string :received_at
+      t.string :notify_to
 
       t.text   :observations
 

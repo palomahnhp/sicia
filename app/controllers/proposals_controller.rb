@@ -1,8 +1,9 @@
 class ProposalsController < ApplicationController
 
-  before_action :set_area, only: [:show, :edit, :update, :destroy]
+  before_action :set_proposal, only: [:show, :edit, :update, :destroy]
 
   def index
+    @proposals = Proposal.all.order(:id)
   end
 
   def show
@@ -13,7 +14,16 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new(sap_proposal: params[:sap_proposal])
-    @proposal.fill_sap_proposal
+    @proposal.fill_sap_proposal if params[:sap_proposal].present?
+  end
+
+  def create
+    @proposal = Proposal.new(proposal_params)
+    if @proposal.save
+      redirect_to @proposal
+    else
+      render :new
+    end
   end
 
   def select_type
@@ -23,10 +33,10 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposals).permit(:trading_year,
-                                      :internal_control_file,
-                                      :internal_control_procedure,
-                                      :internal_control_action,
+    params.require(:proposal).permit(:trading_year,
+                                      :internal_control_file_id,
+                                      :internal_control_procedure_id,
+                                      :internal_control_action_id,
                                       :title,
                                       :file_number,
                                       :manager_body,
@@ -42,11 +52,15 @@ class ProposalsController < ApplicationController
                                       :third_party_id,
                                       :third_party_nit,
                                       :gexap_task,
-                                      :observations )
+                                      :observations,
+                                      :received_at,
+                                      :notify_to,
+                                      :notify_to_confirmation,
+    )
   end
 
   def set_proposal
-    @proposal = find(params[:id])
+    @proposal = Proposal.find(params[:id])
   end
 
 end

@@ -1,12 +1,13 @@
 ---
 en:
+  actions:
+    back: Volver
+    close: Desconectar
+    new: Crear %{resource}
   admin:
     menu:
       admin: Administración
-  aplication:
-    back: Volver
   application:
-    close: Desconectar
     menu: Menú
   layouts:
     admin:
@@ -14,8 +15,7 @@ en:
     application:
       chrome: Google Chrome
       firefox: Firefox
-      ie: Hemos detectado que estás navegando desde Internet Explorer. Para una mejor
-        experiencia te recomendamos utilizar %{firefox} o %{chrome}.
+      ie: Hemos detectado que estás navegando desde Internet Explorer. Para una mejor experiencia te recomendamos utilizar %{firefox} o %{chrome}.
       ie_title: Esta web no está optimizada para tu navegador
     footer:
       copyright: Copyrigth %{year} Ayuntamiento de Madrid.
@@ -24,9 +24,17 @@ en:
       logo: Madrid
   mailers:
     no_reply: no_reply.madrid.es
+  proposals:
+    index:
+      title: Listado de Propuestas
+    new:
+      title: Alta de propuestas
   shared:
     print:
       print_button: Imprimir
+    subnavigation_menu:
+      documentation: Documentación
+      proposal: Propuestas
     target_blank_html: Nueva pestaña
     top_links:
       no_user: Ningun usuario conectado

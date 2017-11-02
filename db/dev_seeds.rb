@@ -11,43 +11,38 @@ Setting["org_name"] = "Intervención General del Ayuntamiento de Madrid"
 Setting["app_name"] = "Sistema Integral de gestión de Control Interno"
 
 puts " ✅"
-print "Creating Internal Control Files"
-(1..5).each do |n|
-  description = Faker::Company.buzzword
-  code = description[0...4].upcase
+print "Creating Internal Control Types"
+(1..3).each do |n|
+  description = 'Expediente_tipo_' + n.to_s
+  code = description[0...3].upcase + n.to_s
 
-  InternalControlFile.create!(code: code,
+  ic_file = InternalControlFile.create!(code: code,
                              trading_year: Date.today.year,
                              description: description,
                              created_at: rand((Time.current - 1.week)..Time.current),
                              updated_at:  rand((Time.current - 1.week)..Time.current),
                              updated_by: 'DEV_SEED')
-end
+  (1..3).each do |m|
+    description = 'Procedimiento_' + ic_file.code  + '_' + m.to_s
+    ic_procedure = InternalControlProcedure.create!(code: m,
+                                     trading_year: Date.today.year,
+                                     description: description,
+                                     internal_control_file: ic_file,
+                                     created_at: rand((Time.current - 1.week)..Time.current),
+                                     updated_at:  rand((Time.current - 1.week)..Time.current),
+                                     updated_by: 'DEV_SEED')
+    (1..3).each do |o|
+      description = 'Tramite_' + ic_file.code  + '.' + m.to_s + '.' + o.to_s
+      InternalControlAction.create!(code: o,
+                                       trading_year: Date.today.year,
+                                       description: description,
+                                       internal_control_procedure: ic_procedure,
+                                       created_at: rand((Time.current - 1.week)..Time.current),
+                                       updated_at:  rand((Time.current - 1.week)..Time.current),
+                                       updated_by: 'DEV_SEED')
 
-puts " ✅"
-print "Creating Internal Control Procedures"
-(1..5).each do |n|
-  description = Faker::Name.title
-  InternalControlProcedure.create!(code: n,
-                                 trading_year: Date.today.year,
-                                 description: description,
-                                 internal_control_file: InternalControlFile.reorder("RANDOM()").first,
-                                 created_at: rand((Time.current - 1.week)..Time.current),
-                                 updated_at:  rand((Time.current - 1.week)..Time.current),
-                                 updated_by: 'DEV_SEED')
-end
-
-puts " ✅"
-print "Creating Internal Control Actions"
-(1..5).each do |n|
-  description = Faker::Company.buzzword
-  InternalControlAction.create!(code: n,
-                                trading_year: Date.today.year,
-                                description: description,
-                                internal_control_procedure: InternalControlProcedure.reorder("RANDOM()").first,
-                                created_at: rand((Time.current - 1.week)..Time.current),
-                                updated_at:  rand((Time.current - 1.week)..Time.current),
-                                updated_by: 'DEV_SEED')
+    end
+  end
 end
 
 puts " ✅"

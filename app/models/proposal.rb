@@ -24,6 +24,10 @@ class Proposal < ApplicationRecord
 
   validates :amount, presence: true, numericality: true
 
+  validates :notify_to, :confirmation => true,
+            :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
+  validates :notify_to_confirmation, :presence => true
+
   def automatic_proposal?
      sap_proposal.present?
   end
@@ -61,17 +65,20 @@ class Proposal < ApplicationRecord
        third_party_nit)
   end
 
-  def self.main_columns_all
-    %i(id
-         id_number
-         name
-         last_name
-         last_name_alt
-         phone_number
-         phone_number_alt
-         email
-         )
+  def self.main_columns
+    %i(trading_year
+       file_number
+       amount
+       manager_body
+       approval_body
+       third_party_name
+       third_party_id
+       third_party_nit
+       title
+       received_at )
   end
+
+
 
   def fill_sap_proposal
     self.trading_year = 2017
@@ -88,5 +95,6 @@ class Proposal < ApplicationRecord
     self.third_party_name = Faker::Name.name
     self.third_party_id = '50987323W'
     self.third_party_nit = '1627635'
+    self.received_at = Date.today
   end
 end
