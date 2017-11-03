@@ -17,8 +17,6 @@ gem "cocoon" # TODO Unobtrusive nested forms handling, using jQuery. este o nes
 gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 # gem 'dalli', '~> 2.7', '>= 2.7.6' # TODO High performance memcached client for Ruby usado en consul
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.2' # TODO ActiveRecord backend for Delayed::Job, usado en consul
-gem 'devise' # TODO usar para obviar uweb ¿?
-gem 'devise-i18n'
 gem 'foundation-rails', '~> 6.4', '>= 6.4.1.2'
 gem 'foundation_rails_helper', '~> 3.0' # Rails for zurb foundation CSS framework. Form builder, flash message, ...
 gem 'friendly_id', '~> 5.1.0' # TODO ¿?
@@ -28,7 +26,6 @@ gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.
 gem 'jquery-rails' # Use jquery as the JavaScript library
 gem "jquery-ui-rails"
 gem 'nested_form', '~> 0.3.2' # TODO Gem to conveniently handle multiple models in a single form with Rails 3 and jQuery or Prototype. o cocoon
-gem 'newrelic_rpm'
 gem 'pg', '~> 0.21.0' #  Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]. It works with {PostgreSQL 9.1 and later}
 gem 'pg_search', '~> 2.1', '>= 2.1.1'
 gem 'paperclip' # Easy upload management for ActiveRecord
