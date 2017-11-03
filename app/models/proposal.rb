@@ -15,6 +15,8 @@ class Proposal < ApplicationRecord
             presence: true,
             if: Proc.new { |a| a.automatic_proposal? }
 
+  validates_uniqueness_of :sap_proposal
+
   validates :file_number,
             :manager_body,
             :title,
