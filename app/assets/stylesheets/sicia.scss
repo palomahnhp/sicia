@@ -12,9 +12,15 @@ body {
   line-height: 18px;
 }
 
+footer {
+  position:absolute;
+  width:100%;
+  bottom:0px;
+}
+
 // 1. Proposals
 
-.sap-proposal .medium-3 {
+.proposal .medium-3 {
   width: 30%;
 }
 

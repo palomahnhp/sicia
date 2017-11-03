@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require foundation
-//= require select_aci_file.js
-//= require select_aci_proc.js
+//= require select_aci_file
+//= require select_aci_proc
 //= require_tree
 
 $(function(){ $(document).foundation(); });

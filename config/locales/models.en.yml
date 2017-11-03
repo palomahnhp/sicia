@@ -33,6 +33,7 @@ en:
       internal_control_procedure: Procedimiento
       manager_body: "Órgano gestor"
       notify_to: Email para notificaciones
+      notify_to_confirmation: Confirmación de email
       observations: Observaciones
       one: Propuesta SICI
       other: Propuestas SICI

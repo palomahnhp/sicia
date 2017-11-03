@@ -10,4 +10,5 @@ class InternalControlProcedure < ApplicationRecord
             numericality: { only_integer: true }
   validates :updated_by, presence: true
 
+  default_scope { order(code: :asc) }
 end

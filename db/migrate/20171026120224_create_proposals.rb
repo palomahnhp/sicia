@@ -25,7 +25,7 @@ class CreateProposals < ActiveRecord::Migration[5.0]
       t.string :third_party_nit
       t.string :gexap_task
 
-      t.string :received_at
+      t.date :received_at
       t.string :notify_to
 
       t.text   :observations

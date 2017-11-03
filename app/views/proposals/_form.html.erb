@@ -33,12 +33,15 @@
           <fieldeset>
             <legend> Otra información</legend>
             <div class="medium-3 small-12 columns">
-              <%= f.label :received_at, t("model.proposal.received_at") %>
-              <%= f.date_field(:received_at,  label: false)  %>
+              <%= f.label :received_at, t('model.proposal.received_at') %>
+              <%= f.date_field(:received_at, label: false) %>
             </div>
             <div class="medium-3 small-12 columns end">
-              <%= f.label :notify__to, t("model.proposal.notify_to") %>
+              <%= f.label :notify_to, t("model.proposal.notify_to") %>
               <%= f.text_field(:notify_to, label: false)  %>
+            </div>
+            <div class="medium-3 small-12 columns end">
+              <%= f.label :notify_to_confirmation, t("model.proposal.notify_to_confirmation") %>
               <%= f.text_field(:notify_to_confirmation, label: false)  %>
             </div>
         </fieldeset>

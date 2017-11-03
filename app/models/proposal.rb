@@ -78,23 +78,27 @@ class Proposal < ApplicationRecord
        received_at )
   end
 
-
-
-  def fill_sap_proposal
+  def fill_sap_proposal(sap_proposal)
+    self.sap_proposal = sap_proposal
     self.trading_year = 2017
     self.sap_kind = 'CONTA'
     self.file_number = '300/2017/012356'
-    self.accounting_document = 'ADO'
-    self.amount = 1729.20
-    self.title = Faker::Company.catch_phrase
+    self.accounting_document = SapCode.accounting_document.reorder("RANDOM()").first.description
+    self.amount = rand(100000..90000000) / 100
+    self.title = Faker::Lorem.sentence
     self.manager_body = '001010'
     self.approval_body = '01'
-    self.expense_nature = 'ANUAL'
-    self.contract_type = 'no procede'
-    self.adjudication_way = 'Adjudicación directa'
-    self.third_party_name = Faker::Name.name
-    self.third_party_id = '50987323W'
-    self.third_party_nit = '1627635'
+    self.expense_nature = SapCode.expense_nature.reorder("RANDOM()").first.description
+    self.contract_type = SapCode.contract_type.reorder("RANDOM()").first.description
+    self.adjudication_way = SapCode.adjudication_way.reorder("RANDOM()").first.description
+    if %w(F J).shuffle.first == 'F'
+      self.third_party_name = Faker::Name.name
+      self.third_party_id = rand(1..3) % 2 == 0 ? Faker::NIF.nie : Faker::NIF.nif
+    else
+      self.third_party_name = Faker::Company.name
+      self.third_party_id   = Faker::NIF.cif
+    end
+    self.third_party_nit = rand(100000..900000)
     self.received_at = Date.today
   end
 end

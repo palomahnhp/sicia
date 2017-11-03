@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20171026123323) do
     t.string   "third_party_id"
     t.string   "third_party_nit"
     t.string   "gexap_task"
-    t.string   "received_at"
+    t.date     "received_at"
     t.string   "notify_to"
     t.text     "observations"
     t.datetime "created_at",                                             null: false

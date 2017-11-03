@@ -13,8 +13,8 @@ class ProposalsController < ApplicationController
   end
 
   def new
-    @proposal = Proposal.new(sap_proposal: params[:sap_proposal])
-    @proposal.fill_sap_proposal if params[:sap_proposal].present?
+    @proposal = Proposal.new()
+    @proposal.fill_sap_proposal(params[:sap_proposal]) if params[:sap_proposal].present?
   end
 
   def create

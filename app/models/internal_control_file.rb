@@ -9,4 +9,6 @@ class InternalControlFile < ApplicationRecord
 
   validates :updated_by, presence: true
 
+  default_scope { order(code: :asc) }
+
 end

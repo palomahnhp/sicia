@@ -7,7 +7,7 @@
           <%= f.hidden_field :sap_proposal %>
           <tr>
             <td>
-              <div class="sap-proposal panel">
+              <div class="panel">
                 <% Proposal.main_columns_automatic_sap.each_with_index do |field, index| %>
                   <%= f.hidden_field field %>
                   <div class="medium-3 small-12 columns end" ><b><%= t("model.proposal.#{field}") %> : </b><%= @proposal.send(field) %></div>
