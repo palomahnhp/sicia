@@ -55,7 +55,7 @@ class ProposalsController < ApplicationController
                                       :observations,
                                       :received_at,
                                       :notify_to,
-                                      :notify_to_confirmation,
+                                      :notify_to_confirmation
     )
   end
 
