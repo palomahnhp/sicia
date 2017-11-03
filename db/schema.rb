@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026123323) do
-
+ActiveRecord::Schema.define(version: 20171102165621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +52,7 @@ ActiveRecord::Schema.define(version: 20171026123323) do
     t.index ["trading_year"], name: "index_internal_control_procedures_on_trading_year", using: :btree
   end
 
- create_table "manager_bodies", force: :cascade do |t|
+  create_table "manager_bodies", force: :cascade do |t|
     t.integer  "trading_year"
     t.string   "code"
     t.string   "budget_center"
@@ -66,15 +65,16 @@ ActiveRecord::Schema.define(version: 20171026123323) do
 
   create_table "proposals", force: :cascade do |t|
     t.integer  "trading_year"
+    t.string   "sap_proposal"
+    t.string   "file_number"
     t.integer  "internal_control_file_id"
     t.integer  "internal_control_procedure_id"
     t.integer  "internal_control_action_id"
-    t.string   "sap_proposal"
-    t.string   "sap_kind"
-    t.string   "file_number"
-    t.string   "manager_body"
     t.string   "title"
+    t.string   "manager_body"
     t.string   "approval_body"
+    t.decimal  "amount",                        precision: 15, scale: 2
+    t.string   "sap_kind"
     t.string   "accounting_document"
     t.string   "expense_nature"
     t.string   "contract_type"
@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 20171026123323) do
     t.string   "gexap_task"
     t.date     "received_at"
     t.string   "notify_to"
-    t.decimal  "amount",                        precision: 15, scale: 2
     t.text     "observations"
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
@@ -97,16 +96,16 @@ ActiveRecord::Schema.define(version: 20171026123323) do
   end
 
   create_table "proposals_requeriments", id: false, force: :cascade do |t|
-    t.integer  "proposal_id"
-    t.integer  "requeriments_id"
+    t.integer  "proposals_id"
+    t.integer  "requeriments_check_id"
     t.boolean  "initial_meet"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.string   "initial_updated_by"
     t.boolean  "revision_meet"
     t.string   "revision_updated_by"
-    t.index ["proposal_id"], name: "index_proposals_requeriments_on_proposal_id", using: :btree
-    t.index ["requeriments_id"], name: "index_proposals_requeriments_on_requeriments_id", using: :btree
+    t.index ["proposals_id"], name: "index_proposals_requeriments_on_proposals_id", using: :btree
+    t.index ["requeriments_check_id"], name: "index_proposals_requeriments_on_requeriments_check_id", using: :btree
   end
 
   create_table "requeriments", force: :cascade do |t|
