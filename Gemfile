@@ -36,6 +36,7 @@ gem 'rails-i18n', :git => 'https://github.com/svenfuchs/rails-i18n.git', branch:
 gem 'responders', '~> 2.4' # A set of Rails responders to dry up your application
 gem 'rollbar', '~> 2.15', '>= 2.15.4' # Easy and powerful exception tracking for Ruby
 gem 'rubyzip', '~> 1.2', '>= 1.2.1' # is a ruby module for reading and writing zip files
+gem 'spreadsheet', '~> 1.1', '>= 1.1.2'
 gem 'simple_form', '~> 3.5' # Forms made easy!
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'savon', '~> 2.11', '>= 2.11.2' # Heavy metal SOAP client
