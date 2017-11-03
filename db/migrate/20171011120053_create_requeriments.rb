@@ -1,6 +1,6 @@
-class CreateRequerimentChecks < ActiveRecord::Migration[5.0]
+class CreateRequeriments < ActiveRecord::Migration[5.0]
   def change
-    create_table :requeriment_checks do |t|
+    create_table :requeriments do |t|
 
       t.string :kind, index: true
       t.integer :code, index: true

@@ -3,7 +3,7 @@ FactoryGirl.define do
     trading_year Date.today.year
     sequence(:code, 1, 99 ) { |n| n }
     description "Description of procedure"
-    association :internal_control_area
+    association :internal_control_file
     updated_by 'FACTORY'
   end
 end

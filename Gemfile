@@ -32,7 +32,7 @@ gem 'paperclip' # Easy upload management for ActiveRecord
 gem 'paranoia', '~> 2.3', '>= 2.3.1' # when you called destroy on an Active Record object that it didn't actually destroy it, but just "hid" the record.
 gem 'public_activity', '~> 1.5' # Easy activity tracking for your ActiveRecord models.
 gem 'rails-i18n', :git => 'https://github.com/svenfuchs/rails-i18n.git', branch: 'master' # For 4.x
-# gem 'ransack', '~> 1.8', '>= 1.8.3' # TODO MetaSearch's functionality, usado en volun
+# gem 'ransack', '~> 1.8', '>= 1.8.3'
 gem 'responders', '~> 2.4' # A set of Rails responders to dry up your application
 gem 'rollbar', '~> 2.15', '>= 2.15.4' # Easy and powerful exception tracking for Ruby
 gem 'rubyzip', '~> 1.2', '>= 1.2.1' # is a ruby module for reading and writing zip files
@@ -40,9 +40,7 @@ gem 'spreadsheet', '~> 1.1', '>= 1.1.2'
 gem 'simple_form', '~> 3.5' # Forms made easy!
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'savon', '~> 2.11', '>= 2.11.2' # Heavy metal SOAP client
-gem 'sidekiq', '~> 5.0', '>= 5.0.5' # Simple, efficient background processing for Ruby.
-# gem 'tinymce-rails' # TODO estaá en agendas
-# gem 'tinymce-rails-langs'  # TODO estaá en agendas
+gem 'sidekiq', '~> 5.0', '>= 5.0.5' # Simple, efficient background processing for Ruby
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 

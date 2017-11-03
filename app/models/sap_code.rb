@@ -1,12 +1,15 @@
 class SapCode < ApplicationRecord
   include Codifiable
 
-  validates :field,
+  validates :sap_field,
             presence: true
 
-  scope :tipo_intervencion,     -> { where(field: 'ZTIPO_INTERV') }
-  scope :codigo_modelo,         -> { where(field: 'CODMOD') }
-  scope :tramite,               -> { where(field: 'TRAMITE') }
-  scope :naturaleza,            -> { where(field: 'NATURALEZA') }
+  scope :accounting_document,      -> { where(sap_field: 'CODMOD') }
+  scope :gexap_task,               -> { where(sap_field: 'TRAMITE') }
+  scope :expense_nature,           -> { where(sap_field: 'NATURALEZA') }
+  scope :adjudication_way,         -> { where(sap_field: 'FORMA_ADJUD') }
+  scope :contract_type,            -> { where(sap_field: 'TIPOCONTRATO') }
+  scope :manager_body,             -> { where(sap_field: 'ORGGEST') }
+  scope :approval_body,            -> { where(sap_field: 'ORGAPRO') }
 
 end

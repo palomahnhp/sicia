@@ -1,0 +1,19 @@
+<div class= "row" >
+  <div class= "small-12 columns">
+    <h1><%= t('proposals.index.title') %> </h1>
+  <table>
+    <tr>
+      <% Proposal.main_columns.each do |field| %>
+        <th><%= t("model.proposal.#{field}") %></th>
+      <% end %>
+    </tr>
+    <% @proposals.each do |proposal| %>
+      <tr>
+        <% Proposal.main_columns.each do |field| %>
+          <td> <%=  proposal.send(field) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  </div>
+</div>

@@ -4,7 +4,7 @@ class CreateInternalControlProcedures < ActiveRecord::Migration[5.0]
       t.integer :trading_year, index: true
       t.integer :code, index: true
       t.string :description
-      t.belongs_to :internal_control_area, index: true, foreign_key: true
+      t.belongs_to :internal_control_file, index: true, foreign_key: true
 
       t.timestamps
       t.string :updated_by

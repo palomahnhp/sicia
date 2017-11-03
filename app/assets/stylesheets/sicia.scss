@@ -1,0 +1,35 @@
+//
+// 0. General
+// 1. Proposals
+//
+
+// 0. General
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+footer {
+  position:absolute;
+  width:100%;
+  bottom:0px;
+}
+
+// 1. Proposals
+
+.proposal .medium-3 {
+  width: 30%;
+}
+
+.proposal legend {
+  padding-top: rem-calc(12);;
+  font-size: rem-calc(20);
+  font-weight: bold;
+}
+
+.button {
+ margin-top: rem-calc(20);
+}

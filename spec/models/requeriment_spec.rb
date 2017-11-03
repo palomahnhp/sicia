@@ -1,25 +1,27 @@
 require 'rails_helper'
 
-RSpec.describe RequerimentCheck, type: :model do
+RSpec.describe Requeriment, type: :model do
 
-  describe "#requeriment basic_req (scope)" do
+  describe "#requeriment (scope)" do
     it "returns only recs with kind RB" do
-      2.times { create :requeriment_check, :basic_req }
-      1.times { create :requeriment_check, :permanent_control }
-      expect(RequerimentCheck.basic_req.size).to be 2
+      2.times { create :requeriment, :basic_req }
+      1.times { create :requeriment, :permanent_control }
+      expect(Requeriment.basic_req.size).to be 2
     end
-  end
-
-  describe "#requeriment permanent_control  (scope)" do
     it "returns only recs with kind PC" do
-      2.times { create :requeriment_check, :permanent_control }
-      1.times { create :requeriment_check, :basic_req }
-      expect(RequerimentCheck.permanent_control.size).to be 2
+      2.times { create :requeriment, :permanent_control }
+      1.times { create :requeriment, :basic_req }
+      expect(Requeriment.permanent_control.size).to be 2
+    end
+    it "returns only recs with kind DOC" do
+      2.times { create :requeriment, :document }
+      1.times { create :requeriment, :basic_req }
+      expect(Requeriment.document.size).to be 2
     end
   end
 
   describe "#requeriment (validations)" do
-    let(:requeriment) { build(:requeriment_check) }
+    let(:requeriment) { build(:requeriment) }
 
     it " is valid with a valid trading year" do
       requeriment.trading_year = 2017

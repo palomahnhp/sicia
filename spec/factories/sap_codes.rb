@@ -1,23 +1,23 @@
 FactoryGirl.define do
   factory :sap_code do
-    sequence(:field) { |n| "Field#{n}" }
+    sequence(:sap_field) { |n| "Field#{n}" }
     sequence(:code) { |n| n }
     description  "Description of sap code"
 
-    trait :tipo_intervencion do
-      field 'ZTIPO_INTERV'
+    trait :adjudication_way do
+      sap_field 'FORMA_ADJUD'
     end
 
-    trait :codigo_modelo do
-      field 'CODMOD'
+    trait :accounting_document do
+      sap_field 'CODMOD'
     end
 
-    trait :tramite do
-      field 'TRAMITE'
+    trait :gexap_task do
+      sap_field 'TRAMITE'
     end
 
-    trait :naturaleza do
-      field 'NATURALEZA'
+    trait :expense_nature do
+      sap_field 'NATURALEZA'
     end
 
   end
