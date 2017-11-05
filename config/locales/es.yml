@@ -4,6 +4,10 @@ es:
     back: Volver
     close: Desconectar
     new: Crear %{resource}
+  activities:
+    key:
+      proposal:
+        create: Creación
   admin:
     menu:
       admin: Administración

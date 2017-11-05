@@ -1,0 +1,26 @@
+<h1> Log de propuestas</h1>
+<table>
+  <tr>
+    <th class="text-left">Detalle</th>
+    <th class="text-left">Propuesta SICI</th>
+    <th class="text-left">Propuesta SAP</th>
+    <th class="text-left">Expediente</th>
+    <th class="text-left">Titulo</th>
+    <th class="text-left">Accion</th>
+    <th class="text-left">Fecha de modificación</th>
+  </tr>
+
+  <% @activities.each do |activity| %>
+
+        <td> <%= link_to("", activity_path(activity), class: "icon-search") %>
+        </td>
+        <td> <%= "#{activity.trackable.trading_year}/#{activity.trackable.id}" %> </td>
+        <td> <%= activity.trackable.sap_proposal  %> </td>
+        <td> <%= activity.trackable.file_number  %> </td>
+        <td> <%= activity.trackable.title  %> </td>
+        <td> <%= t("activities.key.#{activity.key}")  %> </td>
+        <td> <%= activity.created_at.to_date  %> </td>
+      </tr>
+  <% end %>
+
+</table>

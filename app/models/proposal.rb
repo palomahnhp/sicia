@@ -1,11 +1,17 @@
 class Proposal < ApplicationRecord
   include Annualizable
+  include PublicActivity::Model
 
+  tracked owner: ->(controller, model) { controller && controller.current_user },
+          params: {
+              aci_file:  -> (controller, model) { controller && controller.params[:proposal][:internal_control_file]},
+              aci_procedure: -> (controller, model) { controller && controller.params[:proposal][:internal_control_procedure]},
+              aci_action: -> (controller, model) { controller && controller.params[:proposal][:internal_control_action]}
+          }
   belongs_to :internal_control_file
   belongs_to :internal_control_procedure
   belongs_to :internal_control_action
   has_and_belongs_to_many :requeriments
-
 
   validates :internal_control_file,
             :internal_control_procedure,
