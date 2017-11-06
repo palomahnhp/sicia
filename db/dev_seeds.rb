@@ -83,27 +83,4 @@ print "Creating Requeriment"
 end
 
 puts " ✅"
-print "Creating contract Types: "
-print "TIPOCONTRATO"
-
-SapCode.create!(sap_field: 'TIPOCONTRATO', code: '05', description: 'Contrato de servicios', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'TIPOCONTRATO', code: '06', description: 'Contrato de concesiones de obras pública', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'TIPOCONTRATO', code: '07', description: 'Contrato administrativo especial', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'TIPOCONTRATO', code: '26', description: 'Contrato colaboración s.publ. y s.priv.', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'TIPOCONTRATO', code: '20', description: 'Convenios', updated_by: 'DEV_SEEDS' )
-
-puts " ✅"
-print "Creating adjudication way: "
-print "FORMA_ADJUD"
-
-SapCode.create!(sap_field: 'FORMA_ADJUD', code: '1', description: 'Concurso abierto', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'FORMA_ADJUD', code: '3', description: 'Concurso restringido', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'FORMA_ADJUD', code: '5', description: 'Subasta abierta', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'FORMA_ADJUD', code: '7', description: 'Subasta restrigida', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'FORMA_ADJUD', code: '9', description: 'Negociado sin publicidad', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'FORMA_ADJUD', code: '11', description: 'Negociado con publicidad', updated_by: 'DEV_SEEDS' )
-SapCode.create!(sap_field: 'FORMA_ADJUD', code: '13', description: 'Contrato menor', updated_by: 'DEV_SEEDS' )
-
-
-puts " ✅"
 puts "All dev seeds created successfuly "

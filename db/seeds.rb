@@ -1,3 +1,4 @@
+
 puts " ✅"
 print "Creating Setttings"
 
@@ -47,3 +48,11 @@ print "NATURALEZA"
 SapCode.create!(sap_field: 'NATURALEZA', code: 'ANUAL',      description: 'Gasto del ejercicio', updated_by: 'SEEDS' )
 SapCode.create!(sap_field: 'NATURALEZA', code: 'PLURIANUAL', description: 'Gasto de varios ejercicios', updated_by: 'SEEDS' )
 SapCode.create!(sap_field: 'NATURALEZA', code: 'ANTICIPADA', description: 'Gasto de ejercicios futuros', updated_by: 'SEEDS' )
+
+puts " ✅"
+print "Importing budget codes: "
+Rake::Task['import:budget'].invoke
+
+puts " ✅"
+print "Importing sap codes: "
+Rake::Task['import:sap_tables'].invoke
