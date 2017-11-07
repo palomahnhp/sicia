@@ -66,6 +66,7 @@ ignore_missing:
   - 'helpers.select.*'
   - 'helpers.submit.*'
   - 'errors.*'
+  - 'activities.key.*'
 
 ## Consider these keys used:
 ignore_unused:
@@ -83,7 +84,7 @@ ignore_unused:
   - 'views.pagination.*' # kaminari
   - 'helpers.select.*'
   - 'helpers.submit.*'
-
+  - 'activities.key.*'
   - 'kaminari.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
