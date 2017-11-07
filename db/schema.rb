@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104175429) do
+ActiveRecord::Schema.define(version: 20171106080123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20171104175429) do
     t.string   "third_party_id"
     t.string   "third_party_nit"
     t.string   "gexap_task"
-    t.string   "received_at"
+    t.date     "received_at"
     t.string   "notify_to"
     t.text     "observations"
     t.datetime "created_at",                                             null: false
@@ -112,16 +112,15 @@ ActiveRecord::Schema.define(version: 20171104175429) do
   end
 
   create_table "proposals_requeriments", id: false, force: :cascade do |t|
-    t.integer  "proposals_id"
-    t.integer  "requeriments_check_id"
-    t.boolean  "initial_meet"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "proposal_id"
+    t.integer  "requeriment_id"
+    t.datetime "created_at",          null: false
+    t.datetime "initial_updated_at",  null: false
     t.string   "initial_updated_by"
-    t.boolean  "revision_meet"
+    t.boolean  "revision_updated_at"
     t.string   "revision_updated_by"
-    t.index ["proposals_id"], name: "index_proposals_requeriments_on_proposals_id", using: :btree
-    t.index ["requeriments_check_id"], name: "index_proposals_requeriments_on_requeriments_check_id", using: :btree
+    t.index ["proposal_id"], name: "index_proposals_requeriments_on_proposal_id", using: :btree
+    t.index ["requeriment_id"], name: "index_proposals_requeriments_on_requeriment_id", using: :btree
   end
 
   create_table "requeriments", force: :cascade do |t|
