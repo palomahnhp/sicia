@@ -292,8 +292,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rollbar (2.15.4)
-      multi_json
+    rolify (5.1.0)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -455,7 +454,7 @@ DEPENDENCIES
   rails (~> 5.0.4)
   rails-i18n!
   responders (~> 2.4)
-  rollbar (~> 2.15, >= 2.15.4)
+  rolify
   rspec-rails (~> 3.6)
   rubocop (~> 0.49.1)
   rubyzip (~> 1.2, >= 1.2.1)
@@ -474,4 +473,4 @@ DEPENDENCIES
   web-console (~> 3.5, >= 3.5.1)
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0
