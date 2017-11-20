@@ -1,4 +1,15 @@
 <div class= "row" >
+  <%= search_form_for @search do |f| %>
+    <div class="large-4 small-9 columns">
+      <%= f.text_field :title_cont, class: "radius-left expand", placeholder: "Título" %>
+    </div>
+    <div class="large-4 small-3 columns">
+      <%= f.submit "Search", class: "radius-right button" %>
+    </div>
+  <% end %>
+</div>
+
+<div class= "row" >
   <div class= "small-12 columns">
     <h1><%= t('proposals.index.title') %> </h1>
   <table>
@@ -10,7 +21,7 @@
     <% @proposals.each do |proposal| %>
       <tr>
         <% Proposal.main_columns.each do |field| %>
-          <td> <%=  proposal.send(field) %></td>
+          <td> <%= proposal.send(field) %></td>
         <% end %>
       </tr>
     <% end %>

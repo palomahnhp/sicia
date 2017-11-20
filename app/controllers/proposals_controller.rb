@@ -3,7 +3,8 @@ class ProposalsController < ApplicationController
   before_action :set_proposal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @proposals = Proposal.all.order(:id)
+    @search = Proposal.search(params[:q])
+    @proposals = @search.result
   end
 
   def show
