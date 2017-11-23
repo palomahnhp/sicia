@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.49.1', require: false
   gem 'spring', '~> 2.0.1'
   gem 'spring-commands-rspec', '~> 1.0.4'
+  gem 'rspec-rails', '~> 3.6'
 end
 
 group :test do
@@ -61,8 +62,8 @@ group :test do
   gem 'coveralls', '~> 0.8.21', require: false
   gem 'database_cleaner', '~> 1.6.1'
   gem 'email_spec', '~> 2.1.0'
+  gem 'guard-rspec'
   gem 'poltergeist', '~> 1.15.0'
-  gem 'rspec-rails', '~> 3.6'
 end
 
 group :development do
