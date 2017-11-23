@@ -3,10 +3,10 @@
     <ul>
       <% if current_user %>
           <li>
-            <%= link_to t("shared.subnavigation_menu.proposal"), user_access_index_path, class: ("active" if controller_name == "user_access") , accesskey: "e" %>
+            <%= link_to t("shared.subnavigation_menu.proposal"), proposals_path, class: ("active" if controller_name == "user_access") , accesskey: "e" %>
           </li>
           <li>
-            <%= link_to t("shared.subnavigation_menu.documentation"), docs_path, class: ("active" if controller_name == "docs"), accesskey: "d" %>
+            <%= link_to t("shared.subnavigation_menu.activity"), activities_path, class: ("active" if controller_name == "docs"), accesskey: "d" %>
           </li>
       <% end %>
     </ul>
