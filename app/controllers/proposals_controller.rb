@@ -5,12 +5,15 @@ class ProposalsController < ApplicationController
   def index
     @search = Proposal.search(params[:q])
     @proposals = @search.result
+    @search.build_condition if @search.conditions.empty?
   end
 
   def show
+    p 'show'
   end
 
   def edit
+    p 'edit'
   end
 
   def new

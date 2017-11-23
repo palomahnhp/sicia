@@ -4,12 +4,14 @@
     <p>Selección de propuesta a tratar</p>
     <p>Si es una propuesta SAP indique el número de expediente SAP, en caso contrario dejelo en blanco</p>
   </div>
+</div>
+<div clas="row" >
   <div class="small-12 columns" >
     <div class="small-2 columns" >
       <%= form_tag({action: "new"}, method: "get" ) do %>
-          <%= label_tag(:sap_proposal, t('model.proposal.sap_proposal'))  %>
+          <%= label_tag(:sap_proposal, t('ransack.attributes.proposal.sap_proposal'))  %>
           <%= text_field_tag(:sap_proposal)%>
-          <%= submit_tag(t('action.new', model: t('model.proposal.one')), class:"buttom") %>
+          <%= submit_tag t('actions.search', resource: t('ransack.models.proposal.one').downcase), class:"hollow  button" %>
       <% end %>
     </div>
   </div>

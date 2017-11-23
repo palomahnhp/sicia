@@ -4,6 +4,10 @@ es:
     back: Volver
     close: Desconectar
     new: Crear %{resource}
+    search: Buscar
+    column: Acciones
+    add_condition: "Añadir condición"
+    remove: "Eliminar"
   admin:
     menu:
       admin: Administración
@@ -27,6 +31,7 @@ es:
   proposals:
     index:
       title: Listado de Propuestas
+      search: Busqueda de propuestas
     new:
       title: Alta de propuestas
   shared:

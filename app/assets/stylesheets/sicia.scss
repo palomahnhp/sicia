@@ -10,13 +10,19 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 14px;
   line-height: 18px;
+  margin-bottom: rem-calc(20);
 }
 
 footer {
-  position:absolute;
+  margin-bottom: 0px;
+  bottom: 0px;
   width:100%;
-  bottom:0px;
+  height: rem-calc(20);
 }
+
+.footer {
+  min-height: rem-calc(1);
+ }
 
 // 1. Proposals
 
