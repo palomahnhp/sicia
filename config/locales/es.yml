@@ -34,6 +34,10 @@ es:
       search: Busqueda de propuestas
     new:
       title: Alta de propuestas
+    show:
+      title: Consulta de propuesta
+    edit:
+      title: Editar propuestas
   shared:
     print:
       print_button: Imprimir

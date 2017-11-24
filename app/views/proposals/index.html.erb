@@ -1,21 +1,21 @@
 <%= search_form_for @search, url: search_proposals_path, method: :post do |f| %>
-  <div class= "row" >
-    <div class="small-12 columns ">
-      <p>
+    <div class= "row" >
+      <div class="small-12 columns ">
+        <p>
         <h4><%= t('proposals.index.search') %> </h4>
         <small>Para añadir una condición selecciona el campo de búsqueda, para eliminarla dejalo en blanco.</small>
         <br>
-      </p>
+        </p>
         <%= f.condition_fields do |c| %>
-          <%= render 'condition_fields', f: c %>
+            <%= render 'condition_fields', f: c %>
         <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class= "row" >
-    <div class="medium-4 small-3 columns">
-      <p><%= f.submit t('actions.search'), class: "hollow button" %></p>
-    </div>
+    <div class= "row" >
+      <div class="medium-4 small-3 columns">
+        <p><%= f.submit t('actions.search'), class: "hollow button" %></p>
+      </div>
 <% end %>
 
 <div class= "row" >
@@ -24,22 +24,22 @@
     <table>
       <caption><h1><%= t('proposals.index.title') %> </h1></caption>
       <tr>
-        <% Proposal.main_columns.each do |field| %>
-          <th><%= sort_link @search, field, t("ransack.attributes.proposal.#{field}") %></th>
+        <% Proposal.index_columns.each do |field| %>
+            <th><%= sort_link @search, field, t("ransack.attributes.proposal.#{field}") %></th>
         <% end %>
         <th><%= t('actions.column.actions') %></thcolspan>
       </tr>
 
       <% @proposals.each do |proposal| %>
-        <tr  id="<%= "proposal_#{proposal.id}" %>" class= "proposal-row">
-          <% Proposal.main_columns.each do |field| %>
-              <td> <%= proposal.send(field) %></td>
-          <% end %>
-          <td>
-            <%= link_to("", proposal, title: 'Ver detalle', class: "icon-search") %>
-            <%= link_to("", edit_proposal_path(proposal), title: 'Modificar', class: "icon-pencil") %>
-          </td>
-        </tr>
+          <tr id="proposal">
+            <% Proposal.index_columns.each do |field| %>
+                <td> <%= proposal.send(field) %></td>
+            <% end %>
+            <td>
+              <%= link_to("", proposal, title: 'Ver detalle', class: "icon-search") %>
+              <%= link_to("", edit_proposal_path(proposal), title: 'Modificar', class: "icon-pencil") %>
+            </td>
+          </tr>
 
       <% end %>
     </table>

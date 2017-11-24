@@ -92,12 +92,9 @@ print "Creating Proposals"
   proposal.notify_to = 'notificarme@mail.com'
   proposal.notify_to_confirmation = 'notificarme@mail.com'
   proposal.internal_control_file      = InternalControlFile.all.reorder("RANDOM()").first
-  proposal.internal_control_file.inspect
-  proposal.internal_control_file.internal_control_procedures.count
   proposal.internal_control_procedure = proposal.internal_control_file.internal_control_procedures.reorder("RANDOM()").first
   proposal.internal_control_action    = proposal.internal_control_procedure.internal_control_actions.reorder("RANDOM()").first
   proposal.save
-  p proposal.errors.inspect
 end
 
 puts " ✅"

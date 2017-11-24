@@ -1,0 +1,8 @@
+<div class="panel">
+  <% Proposal.main_columns_automatic_sap.each_with_index do |field, index| %>
+      <%= f.hidden_field field unless action_name == 'show' %>
+      <div class="medium-3 small-12 columns end" >
+        <b><%= t("ransack.attributes.proposal.#{field}") %> : </b><%= proposal.send(field) %>
+      </div>
+  <% end %>
+</div>

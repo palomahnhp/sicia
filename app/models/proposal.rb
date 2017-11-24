@@ -67,7 +67,7 @@ class Proposal < ApplicationRecord
        third_party_nit)
   end
 
-  def self.main_columns
+  def self.index_columns
     %i(trading_year
        file_number
        amount

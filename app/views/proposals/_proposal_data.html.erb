@@ -1,0 +1,25 @@
+<div class= "row" >
+  <div class="small-12 columns">
+    <fieldeset>
+      <legend><h5>Datos de la propuesta SAP: <%= @proposal.sap_proposal %> </h5>  </legend>
+      <table>
+        <% if @proposal.automatic_proposal? %>
+            <%= f.hidden_field :sap_proposal unless action_name == 'show'%>
+            <tr>
+              <td>
+                <%= render 'sap_data', proposal: @proposal, f: f %>
+              </td>
+            </tr>
+        <% else %>
+            <% Proposal.main_columns_manual.each do |field| %>
+                <tr>
+                  <td class="text-left">
+                    <%= render 'manual_data', proposal: @proposal %>
+                  </td>
+                </tr>
+            <% end %>
+        <% end %>
+      </table>
+    </fieldeset>
+  </div>
+</div>

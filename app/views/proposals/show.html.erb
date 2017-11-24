@@ -1,2 +1,66 @@
-<h1>Proposal#show</h1>
-<p>Find me in app/views/proposal/show.html.erb</p>
+<div class= "row" >
+  <div class= "small-12 columns">
+    <h1><%= t('proposals.show.title') %> </h1>
+    <%= render 'proposal_data', proposal: @proposal %>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <h5>Datos SICIA</h5>
+    <fieldset>
+      <table>
+        <tr>
+          <th>Fecha de recepción:</th>
+          <td><%= @proposal.received_at %></td>
+        </tr>
+        <tr>
+          <th>Tipo de expediente:</th>
+          <td>
+            <%= " #{@proposal.internal_control_file.code}
+                #{@proposal.internal_control_procedure.code.to_s.rjust(5, "0")}
+                #{@proposal.internal_control_action.code.to_s.rjust(5, "0")} -
+                  #{@proposal.internal_control_file.description}
+                #{@proposal.internal_control_procedure.description}
+                #{@proposal.internal_control_action.description}" %>
+          </td>
+        </tr>
+        <tr>
+          <th>Ultima modificación:</th>
+          <td><%= @proposal.updated_at %></td>
+          <th>Usuario:</th>
+          <td><%= @proposal.updated_by %>FDT001 Fulanito de tal </td>
+        </tr>
+      </table>
+    </fieldset>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <h5>Requisitos Básicos</h5>
+    <fieldset>
+      <table>
+        <tr class="requeriment">
+          <th class="text-left requeriment"> Requisito basico </th>
+          <th class="text-left requeriment"> Cumplimiento </th>
+          <th class="text-left requeriment"> Datos actualización </th>
+        </tr>
+        <tr>
+          <td> Requisito basico patatin patatan cidu jkjasdfoi</td>
+          <td> Cumple</td>
+          <td> FDT001 Fulanito de tal y tal  27/11/2017</td>
+        </tr>
+        <tr>
+          <td> Requisito basico patatin patatan cidu jkjasdfoi</td>
+          <td> Cumple</td>
+          <td> FDT001 Fulanito de tal y tal  27/11/2017</td>
+        </tr>
+        <tr>
+          <td> Requisito basico patatin patatan cidu jkjasdfoi</td>
+          <td> Cumple</td>
+          <td> FDT001 Fulanito de tal y tal  27/11/2017</td>
+        </tr>
+
+      </table>
+    </fieldset>
+  </div>
+</div>
