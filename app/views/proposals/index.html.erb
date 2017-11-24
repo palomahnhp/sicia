@@ -31,7 +31,7 @@
       </tr>
 
       <% @proposals.each do |proposal| %>
-        <tr id="proposal">
+        <tr  id="<%= "proposal_#{proposal.id}" %>" class= "proposal-row">
           <% Proposal.main_columns.each do |field| %>
               <td> <%= proposal.send(field) %></td>
           <% end %>
