@@ -1,7 +1,7 @@
 <div class= "row" >
   <div class="small-12 columns">
     <fieldeset>
-      <legend><h5>Datos de la propuesta SAP: <%= @proposal.sap_proposal %> </h5>  </legend>
+      <legend><h5><%= t('proposals.show.data_proposal') %> <%= @proposal.sap_proposal %> </h5>  </legend>
       <table>
         <% if @proposal.automatic_proposal? %>
             <%= f.hidden_field :sap_proposal unless action_name == 'show'%>

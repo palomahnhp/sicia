@@ -43,7 +43,7 @@ class ProposalsController < ApplicationController
   end
 
   def select_type
-    p 'select'
+
   end
 
   private

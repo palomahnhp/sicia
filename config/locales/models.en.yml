@@ -28,7 +28,7 @@ en:
         expense_nature: Naturaleza del gasto
         file_number: Número de expediente
         internal_control_action: Trámite
-        internal_control_file: Expediente
+        internal_control_file: Tipo de expediente
         internal_control_procedure: Procedimiento
         manager_body: "Órgano gestor"
         notify_to: Email para notificaciones
@@ -43,6 +43,8 @@ en:
         third_party_nit: NIT
         title: Título
         trading_year: Ejercicio
+        updated_at: "Última modificación"
+        updated_by: Usuario
       requeriment:
         code: Código
         description: Descripción

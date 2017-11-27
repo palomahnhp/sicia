@@ -37,6 +37,10 @@ es:
       logo: Madrid
   mailers:
     no_reply: no_reply.madrid.es
+  proposal:
+    show:
+      requeriments:
+        empty: Esta propuesta no tiene requisitos básicos asociados
   proposals:
     edit:
       title: Editar propuestas
@@ -46,7 +50,14 @@ es:
     new:
       title: Alta de propuestas
     show:
+      data_proposal: 'Datos de la propuesta SAP:'
+      data_sicia: Datos SICIA
       title: Consulta de propuesta
+  ransack:
+    models:
+      requeriment:
+        observance: Cumplimiento
+        update_data: Datos de actualización
   shared:
     print:
       print_button: Imprimir
