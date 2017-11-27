@@ -1,21 +1,17 @@
-<div clas="row" >
-  <div class="small-12 columns" >
-    <h1>Alta de propuesta</h1>
-    <p>Selección de propuesta a tratar</p>
-    <p>Si es una propuesta SAP indique el número de expediente SAP, en caso contrario dejelo en blanco</p>
-  </div>
-</div>
-<div clas="row" >
-  <div class="small-12 columns" >
-    <div class="small-2 columns" >
-      <%= form_tag({action: "new"}, method: "get" ) do %>
-          <%= label_tag(:sap_proposal, t('ransack.attributes.proposal.sap_proposal'))  %>
-          <%= text_field_tag(:sap_proposal)%>
-          <%= submit_tag t('actions.search', resource: t('ransack.models.proposal.one').downcase), class:"hollow  button" %>
-      <% end %>
+<div class="row" >
+  <div class="text-center small-12 columns  select-proposal" >
+    <h1>Alta de propuesta</h1    >
+    <br><p> <small>(Si vas a crear una propuesta SAP indica el número de expediente SAP, en caso contrario dejalo en blanco)</small></p>
+    <div class="small-12 small-centered medium-5 centered columns">
+      <fieldset class="fieldset">
+        <legend>Selecciona la propuesta</legend>
+        <%= form_tag({action: "new"}, method: "get" ) do %>
+            <%= label_tag(:sap_proposal, t('ransack.attributes.proposal.sap_proposal'))  %>
+            <%= text_field_tag(:sap_proposal)%>
+            <%= submit_tag t('actions.search', resource: t('ransack.models.proposal.one').downcase), class:"hollow  button" %>
+        <% end %>
+      </fieldset>
     </div>
-  </div>
+   </div>
 </div>
-
-
 

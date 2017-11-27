@@ -18,9 +18,11 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
+      flash[:notice] = t('flash.update.success', resource: t('ransack.models.proposal.one'))
       redirect_to @proposal
     else
-      render :show
+      flash[:error] = t('flash.update.error', resource:  t('ransack.models.proposal.one'))
+      render :edit
     end
   end
 
@@ -32,22 +34,16 @@ class ProposalsController < ApplicationController
   def create
     @proposal = Proposal.new(proposal_params)
     if @proposal.save
-      flash[:notice] = t('flash.proposals.create.success')
+      flash[:notice] = t('flash.create.success', resource: t('ransack.models.proposal.one'))
       redirect_to @proposal
     else
+      flash[:error] = t('flash.create.error', resource:  t('ransack.models.proposal.one'))
       render :new
     end
   end
 
   def select_type
-
-  end
-
-  def add_requeriment
-    @requeriment = Requeriment.find(paramenter[:requeriment_id])
-    @proposal.requeriments << @requeriment
-    flash[:notice] = t('flash.proposals.add_requeriment.success')
-    redirect_to @proposal
+    p 'select'
   end
 
   private

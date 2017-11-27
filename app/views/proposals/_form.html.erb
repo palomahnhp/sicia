@@ -33,7 +33,7 @@
             <fieldeset>
               <legend> Otra información</legend>
               <div class="medium-3 small-12 columns">
-                <%= f.label :received_at, t('model.proposal.received_at') %>
+                <%= f.label :received_at, t('ransack.attributes.proposal.received_at') %>
                 <%= f.date_field(:received_at, label: false) %>
               </div>
               <div class="medium-3 small-12 columns end">
@@ -47,8 +47,7 @@
             </fieldeset>
           </div>
         </div>
-
-        <%= f.submit t("actions.new", resource: 'propuesta'), class: "button hollow" %>
+        <%= f.submit t("actions.#{action_name}", resource: 'propuesta'), class: "button hollow" %>
         </div>
         </div>
     <% end %>

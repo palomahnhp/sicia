@@ -7,7 +7,7 @@
             <%= f.hidden_field :sap_proposal unless action_name == 'show'%>
             <tr>
               <td>
-                <%= render 'sap_data', proposal: @proposal, f: f %>
+                <%= render 'sap_data', proposal: @proposal %>
               </td>
             </tr>
         <% else %>

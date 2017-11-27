@@ -13,9 +13,15 @@
     </div>
 
     <div class= "row" >
-      <div class="medium-4 small-3 columns">
-        <p><%= f.submit t('actions.search'), class: "hollow button" %></p>
+      <div class="medium-12 small-3 columns">
+        <div class="medium-4 small-3 columns">
+          <p><%= f.submit t('actions.search'), class: "hollow button" %></p>
+        </div>
+        <div class="medium-4 small-3 columns">
+          <p><%= link_to t('actions.new', resource: t('ransack.models.proposal.one')), select_type_proposals_path, class: "hollow button" %></p>
+        </div>
       </div>
+    </div>
 <% end %>
 
 <div class= "row" >
@@ -27,11 +33,11 @@
         <% Proposal.index_columns.each do |field| %>
             <th><%= sort_link @search, field, t("ransack.attributes.proposal.#{field}") %></th>
         <% end %>
-        <th><%= t('actions.column.actions') %></thcolspan>
+        <th><%= t('actions.column') %></thcolspan>
       </tr>
 
       <% @proposals.each do |proposal| %>
-          <tr id="proposal">
+          <tr class= "proposal-row" id="proposal_<%=proposal.id%>">
             <% Proposal.index_columns.each do |field| %>
                 <td> <%= proposal.send(field) %></td>
             <% end %>

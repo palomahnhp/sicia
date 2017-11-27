@@ -1,13 +1,6 @@
 ---
 es:
   ransack:
-    models:
-      internal_control_action: Trámite
-      internal_control_file: Tipo de expediente
-      internal_control_procedure: Procedimiento
-      proposal:
-        one: Propuesta
-        other: Propuestas
     attributes:
       internal_control_action:
         code: Código
@@ -51,23 +44,30 @@ es:
         title: Título
         trading_year: Ejercicio
       requeriment:
-        kind:
-          CP:
-            one: Requisito de control permanente
-            other: Requisitos de control permanente
-          DOC:
-            one: Documento
-            other: Documentos
-          RB:
-            one: Requisito básico
-            other: Requisitos básicos
-          code: Código
-          description: Descripción
-          discrepancy_allowed: Admite discrepancias
-          name: Tipo
-          non_observance_level: Grado de cumplimiento
-        one: Requisito
-        other: Requisitos
+        code: Código
+        description: Descripción
+        discrepancy_allowed: Admite discrepancias
+        name: Tipo
+        non_observance_level: Grado de cumplimiento
       setting:
         key: Clave
         value: Valor
+    models:
+      internal_control_action: Trámite
+      internal_control_file: Tipo de expediente
+      internal_control_procedure: Procedimiento
+      proposal:
+        one: Propuesta
+        other: Propuestas
+      requeriment:
+        CP:
+          one: Requisito de control permanente
+          other: Requisitos de control permanente
+        DOC:
+          one: Documento
+          other: Documentos
+        RB:
+          one: Requisito básico
+          other: Requisitos básicos
+        one: Requisito
+        other: Requisitos

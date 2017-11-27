@@ -84,7 +84,7 @@ ignore_unused:
   - 'views.pagination.*' # kaminari
   - 'helpers.select.*'
   - 'helpers.submit.*'
-
+  - 'ransack.*'
   - 'kaminari.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'

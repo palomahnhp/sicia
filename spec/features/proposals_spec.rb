@@ -5,9 +5,9 @@ RSpec.feature "Proposals", type: :feature do
     proposals = [create(:proposal, :sap_proposal), create(:proposal, :sap_proposal), create(:proposal, :sap_proposal)]
 
     visit proposals_path
-    save_and_open_page
     expect(page).to have_selector(".proposal-row", count: 3)
     proposals.each do |proposal|
+
       within("#proposal_#{proposal.id}") do
         expect(page).to have_content proposal.trading_year
         expect(page).to have_content proposal.file_number

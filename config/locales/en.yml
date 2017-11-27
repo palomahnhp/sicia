@@ -1,14 +1,27 @@
 ---
 en:
   actions:
+    add_condition: Añadir condición
     back: Volver
     close: Desconectar
+    column: Acciones
+    edit: Editar %{resource}
     new: Crear %{resource}
+    remove: Eliminar
+    search: Buscar
+    update: Editar %{resource}
   admin:
     menu:
       admin: Administración
   application:
     menu: Menú
+  flash:
+    create:
+      error: Error al crear %{resource}
+      success: "%{resource} creada"
+    update:
+      error: Error al actualizar %{resource}
+      success: "%{resource} actualizada"
   layouts:
     admin:
       watch_form_message: Ver mensaje
@@ -25,10 +38,15 @@ en:
   mailers:
     no_reply: no_reply.madrid.es
   proposals:
+    edit:
+      title: Editar propuestas
     index:
+      search: Busqueda de propuestas
       title: Listado de Propuestas
     new:
       title: Alta de propuestas
+    show:
+      title: Consulta de propuesta
   shared:
     print:
       print_button: Imprimir
