@@ -11,6 +11,9 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'public_activity/testing'
+
+PublicActivity.enabled = false
 
 I18n.default_locale = :en
 
