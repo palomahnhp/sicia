@@ -1,18 +1,27 @@
 ---
 es:
   actions:
+    add_condition: Añadir condición
     back: Volver
     close: Desconectar
+    column: Acciones
+    edit: Editar %{resource}
     new: Crear %{resource}
-  activities:
-    key:
-      proposal:
-        create: Creación
+    remove: Eliminar
+    search: Buscar
+    update: Editar %{resource}
   admin:
     menu:
       admin: Administración
   application:
     menu: Menú
+  flash:
+    create:
+      error: Error al crear %{resource}
+      success: "%{resource} creada"
+    update:
+      error: Error al actualizar %{resource}
+      success: "%{resource} actualizada"
   layouts:
     admin:
       watch_form_message: Ver mensaje
@@ -28,11 +37,27 @@ es:
       logo: Madrid
   mailers:
     no_reply: no_reply.madrid.es
+  proposal:
+    show:
+      requeriments:
+        empty: Esta propuesta no tiene requisitos básicos asociados
   proposals:
+    edit:
+      title: Editar propuestas
     index:
+      search: Busqueda de propuestas
       title: Listado de Propuestas
     new:
       title: Alta de propuestas
+    show:
+      data_proposal: 'Datos de la propuesta SAP:'
+      data_sicia: Datos SICIA
+      title: Consulta de propuesta
+  ransack:
+    models:
+      requeriment:
+        observance: Cumplimiento
+        update_data: Datos de actualización
   shared:
     print:
       print_button: Imprimir

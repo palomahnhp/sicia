@@ -1,0 +1,8 @@
+<div class="medium-3 small-12 columns end" >
+  <b><%= t("ransack.attributes.proposal.#{field}") %> : </b>
+  <% if action_name = 'show' %>
+      <%= field %>
+  <% else %>
+      <%= f.text_field field, label: false %>
+  <% end %>
+</div>

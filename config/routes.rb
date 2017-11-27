@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :proposals do
-    get 'select_type', on: :collection
+    collection {
+      post :search, to:'proposals#index'
+      get  :search, to:'proposals#index'
+      get :select_type
+    }
+
   end
 
   resources :activities do

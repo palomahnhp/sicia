@@ -73,9 +73,10 @@ class Proposal < ApplicationRecord
        third_party_nit)
   end
 
-  def self.main_columns
+  def self.index_columns
     %i(trading_year
        file_number
+       sap_proposal
        amount
        manager_body
        approval_body
@@ -84,6 +85,10 @@ class Proposal < ApplicationRecord
        third_party_nit
        title
        received_at )
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w(trading_year sap_proposal file_number title third_party_name third_party_id third_party_nit received_at amount ) + _ransackers.keys
   end
 
   def fill_sap_proposal(sap_proposal)

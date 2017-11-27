@@ -1,53 +1,67 @@
 ---
 en:
-  action:
-    new: Alta %{model}
-  model:
-    internal_control_action:
-      code: Código
-      description: Descripción
-      one: Trámite
-      others: Trámite
-    internal_control_file:
-      code: Código
-      description: Descripción
-      one: Tipo de expediente
-      others: Tipos de expediente
-    internal_control_procedure:
-      code: Código
-      description: Descripción
-      one: Procedimiento
-      others: Procedimientos
-    proposal:
-      accounting_document: Documento contable
-      adjudication_way: Forma de adjudicación
-      amount: Importe total
-      approval_body: "Órgano de aprobación"
-      budget_manager: Centro
-      budget_section: Seccion
-      contract_type: Tipo de contrato
-      expense_nature: Naturaleza del gasto
-      file_number: Número de expediente
+  ransack:
+    attributes:
+      internal_control_action:
+        code: Código
+        description: Descripción
+        one: Trámite
+        others: Trámite
+      internal_control_file:
+        code: Código
+        description: Descripción
+        one: Tipo de expediente
+        others: Tipos de expediente
+      internal_control_procedure:
+        code: Código
+        description: Descripción
+        one: Procedimiento
+        others: Procedimientos
+      proposal:
+        accounting_document: Documento contable
+        adjudication_way: Forma de adjudicación
+        amount: Importe total
+        approval_body: "Órgano de aprobación"
+        budget_manager: Centro
+        budget_section: Seccion
+        contract_type: Tipo de contrato
+        expense_nature: Naturaleza del gasto
+        file_number: Número de expediente
+        internal_control_action: Trámite
+        internal_control_file: Tipo de expediente
+        internal_control_procedure: Procedimiento
+        manager_body: "Órgano gestor"
+        notify_to: Email para notificaciones
+        notify_to_confirmation: Confirmación de email
+        observations: Observaciones
+        received_at: Fecha de recepción
+        sap_kind: Clase de propuesta SAP
+        sap_proposal: Número de propuesta SAP
+        third_party: Tercero
+        third_party_id: NIF/CIF
+        third_party_name: Nombre
+        third_party_nit: NIT
+        title: Título
+        trading_year: Ejercicio
+        updated_at: "Última modificación"
+        updated_by: Usuario
+      requeriment:
+        code: Código
+        description: Descripción
+        discrepancy_allowed: Admite discrepancias
+        name: Tipo
+        non_observance_level: Grado de cumplimiento
+      setting:
+        key: Clave
+        value: Valor
+    models:
       internal_control_action: Trámite
-      internal_control_file: Expediente
+      internal_control_file: Tipo de expediente
       internal_control_procedure: Procedimiento
-      manager_body: "Órgano gestor"
-      notify_to: Email para notificaciones
-      notify_to_confirmation: Confirmación de email
-      observations: Observaciones
-      one: Propuesta SICI
-      other: Propuestas SICI
-      received_at: Fecha de recepción
-      sap_kind: Clase de propuesta SAP
-      sap_proposal: Número de propuesta SAP
-      third_party: Tercero
-      third_party_id: NIF/CIF
-      third_party_name: Nombre
-      third_party_nit: NIT
-      title: Título
-      trading_year: Ejercicio
-    requeriment:
-      kind:
+      proposal:
+        one: Propuesta
+        other: Propuestas
+      requeriment:
         CP:
           one: Requisito de control permanente
           other: Requisitos de control permanente
@@ -57,13 +71,5 @@ en:
         RB:
           one: Requisito básico
           other: Requisitos básicos
-        code: Código
-        description: Descripción
-        discrepancy_allowed: Admite discrepancias
-        name: Tipo
-        non_observance_level: Grado de cumplimiento
-      one: Requisito
-      other: Requisitos
-    setting:
-      key: Clave
-      value: Valor
+        one: Requisito
+        other: Requisitos

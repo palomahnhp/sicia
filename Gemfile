@@ -32,7 +32,7 @@ gem 'paperclip' # Easy upload management for ActiveRecord
 gem 'paranoia', '~> 2.3', '>= 2.3.1' # when you called destroy on an Active Record object that it didn't actually destroy it, but just "hid" the record.
 gem 'public_activity', '~> 1.5' # Easy activity tracking for your ActiveRecord models.
 gem 'rails-i18n', :git => 'https://github.com/svenfuchs/rails-i18n.git', branch: 'master' # For 4.x
-# gem 'ransack', '~> 1.8', '>= 1.8.3'
+gem 'ransack', '~> 1.8', '>= 1.8.4'
 gem 'responders', '~> 2.4' # A set of Rails responders to dry up your application
 gem 'rolify'
 gem 'rubyzip', '~> 1.2', '>= 1.2.1' # is a ruby module for reading and writing zip files
@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.49.1', require: false
   gem 'spring', '~> 2.0.1'
   gem 'spring-commands-rspec', '~> 1.0.4'
+  gem 'rspec-rails', '~> 3.6'
 end
 
 group :test do
@@ -61,8 +62,8 @@ group :test do
   gem 'coveralls', '~> 0.8.21', require: false
   gem 'database_cleaner', '~> 1.6.1'
   gem 'email_spec', '~> 2.1.0'
+  gem 'guard-rspec'
   gem 'poltergeist', '~> 1.15.0'
-  gem 'rspec-rails', '~> 3.6'
 end
 
 group :development do

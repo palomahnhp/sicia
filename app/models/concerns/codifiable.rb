@@ -7,6 +7,11 @@ module Codifiable
               presence: true
     validates :description,
               presence: true
+
+    def self.ransackable_attributes(auth_object = nil)
+      %w(code description) + _ransackers.keys
+    end
+
   end
 
 end
