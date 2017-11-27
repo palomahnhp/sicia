@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'welcome#index'
 
   get 'welcome/index'
@@ -10,6 +11,10 @@ Rails.application.routes.draw do
       get  :search, to:'proposals#index'
       get :select_type
     }
+
+  end
+
+  resources :activities do
 
   end
 

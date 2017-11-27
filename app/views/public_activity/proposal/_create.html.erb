@@ -1,0 +1,24 @@
+<h1> Detalle de creación de propuesta: <%= "#{@activity.trackable.trading_year}/#{@activity.trackable.id}" %>  </h1>
+<table>
+  <tr>
+    <th class="text-left">Expediente</th>
+    <td><%= @activity.trackable.file_number %> </td>
+  </tr>
+  <tr>
+    <th class="text-left">Título</th>
+    <td> <%= @activity.trackable.title %> </td>
+  </tr>
+  <tr>
+    <th class="text-left">Fecha</th>
+    <td> <%= @activity.created_at %> </td>
+  </tr>
+  <tr>
+    <th class="text-left">Usuario</th>
+    <td> <%= @activity.owner.name if @activity.owner.present? %> </td>
+  </tr>
+  <tr>
+    <th class="text-left">Parametros</th>
+    <td> <%= @activity.parameters %></td>
+  </tr>
+</table>
+<td> </td>
