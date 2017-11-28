@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107121401) do
+ActiveRecord::Schema.define(version: 20171127151117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,18 @@ ActiveRecord::Schema.define(version: 20171107121401) do
     t.index ["trading_year"], name: "index_manager_bodies_on_trading_year", using: :btree
   end
 
+  create_table "proposal_requeriments", force: :cascade do |t|
+    t.integer  "proposal_id"
+    t.integer  "requeriment_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "updated_by"
+    t.datetime "revision_updated_at"
+    t.string   "revision_updated_by"
+    t.index ["proposal_id"], name: "index_proposal_requeriments_on_proposal_id", using: :btree
+    t.index ["requeriment_id"], name: "index_proposal_requeriments_on_requeriment_id", using: :btree
+  end
+
   create_table "proposals", force: :cascade do |t|
     t.integer  "trading_year"
     t.string   "sap_proposal"
@@ -109,18 +121,6 @@ ActiveRecord::Schema.define(version: 20171107121401) do
     t.index ["internal_control_file_id"], name: "index_proposals_on_internal_control_file_id", using: :btree
     t.index ["internal_control_procedure_id"], name: "index_proposals_on_internal_control_procedure_id", using: :btree
     t.index ["trading_year"], name: "index_proposals_on_trading_year", using: :btree
-  end
-
-  create_table "proposals_requeriments", id: false, force: :cascade do |t|
-    t.integer  "proposal_id"
-    t.integer  "requeriment_id"
-    t.datetime "created_at",          null: false
-    t.datetime "initial_updated_at",  null: false
-    t.string   "initial_updated_by"
-    t.boolean  "revision_updated_at"
-    t.string   "revision_updated_by"
-    t.index ["proposal_id"], name: "index_proposals_requeriments_on_proposal_id", using: :btree
-    t.index ["requeriment_id"], name: "index_proposals_requeriments_on_requeriment_id", using: :btree
   end
 
   create_table "requeriments", force: :cascade do |t|

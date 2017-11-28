@@ -11,7 +11,7 @@ class Proposal < ApplicationRecord
   belongs_to :internal_control_file
   belongs_to :internal_control_procedure
   belongs_to :internal_control_action
-  has_and_belongs_to_many :requeriments
+  has_many :requeriments throw
 
   validates :internal_control_file,
             :internal_control_procedure,
