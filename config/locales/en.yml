@@ -5,6 +5,7 @@ en:
     back: Volver
     close: Desconectar
     column: Acciones
+    create: Crear %{resource}
     edit: Editar %{resource}
     new: Crear %{resource}
     remove: Eliminar
@@ -47,15 +48,18 @@ en:
     index:
       search: Busqueda de propuestas
       title: Listado de Propuestas
+    mark_requeriment:
+      title: Marcar requisitos
     new:
       title: Alta de propuestas
     show:
-      data_proposal: 'Datos de la propuesta SAP:'
+      data_proposal: 'Datos de la propuesta:'
       data_sicia: Datos SICIA
       title: Consulta de propuesta
   ransack:
     models:
       requeriment:
+        no_observance_level: Grado de incumplimiento
         observance: Cumplimiento
         update_data: Datos de actualización
   shared:

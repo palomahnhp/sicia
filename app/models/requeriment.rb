@@ -2,7 +2,11 @@ class Requeriment < ApplicationRecord
   include Annualizable
   include Codifiable
 
-  has_and_belongs_to_many :proposals
+  has_many :proposal_requeriments
+  has_many :proposals, through: :proposal_requeriments
+
+  has_many :internal_control_action_requeriments
+  has_many :internal_control_actions, through: :internal_control_action_requeriments
 
   validates :kind, presence: true,
                    inclusion: { in: %w(RB CP DOC) }

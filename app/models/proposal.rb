@@ -11,7 +11,8 @@ class Proposal < ApplicationRecord
   belongs_to :internal_control_file
   belongs_to :internal_control_procedure
   belongs_to :internal_control_action
-  has_many :requeriments throw
+  has_many :proposal_requeriments
+  has_many :requeriments, through: :proposal_requeriments
 
   validates :internal_control_file,
             :internal_control_procedure,
@@ -47,6 +48,7 @@ class Proposal < ApplicationRecord
   def self.main_columns_automatic_sap
     %i(trading_year
        sap_kind
+       sap_proposal
        file_number
        accounting_document
        amount
