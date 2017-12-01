@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h5><%= t('ransack.models.requeriment.RB.other') %></h5>
+    <fieldset>
+      <table>
+        <tr class="requeriment">
+          <th class="text-left requeriment"> <%= t('ransack.models.requeriment.RB.one') %> </th>
+          <th class="text-left requeriment"> <%= t('ransack.models.requeriment.observance') %> </th>
+          <th class="text-left requeriment"> <%= t('ransack.models.requeriment.update_data') %></th>
+        </tr>
+        <% @proposal.requeriments.basic_req.each do |requeriment| %>
+            <tr>
+              <td> requeriment.description</td>
+              <td>  </td>
+              <td>  </td>
+            </tr>
+        <% end %>
+        <% if @proposal.requeriments.basic_req.count == 0 %>
+            <tr>
+              <td class= "text-center" colspan="3"> <%= t('proposal.show.requeriments.empty')%> </td>
+            </tr>
+        <% end %>
+      </table>
+    </fieldset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h5><%= t('ransack.models.requeriment.CP.other') %></h5>
+    <fieldset>
+      <table>
+        <tr class="requeriment">
+          <th class="text-left requeriment"> <%= t('ransack.models.requeriment.CP.one') %> </th>
+          <th class="text-left requeriment"> <%= t('ransack.models.requeriment.observance') %> </th>
+          <th class="text-left requeriment"> <%= t('ransack.models.requeriment.no_observance_level') %> </th>
+          <th class="text-left requeriment"> <%= t('ransack.models.requeriment.update_data') %></th>
+        </tr>
+        <% @proposal.requeriments.basic_req.each do |requeriment| %>
+            <tr>
+              <td> requeriment.description</td>
+              <td>  </td>
+              <td>  </td>
+            </tr>
+        <% end %>
+        <% if @proposal.requeriments.basic_req.count == 0 %>
+            <tr>
+              <td class= "text-center" colspan="3"> <%= t('proposal.show.requeriments.empty')%> </td>
+            </tr>
+        <% end %>
+      </table>
+    </fieldset>
+  </div>
+</div>

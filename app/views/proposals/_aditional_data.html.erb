@@ -1,0 +1,25 @@
+<fieldset>
+  <table>
+    <tr>
+      <th><%= t('ransack.attributes.proposal.received_at') %>:</th>
+      <td><%= @proposal.received_at %></td>
+    </tr>
+    <tr>
+      <th><%= t('ransack.attributes.proposal.internal_control_file') %>:</th>
+      <td>
+        <%= " #{@proposal.internal_control_file.code}
+            #{@proposal.internal_control_procedure.code.to_s.rjust(5, "0")}
+            #{@proposal.internal_control_action.code.to_s.rjust(5, "0")} -
+                  #{@proposal.internal_control_file.description}
+            #{@proposal.internal_control_procedure.description}
+            #{@proposal.internal_control_action.description}" %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= t('ransack.attributes.proposal.updated_at') %>:</th>
+      <td><%= @proposal.updated_at %></td>
+      <th><%= t('ransack.attributes.proposal.updated_by') %>:</th>
+      <td><%= @proposal.updated_by %>FDT001 Fulanito de tal </td>
+    </tr>
+  </table>
+</fieldset>

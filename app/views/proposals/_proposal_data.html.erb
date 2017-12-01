@@ -1,13 +1,17 @@
 <div class= "row" >
   <div class="small-12 columns">
-    <fieldeset>
-      <legend><h5><%= t('proposals.show.data_proposal') %> <%= @proposal.sap_proposal %> </h5>  </legend>
+    <fieldset>
+      <legend><h5><%= t('proposals.show.data_proposal') %> </h5>  </legend>
       <table>
         <% if @proposal.automatic_proposal? %>
-            <%= f.hidden_field :sap_proposal unless action_name == 'show'%>
+            <%= f.hidden_field :sap_proposal unless proposal_read_view %>
             <tr>
               <td>
-                <%= render 'sap_data', proposal: @proposal %>
+                <% if  proposal_read_view %>
+                  <%= render 'sap_data', proposal: @proposal%>
+                <% else %>
+                    <%= render 'sap_data', proposal: @proposal, f: f %>
+                <% end %>
               </td>
             </tr>
         <% else %>
@@ -20,6 +24,7 @@
             <% end %>
         <% end %>
       </table>
-    </fieldeset>
+    </fieldset>
   </div>
 </div>
+
