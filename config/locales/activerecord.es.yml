@@ -71,6 +71,7 @@ es:
         RB:
           one: Requisito básico
           other: Requisitos básicos
+        no_observance_level: Nivel de incumplimiento
         observance: Cumplimiento
         one: Requisito
         other: Requisitos

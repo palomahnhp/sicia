@@ -1,11 +1,11 @@
 class ProposalsController < ApplicationController
 
-  before_action :set_proposal, only: [:show, :edit, :update, :destroy]
+  before_action :set_proposal, only: [:show, :edit, :update, :destroy, :mark_requeriment]
 
   def index
     @search = Proposal.search(params[:q])
     @proposals = @search.result
-    @search.build_condition if @search.conditions.empty?
+    @search.build_condition
   end
 
   def show
@@ -35,7 +35,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     if @proposal.save
       flash[:notice] = t('flash.create.success', resource: t('activerecord.models.proposal.one'))
-      redirect_to @proposal
+      redirect_to mark_requeriment_proposal_path(@proposal)
     else
       flash[:error] = t('flash.create.error', resource:  t('activerecord.models.proposal.one'))
       render :new
@@ -43,6 +43,11 @@ class ProposalsController < ApplicationController
   end
 
   def select_type
+
+  end
+
+  def mark_requeriment
+    @requeriments
 
   end
 

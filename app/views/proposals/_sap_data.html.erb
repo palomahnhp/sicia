@@ -1,7 +1,9 @@
 <div class="panel">
   <% Proposal.main_columns_automatic_sap.each_with_index do |field, index| %>
       <div class="medium-3 small-12 columns end" >
+        <%= f.hidden_field field unless proposal_read_view %>
         <b><%= t("activerecord.attributes.proposal.#{field}") %> : </b><%= proposal.send(field) %>
+
       </div>
   <% end %>
 </div>

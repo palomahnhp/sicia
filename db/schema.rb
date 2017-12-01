@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107121401) do
+ActiveRecord::Schema.define(version: 20171128135428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20171107121401) do
     t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
     t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+  end
+
+  create_table "internal_control_action_requeriments", force: :cascade do |t|
+    t.integer  "internal_control_action_id"
+    t.integer  "requeriment_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "updated_by"
+    t.index ["internal_control_action_id", "requeriment_id"], name: "internal_control_action", unique: true, using: :btree
+    t.index ["requeriment_id"], name: "index_internal_control_action_requeriments_on_requeriment_id", using: :btree
   end
 
   create_table "internal_control_actions", force: :cascade do |t|
@@ -79,6 +89,20 @@ ActiveRecord::Schema.define(version: 20171107121401) do
     t.index ["trading_year"], name: "index_manager_bodies_on_trading_year", using: :btree
   end
 
+  create_table "proposal_requeriments", force: :cascade do |t|
+    t.integer  "proposal_id"
+    t.integer  "requeriment_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "updated_by"
+    t.datetime "revision_updated_at"
+    t.string   "revision_updated_by"
+    t.boolean  "initial_check"
+    t.boolean  "revised_check"
+    t.index ["proposal_id"], name: "index_proposal_requeriments_on_proposal_id", using: :btree
+    t.index ["requeriment_id"], name: "index_proposal_requeriments_on_requeriment_id", using: :btree
+  end
+
   create_table "proposals", force: :cascade do |t|
     t.integer  "trading_year"
     t.string   "sap_proposal"
@@ -109,18 +133,6 @@ ActiveRecord::Schema.define(version: 20171107121401) do
     t.index ["internal_control_file_id"], name: "index_proposals_on_internal_control_file_id", using: :btree
     t.index ["internal_control_procedure_id"], name: "index_proposals_on_internal_control_procedure_id", using: :btree
     t.index ["trading_year"], name: "index_proposals_on_trading_year", using: :btree
-  end
-
-  create_table "proposals_requeriments", id: false, force: :cascade do |t|
-    t.integer  "proposal_id"
-    t.integer  "requeriment_id"
-    t.datetime "created_at",          null: false
-    t.datetime "initial_updated_at",  null: false
-    t.string   "initial_updated_by"
-    t.boolean  "revision_updated_at"
-    t.string   "revision_updated_by"
-    t.index ["proposal_id"], name: "index_proposals_requeriments_on_proposal_id", using: :btree
-    t.index ["requeriment_id"], name: "index_proposals_requeriments_on_requeriment_id", using: :btree
   end
 
   create_table "requeriments", force: :cascade do |t|

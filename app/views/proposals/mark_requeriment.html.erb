@@ -1,10 +1,9 @@
 <div class= "row" >
   <div class= "small-12 columns">
-    <h1><%= t('proposals.show.title') %></h1>
+    <h1><%= t('proposals.mark_requeriment.title') %></h1>
     <%= render 'proposal_data', proposal: @proposal %>
   </div>
 </div>
-
 <div class="row">
   <div class="small-12 columns">
     <h5><%= t('proposals.show.data_sicia') %></h5>
@@ -12,4 +11,10 @@
   </div>
 </div>
 
-<%= render 'show_requeriments', proposal: @proposal %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h5><%= t('activerecord.models.requeriment.RB.other') %></h5>
+    <%= render 'mark_requeriment', proposal: @proposal %>
+  </div>
+</div>

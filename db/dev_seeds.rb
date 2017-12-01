@@ -13,42 +13,6 @@ Setting["org_name"] = "Intervención General del Ayuntamiento de Madrid"
 Setting["app_name"] = "Sistema Integral de gestión de Control Interno"
 
 puts " ✅"
-print "Creating Internal Control Types"
-(1..3).each do |n|
-  description = 'Expediente tipo ' + n.to_s
-  code = description[0...3].upcase + n.to_s
-
-  ic_file = InternalControlFile.create!(code: code,
-                             trading_year: Date.today.year,
-                             description: description,
-                             created_at: rand((Time.current - 1.week)..Time.current),
-                             updated_at:  rand((Time.current - 1.week)..Time.current),
-                             updated_by: 'DEV_SEED')
-
-  (1..3).each do |m|
-    description = 'Procedimiento ' +  ic_file.code  + '.' + m.to_s
-    ic_procedure = InternalControlProcedure.create!(code: m,
-                                     trading_year: Date.today.year,
-                                     description: description,
-                                     internal_control_file: ic_file,
-                                     created_at: rand((Time.current - 1.week)..Time.current),
-                                     updated_at:  rand((Time.current - 1.week)..Time.current),
-                                     updated_by: 'DEV_SEED')
-
-    (1..3).each do |o|
-      description = 'Tramite ' +  ic_file.code  + '.' + m.to_s + '.' + o.to_s
-      InternalControlAction.create!(code: o,
-                                       trading_year: Date.today.year,
-                                       description: description,
-                                       internal_control_procedure: ic_procedure,
-                                       created_at: rand((Time.current - 1.week)..Time.current),
-                                       updated_at: rand((Time.current - 1.week)..Time.current),
-                                       updated_by: 'DEV_SEED')
-    end
-  end
-end
-
-puts " ✅"
 
 print "Creating Requeriment"
 (1..25).each do |n|
@@ -59,10 +23,10 @@ print "Creating Requeriment"
     non_observance_level = true
     discrepancy_allowed  = false
   elsif n % 5 == 0
-      kind =   'DOC'
-      description = "Documento #{Faker::Company.buzzword}"
-      non_observance_level = false
-      discrepancy_allowed  = false
+    kind =   'DOC'
+    description = "Documento #{Faker::Company.buzzword}"
+    non_observance_level = false
+    discrepancy_allowed  = false
 
   else
     kind =   'RB'
@@ -83,9 +47,49 @@ print "Creating Requeriment"
 end
 
 puts " ✅"
+print "Creating Internal Control Types"
+descriptions = %w[Contratación Obras Compras Suministros]
+(0..3).each do |n|
+  description = descriptions[n]
+  code = description[0...4].upcase
+
+  ic_file = InternalControlFile.create!(code: code,
+                             trading_year: Date.today.year,
+                             description: description,
+                             created_at: rand((Time.current - 1.week)..Time.current),
+                             updated_at:  rand((Time.current - 1.week)..Time.current),
+                             updated_by: 'DEV_SEED')
+
+  (1..3).each do |m|
+    description = 'Proc. de ' +  ic_file.code  + '.' + m.to_s
+    ic_procedure = InternalControlProcedure.create!(code: m,
+                                     trading_year: Date.today.year,
+                                     description: description,
+                                     internal_control_file: ic_file,
+                                     created_at: rand((Time.current - 1.week)..Time.current),
+                                     updated_at:  rand((Time.current - 1.week)..Time.current),
+                                     updated_by: 'DEV_SEED')
+
+    (1..3).each do |o|
+      description = 'Tramite de ' +  ic_procedure.description  + '.' + m.to_s + '.' + o.to_s
+      ac = InternalControlAction.create!(code: o,
+                                       trading_year: Date.today.year,
+                                       description: description,
+                                       internal_control_procedure: ic_procedure,
+                                       created_at: rand((Time.current - 1.week)..Time.current),
+                                       updated_at: rand((Time.current - 1.week)..Time.current),
+                                       updated_by: 'DEV_SEED')
+
+      ac.requeriment = Requeriment.all.reorder("RANDOM()").first
+
+    end
+  end
+end
+
+puts " ✅"
 
 print "Creating Proposals"
-
+i
 (77067819..77067850).each do |n|
   proposal = Proposal.new(sap_proposal: n)
   proposal.fill_sap_proposal(n)

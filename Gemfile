@@ -63,7 +63,6 @@ group :test do
   gem 'coveralls', '~> 0.8.21', require: false
   gem 'database_cleaner', '~> 1.6.1'
   gem 'email_spec', '~> 2.1.0'
-  gem 'guard-rspec'
   gem 'poltergeist', '~> 1.15.0'
 end
 
@@ -72,9 +71,6 @@ group :development do
   gem 'capistrano-bundler', '~> 1.3', require: false
   gem 'capistrano-rails', '~> 1.3', require: false
   gem 'capistrano-rvm', '~> 0.1.2' # TODO cer que gema utilizar, esta es la mas antigua
-#  gem 'rvm-capistrano', '~> 1.5', '>= 1.5.6' # TODO revisar despliegues con esta gema
-#  gem 'rvm1-capistrano3', '~> 1.4' # TODO revisar despliegues con esta gema
-#  gem 'capistrano3-delayed-job', '~> 1.7.3'
   gem 'mdl', '~> 0.4.0', require: false
   gem 'rvm1-capistrano3', '~> 1.4.0', require: false
   gem 'scss_lint', '~> 0.54.0', require: false

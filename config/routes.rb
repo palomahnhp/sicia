@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :proposals do
+    member {
+      get :mark_requeriment
+    }
+
     collection {
       post :search, to:'proposals#index'
       get  :search, to:'proposals#index'
