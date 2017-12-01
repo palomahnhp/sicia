@@ -1,4 +1,4 @@
-class InternalControlAction < ApplicationRecord
+class IcAction < ApplicationRecord
   include Annualizable
   include Codifiable
 
