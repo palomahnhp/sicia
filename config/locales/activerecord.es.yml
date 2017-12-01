@@ -1,6 +1,6 @@
 ---
 es:
-  ransack:
+  activerecord:
     attributes:
       internal_control_action:
         code: Código
@@ -21,7 +21,7 @@ es:
         accounting_document: Documento contable
         adjudication_way: Forma de adjudicación
         amount: Importe total
-        approval_body: "Órgano de aprobación"
+        approval_body: Órgano de aprobación
         budget_manager: Centro
         budget_section: Seccion
         contract_type: Tipo de contrato
@@ -30,7 +30,7 @@ es:
         internal_control_action: Trámite
         internal_control_file: Tipo de expediente
         internal_control_procedure: Procedimiento
-        manager_body: "Órgano gestor"
+        manager_body: Órgano gestor
         notify_to: Email para notificaciones
         notify_to_confirmation: Confirmación de email
         observations: Observaciones
@@ -43,7 +43,7 @@ es:
         third_party_nit: NIT
         title: Título
         trading_year: Ejercicio
-        updated_at: "Última modificación"
+        updated_at: Última modificación
         updated_by: Usuario
       requeriment:
         code: Código
@@ -71,5 +71,7 @@ es:
         RB:
           one: Requisito básico
           other: Requisitos básicos
+        observance: Cumplimiento
         one: Requisito
         other: Requisitos
+        update_data: Datos de actualización

@@ -7,19 +7,19 @@
             <fieldset class="panel-group">
               <legend>Tipo de expediente:</h5> </legend> <br>
               <div class="medium-3 small-12 columns">
-                <%= f.label :internal_control_file_id, t('ransack.attributes.proposal.internal_control_file') %>
+                <%= f.label :internal_control_file_id, t('activerecord.attributes.proposal.internal_control_file') %>
                 <%= f.collection_select(:internal_control_file_id, InternalControlFile.order(:code), :id, :description,
                                         include_blank: true, label: false)  %>
               </div>
               <% if @proposal.sap_proposal.present? %>
                   <div class="medium-3 small-12 columns">
-                    <%= f.label :internal_control_procedure_id, t('ransack.attributes.proposal.internal_control_procedure') %>
+                    <%= f.label :internal_control_procedure_id, t('activerecord.attributes.proposal.internal_control_procedure') %>
                     <%= f.grouped_collection_select(:internal_control_procedure_id, InternalControlFile.order(:code),
                                                     :internal_control_procedures, :description, :id, :description,
                                                     include_blank: true, label: false)  %>
                   </div>
                   <div class="medium-3 small-12 columns">
-                    <%= f.label :internal_control_action_id, t('ransack.attributes.proposal.internal_control_action') %>
+                    <%= f.label :internal_control_action_id, t('activerecord.attributes.proposal.internal_control_action') %>
                     <%= f.grouped_collection_select(:internal_control_action_id, InternalControlProcedure.order(:code),
                                                     :internal_control_actions, :description, :id, :description,
                                                     include_blank: true, label: false)  %>
@@ -33,15 +33,15 @@
             <fieldeset>
               <legend> Otra información</legend>
               <div class="medium-3 small-12 columns">
-                <%= f.label :received_at, t('ransack.attributes.proposal.received_at') %>
+                <%= f.label :received_at, t('activerecord.attributes.proposal.received_at') %>
                 <%= f.date_field(:received_at, label: false) %>
               </div>
               <div class="medium-3 small-12 columns end">
-                <%= f.label :notify_to, t('ransack.attributes.proposal.notify_to') %>
+                <%= f.label :notify_to, t('activerecord.attributes.proposal.notify_to') %>
                 <%= f.text_field(:notify_to, label: false)  %>
               </div>
               <div class="medium-3 small-12 columns end">
-                <%= f.label :notify_to_confirmation, t('ransack.attributes.proposal.notify_to_confirmation') %>
+                <%= f.label :notify_to_confirmation, t('activerecord.attributes.proposal.notify_to_confirmation') %>
                 <%= f.text_field(:notify_to_confirmation, label: false)  %>
               </div>
             </fieldeset>

@@ -53,11 +53,6 @@ es:
       data_proposal: 'Datos de la propuesta SAP:'
       data_sicia: Datos SICIA
       title: Consulta de propuesta
-  ransack:
-    models:
-      requeriment:
-        observance: Cumplimiento
-        update_data: Datos de actualización
   shared:
     print:
       print_button: Imprimir
