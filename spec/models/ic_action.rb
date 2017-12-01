@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe IcAction, type: :model do
   describe "#Action (validations)" do
-    let(:action) { build(:internal_control_action) }
+    let(:action) { build(:ic_action) }
 
     it " is valid with a valid trading year " do
       action.trading_year = 2017

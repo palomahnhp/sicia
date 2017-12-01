@@ -24,7 +24,7 @@ gem 'i18n_data'
 # gem 'initialjs-rails', '0.2.0.1' TODO agendas ¿?
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jquery-rails' # Use jquery as the JavaScript library
-gem "jquery-ui-rails"
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'nested_form', '~> 0.3.2' # TODO Gem to conveniently handle multiple models in a single form with Rails 3 and jQuery or Prototype. o cocoon
 gem 'pg', '~> 0.21.0' #  Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]. It works with {PostgreSQL 9.1 and later}
 gem 'pg_search', '~> 2.1', '>= 2.1.1'
@@ -43,6 +43,7 @@ gem 'savon', '~> 2.11', '>= 2.11.2' # Heavy metal SOAP client
 gem 'sidekiq', '~> 5.0', '>= 5.0.5' # Simple, efficient background processing for Ruby
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
+gem 'rails_admin', '~> 1.2'
 
 group :development, :test do
   gem 'bullet', '~> 5.6', '>= 5.6.1' # help to kill N+1 queries and unused eager loading.

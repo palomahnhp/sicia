@@ -18,7 +18,7 @@
           <p><%= f.submit t('actions.search'), class: "hollow button" %></p>
         </div>
         <div class="medium-4 small-3 columns">
-          <p><%= link_to t('actions.new', resource: t('ransack.models.proposal.one')), select_type_proposals_path, class: "hollow button" %></p>
+          <p><%= link_to t('actions.new', resource: t('activerecord.models.proposal.one')), select_type_proposals_path, class: "hollow button" %></p>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
       <caption><h1><%= t('proposals.index.title') %> </h1></caption>
       <tr>
         <% Proposal.index_columns.each do |field| %>
-            <th><%= sort_link @search, field, t("ransack.attributes.proposal.#{field}") %></th>
+            <th><%= sort_link @search, field, t("activerecord.attributes.proposal.#{field}") %></th>
         <% end %>
         <th><%= t('actions.column') %></thcolspan>
       </tr>

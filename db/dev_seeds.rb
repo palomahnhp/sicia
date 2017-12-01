@@ -65,7 +65,7 @@ descriptions = %w[Contratación Obras Compras Suministros]
     ic_procedure = IcProcedure.create!(code: m,
                                        trading_year: Date.today.year,
                                        description: description,
-                                       internal_control_file: ic_file,
+                                       ic_file: ic_file,
                                        created_at: rand((Time.current - 1.week)..Time.current),
                                        updated_at:  rand((Time.current - 1.week)..Time.current),
                                        updated_by: 'DEV_SEED')
@@ -75,12 +75,12 @@ descriptions = %w[Contratación Obras Compras Suministros]
       ac = IcAction.create!(code: o,
                             trading_year: Date.today.year,
                             description: description,
-                            internal_control_procedure: ic_procedure,
+                            ic_procedure: ic_procedure,
                             created_at: rand((Time.current - 1.week)..Time.current),
                             updated_at: rand((Time.current - 1.week)..Time.current),
                             updated_by: 'DEV_SEED')
 
-      ac.requeriment = Requeriment.all.reorder("RANDOM()").first
+      ac.requeriments << Requeriment.all.reorder("RANDOM()").first
 
     end
   end
@@ -89,15 +89,15 @@ end
 puts " ✅"
 
 print "Creating Proposals"
-i
+
 (77067819..77067850).each do |n|
   proposal = Proposal.new(sap_proposal: n)
   proposal.fill_sap_proposal(n)
   proposal.notify_to = 'notificarme@mail.com'
   proposal.notify_to_confirmation = 'notificarme@mail.com'
-  proposal.internal_control_file      = IcFile.all.reorder("RANDOM()").first
-  proposal.internal_control_procedure = proposal.internal_control_file.internal_control_procedures.reorder("RANDOM()").first
-  proposal.internal_control_action    = proposal.internal_control_procedure.internal_control_actions.reorder("RANDOM()").first
+  proposal.ic_file      = IcFile.all.reorder("RANDOM()").first
+  proposal.ic_procedure = proposal.ic_file.ic_procedures.reorder("RANDOM()").first
+  proposal.ic_action    = proposal.ic_procedure.ic_actions.reorder("RANDOM()").first
   proposal.save
 end
 

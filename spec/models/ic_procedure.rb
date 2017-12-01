@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe IcProcedure, type: :model do
   describe "#Procedure (validations)" do
-    let(:procedure) { build(:internal_control_procedure) }
+    let(:procedure) { build(:ic_procedure) }
 
     it " is valid with a valid trading year " do
       procedure.trading_year = 2017
