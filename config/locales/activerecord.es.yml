@@ -2,17 +2,17 @@
 es:
   activerecord:
     attributes:
-      internal_control_action:
+      ic_action:
         code: Código
         description: Descripción
         one: Trámite
         others: Trámite
-      internal_control_file:
+      ic_file:
         code: Código
         description: Descripción
         one: Tipo de expediente
         others: Tipos de expediente
-      internal_control_procedure:
+      ic_procedure:
         code: Código
         description: Descripción
         one: Procedimiento
@@ -27,9 +27,9 @@ es:
         contract_type: Tipo de contrato
         expense_nature: Naturaleza del gasto
         file_number: Número de expediente
-        internal_control_action: Trámite
-        internal_control_file: Tipo de expediente
-        internal_control_procedure: Procedimiento
+        ic_action: Trámite
+        ic_file: Tipo de expediente
+        ic_procedure: Procedimiento
         manager_body: Órgano gestor
         notify_to: Email para notificaciones
         notify_to_confirmation: Confirmación de email
@@ -55,9 +55,9 @@ es:
         key: Clave
         value: Valor
     models:
-      internal_control_action: Trámite
-      internal_control_file: Tipo de expediente
-      internal_control_procedure: Procedimiento
+      ic_action: Trámite
+      ic_file: Tipo de expediente
+      ic_procedure: Procedimiento
       proposal:
         one: Propuesta
         other: Propuestas

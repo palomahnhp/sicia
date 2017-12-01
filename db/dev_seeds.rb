@@ -53,34 +53,34 @@ descriptions = %w[Contratación Obras Compras Suministros]
   description = descriptions[n]
   code = description[0...4].upcase
 
-  ic_file = InternalControlFile.create!(code: code,
-                             trading_year: Date.today.year,
-                             description: description,
-                             created_at: rand((Time.current - 1.week)..Time.current),
-                             updated_at:  rand((Time.current - 1.week)..Time.current),
-                             updated_by: 'DEV_SEED')
+  ic_file = IcFile.create!(code: code,
+                           trading_year: Date.today.year,
+                           description: description,
+                           created_at: rand((Time.current - 1.week)..Time.current),
+                           updated_at:  rand((Time.current - 1.week)..Time.current),
+                           updated_by: 'DEV_SEED')
 
   (1..3).each do |m|
     description = 'Proc. de ' +  ic_file.code  + '.' + m.to_s
-    ic_procedure = InternalControlProcedure.create!(code: m,
-                                     trading_year: Date.today.year,
-                                     description: description,
-                                     internal_control_file: ic_file,
-                                     created_at: rand((Time.current - 1.week)..Time.current),
-                                     updated_at:  rand((Time.current - 1.week)..Time.current),
-                                     updated_by: 'DEV_SEED')
+    ic_procedure = IcProcedure.create!(code: m,
+                                       trading_year: Date.today.year,
+                                       description: description,
+                                       ic_file: ic_file,
+                                       created_at: rand((Time.current - 1.week)..Time.current),
+                                       updated_at:  rand((Time.current - 1.week)..Time.current),
+                                       updated_by: 'DEV_SEED')
 
     (1..3).each do |o|
       description = 'Tramite de ' +  ic_procedure.description  + '.' + m.to_s + '.' + o.to_s
-      ac = InternalControlAction.create!(code: o,
-                                       trading_year: Date.today.year,
-                                       description: description,
-                                       internal_control_procedure: ic_procedure,
-                                       created_at: rand((Time.current - 1.week)..Time.current),
-                                       updated_at: rand((Time.current - 1.week)..Time.current),
-                                       updated_by: 'DEV_SEED')
+      ac = IcAction.create!(code: o,
+                            trading_year: Date.today.year,
+                            description: description,
+                            ic_procedure: ic_procedure,
+                            created_at: rand((Time.current - 1.week)..Time.current),
+                            updated_at: rand((Time.current - 1.week)..Time.current),
+                            updated_by: 'DEV_SEED')
 
-      ac.requeriment = Requeriment.all.reorder("RANDOM()").first
+      ac.requeriments << Requeriment.all.reorder("RANDOM()").first
 
     end
   end
@@ -89,15 +89,15 @@ end
 puts " ✅"
 
 print "Creating Proposals"
-i
+
 (77067819..77067850).each do |n|
   proposal = Proposal.new(sap_proposal: n)
   proposal.fill_sap_proposal(n)
   proposal.notify_to = 'notificarme@mail.com'
   proposal.notify_to_confirmation = 'notificarme@mail.com'
-  proposal.internal_control_file      = InternalControlFile.all.reorder("RANDOM()").first
-  proposal.internal_control_procedure = proposal.internal_control_file.internal_control_procedures.reorder("RANDOM()").first
-  proposal.internal_control_action    = proposal.internal_control_procedure.internal_control_actions.reorder("RANDOM()").first
+  proposal.ic_file      = IcFile.all.reorder("RANDOM()").first
+  proposal.ic_procedure = proposal.ic_file.ic_procedures.reorder("RANDOM()").first
+  proposal.ic_action    = proposal.ic_procedure.ic_actions.reorder("RANDOM()").first
   proposal.save
 end
 

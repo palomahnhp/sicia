@@ -5,8 +5,8 @@ class Requeriment < ApplicationRecord
   has_many :proposal_requeriments
   has_many :proposals, through: :proposal_requeriments
 
-  has_many :internal_control_action_requeriments
-  has_many :internal_control_actions, through: :internal_control_action_requeriments
+  has_many :ic_action_requeriments
+  has_many :ic_actions, through: :ic_action_requeriments
 
   validates :kind, presence: true,
                    inclusion: { in: %w(RB CP DOC) }

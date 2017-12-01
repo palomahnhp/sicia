@@ -4,19 +4,19 @@ class Proposal < ApplicationRecord
 
   tracked owner: ->(controller, model) { controller && controller.current_user },
           params: {
-              aci_file:  -> (controller, model) { controller && controller.params[:proposal][:internal_control_file]},
-              aci_procedure: -> (controller, model) { controller && controller.params[:proposal][:internal_control_procedure]},
-              aci_action: -> (controller, model) { controller && controller.params[:proposal][:internal_control_action]}
+              aci_file:  -> (controller, model) { controller && controller.params[:proposal][:ic_file]},
+              aci_procedure: -> (controller, model) { controller && controller.params[:proposal][:ic_procedure]},
+              aci_action: -> (controller, model) { controller && controller.params[:proposal][:ic_action]}
           }
-  belongs_to :internal_control_file
-  belongs_to :internal_control_procedure
-  belongs_to :internal_control_action
+  belongs_to :ic_file
+  belongs_to :ic_procedure
+  belongs_to :ic_action
   has_many :proposal_requeriments
   has_many :requeriments, through: :proposal_requeriments
 
-  validates :internal_control_file,
-            :internal_control_procedure,
-            :internal_control_action,
+  validates :ic_file,
+            :ic_procedure,
+            :ic_action,
             :accounting_document,
             :expense_nature,
             presence: true,

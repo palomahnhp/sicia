@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe InternalControlFile, type: :model do
+RSpec.describe IcFile, type: :model do
   describe "#Area (validations)" do
-    let(:file) { build(:internal_control_file) }
+    let(:file) { build(:ic_file) }
 
     it " is valid with a valid trading year " do
       file.trading_year = 2017

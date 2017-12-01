@@ -55,9 +55,9 @@ class ProposalsController < ApplicationController
 
   def proposal_params
     params.require(:proposal).permit(:trading_year,
-                                     :internal_control_file_id,
-                                     :internal_control_procedure_id,
-                                     :internal_control_action_id,
+                                     :ic_file_id,
+                                     :ic_procedure_id,
+                                     :ic_action_id,
                                      :title,
                                      :file_number,
                                      :manager_body,

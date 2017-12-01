@@ -1,11 +1,11 @@
-class InternalControlAction < ApplicationRecord
+class IcAction < ApplicationRecord
   include Annualizable
   include Codifiable
 
-  belongs_to :internal_control_procedure
+  belongs_to :ic_procedure
   has_many :proposals
-  has_many :internal_control_action_requeriments
-  has_many :requeriments, through: :internal_control_action_requeriments
+  has_many :ic_action_requeriments
+  has_many :requeriments, through: :ic_action_requeriments
 
   validates :code, length: { minimum: 1, maximum: 2 },
                    numericality: { only_integer: true }

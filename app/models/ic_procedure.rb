@@ -1,9 +1,9 @@
-class InternalControlProcedure < ApplicationRecord
+class IcProcedure < ApplicationRecord
   include Annualizable
   include Codifiable
 
-  belongs_to :internal_control_file
-  has_many :internal_control_actions
+  belongs_to :ic_file
+  has_many :ic_actions
   has_many :proposals
 
   validates :code, length: { minimum: 1, maximum: 2 },
