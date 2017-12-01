@@ -14,7 +14,6 @@ data:
   # Locale files or `File.find` patterns where translations are read from:
   read:
     - config/locales/%{locale}.yml
-    - config/locales/models.%{locale}.yml
     - config/locales/activerecord.%{locale}.yml
     - config/locales/rails.%{locale}.yml
 
@@ -84,7 +83,6 @@ ignore_unused:
   - 'views.pagination.*' # kaminari
   - 'helpers.select.*'
   - 'helpers.submit.*'
-  - 'ransack.*'
   - 'kaminari.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'

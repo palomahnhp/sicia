@@ -18,10 +18,10 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      flash[:notice] = t('flash.update.success', resource: t('ransack.models.proposal.one'))
+      flash[:notice] = t('flash.update.success', resource: t('activerecord.models.proposal.one'))
       redirect_to @proposal
     else
-      flash[:error] = t('flash.update.error', resource:  t('ransack.models.proposal.one'))
+      flash[:error] = t('flash.update.error', resource:  t('activerecord.models.proposal.one'))
       render :edit
     end
   end
@@ -34,10 +34,10 @@ class ProposalsController < ApplicationController
   def create
     @proposal = Proposal.new(proposal_params)
     if @proposal.save
-      flash[:notice] = t('flash.create.success', resource: t('ransack.models.proposal.one'))
+      flash[:notice] = t('flash.create.success', resource: t('activerecord.models.proposal.one'))
       redirect_to mark_requeriment_proposal_path(@proposal)
     else
-      flash[:error] = t('flash.create.error', resource:  t('ransack.models.proposal.one'))
+      flash[:error] = t('flash.create.error', resource:  t('activerecord.models.proposal.one'))
       render :new
     end
   end
