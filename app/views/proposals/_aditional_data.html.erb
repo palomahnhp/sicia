@@ -5,14 +5,14 @@
       <td><%= @proposal.received_at %></td>
     </tr>
     <tr>
-      <th><%= t('ransack.attributes.proposal.internal_control_file') %>:</th>
+      <th><%= t('ransack.attributes.proposal.ic_file') %>:</th>
       <td>
-        <%= " #{@proposal.internal_control_file.code}
-            #{@proposal.internal_control_procedure.code.to_s.rjust(5, "0")}
-            #{@proposal.internal_control_action.code.to_s.rjust(5, "0")} -
-                  #{@proposal.internal_control_file.description}
-            #{@proposal.internal_control_procedure.description}
-            #{@proposal.internal_control_action.description}" %>
+        <%= " #{@proposal.ic_file.code}
+            #{@proposal.ic_procedure.code.to_s.rjust(5, "0")}
+            #{@proposal.ic_action.code.to_s.rjust(5, "0")} -
+                  #{@proposal.ic_file.description}
+            #{@proposal.ic_procedure.description}
+            #{@proposal.ic_action.description}" %>
       </td>
     </tr>
     <tr>

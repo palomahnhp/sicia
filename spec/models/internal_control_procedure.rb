@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InternalControlProcedure, type: :model do
+RSpec.describe IcProcedure, type: :model do
   describe "#Procedure (validations)" do
     let(:procedure) { build(:internal_control_procedure) }
 

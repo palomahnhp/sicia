@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InternalControlAction, type: :model do
+RSpec.describe IcAction, type: :model do
   describe "#Action (validations)" do
     let(:action) { build(:internal_control_action) }
 

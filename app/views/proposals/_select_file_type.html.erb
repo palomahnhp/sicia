@@ -3,21 +3,21 @@
     <fieldset class="panel-group">
       <legend>Tipo de expediente:</h5> </legend> <br>
       <div class="medium-3 small-12 columns">
-        <%= f.label :internal_control_file_id, t('ransack.attributes.proposal.internal_control_file') %>
-        <%= f.collection_select(:internal_control_file_id, InternalControlFile.order(:code), :id, :description,
+        <%= f.label :ic_file_id, t('ransack.attributes.proposal.ic_file') %>
+        <%= f.collection_select(:ic_file_id, IcFile.order(:code), :id, :description,
                                 include_blank: true, label: false)  %>
       </div>
       <% if @proposal.sap_proposal.present? %>
           <div class="medium-3 small-12 columns">
-            <%= f.label :internal_control_procedure_id, t('ransack.attributes.proposal.internal_control_procedure') %>
-            <%= f.grouped_collection_select(:internal_control_procedure_id, InternalControlFile.order(:code),
-                                            :internal_control_procedures, :description, :id, :description,
+            <%= f.label :ic_procedure_id, t('ransack.attributes.proposal.ic_procedure') %>
+            <%= f.grouped_collection_select(:ic_procedure_id, IcFile.order(:code),
+                                            :ic_procedures, :description, :id, :description,
                                             include_blank: true, label: false)  %>
           </div>
           <div class="medium-3 small-12 columns">
-            <%= f.label :internal_control_action_id, t('ransack.attributes.proposal.internal_control_action') %>
-            <%= f.grouped_collection_select(:internal_control_action_id, InternalControlProcedure.order(:code),
-                                            :internal_control_actions, :description, :id, :description,
+            <%= f.label :ic_action_id, t('ransack.attributes.proposal.ic_action') %>
+            <%= f.grouped_collection_select(:ic_action_id, IcProcedure.order(:code),
+                                            :ic_actions, :description, :id, :description,
                                             include_blank: true, label: false)  %>
           </div>
       <% end %>
