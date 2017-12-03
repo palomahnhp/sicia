@@ -14,6 +14,9 @@ class Proposal < ApplicationRecord
   has_many :proposal_requeriments
   has_many :requeriments, through: :proposal_requeriments
 
+  accepts_nested_attributes_for :proposal_requeriments
+  accepts_nested_attributes_for :requeriments
+
   validates :ic_file,
             :ic_procedure,
             :ic_action,
@@ -115,5 +118,8 @@ class Proposal < ApplicationRecord
     end
     self.third_party_nit = rand(100000..900000)
     self.received_at = Date.today
+  end
+  def proposal_requeriment(requeriment)
+    proposal_requeriments.where(requeriment_id: requeriment.id).take
   end
 end

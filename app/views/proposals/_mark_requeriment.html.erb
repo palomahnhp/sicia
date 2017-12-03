@@ -1,12 +1,87 @@
-<fieldset>
-  <table>
-    <tr class="requeriment">
-      <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.RB.one') %> </th>
-      <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
-      <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.update_data') %></th>
-    </tr>
-    <tr>
-      <td class= "text-center" colspan="3"> ToDo: Pendiente de desarrollo </td>
-    </tr>
-  </table>
-</fieldset>
+<%= form_for @proposal do |f| %>
+  <div class="row">
+    <div class="small-12 columns">
+      <h5><%= t('activerecord.models.requeriment.RB.other') %></h5>
+      <fieldset>
+        <table>
+          <tr class="requeriment">
+            <th class="text-left requeriment-code"> <%= t('activerecord.models.requeriment.code') %> </th>
+            <th class="text-left requeriment-description"> <%= t('activerecord.models.requeriment.description') %> </th>
+            <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
+          </tr>
+          <% @proposal.requeriments.basic_req.each do |requeriment| %>
+            <%= f.fields_for :requeriment do |req_f| %>
+              <%= req_f.hidden_field :id %>
+              <%= req_f.hidden_field :code %>
+
+              <tr>
+                <th> <%=  requeriment.full_code %></th>
+                <td> <%=  requeriment.description %> </td>
+                <td class="text-center"><%= req_f.check_box :initial_check, label: false%></td>
+               </tr>
+            <% end %>
+          <% end %>
+        </table>
+      </fieldset>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <h5><%= t('activerecord.models.requeriment.CP.other') %></h5>
+      <fieldset>
+        <table>
+          <tr class="requeriment">
+            <th class="text-left requeriment-code"> <%= t('activerecord.models.requeriment.code') %> </th>
+            <th class="text-left requeriment-description"> <%= t('activerecord.models.requeriment.description') %> </th>
+            <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
+          </tr>
+          <% @proposal.requeriments.permanent_control.each do |requeriment| %>
+              <%= f.fields_for :requeriment do |req_f| %>
+                  <%= req_f.hidden_field :id %>
+                  <%= req_f.hidden_field :code %>
+                  <tr>
+                    <th> <%=  requeriment.full_code %></th>
+                    <td> <%=  requeriment.description %> </td>
+                    <td class="text-center"><%= req_f.check_box :initial_check, label: false%></td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+      </fieldset>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <h5><%= t('activerecord.models.requeriment.DOC.other') %></h5>
+      <fieldset>
+        <table>
+          <tr class="requeriment">
+            <th class="text-left requeriment-code"> <%= t('activerecord.models.requeriment.code') %> </th>
+            <th class="text-left requeriment-description"> <%= t('activerecord.models.requeriment.description') %> </th>
+            <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
+          </tr>
+          <% @proposal.requeriments.document.each do |requeriment| %>
+              <%= f.fields_for :requeriment do |req_f| %>
+                  <%= req_f.hidden_field :id %>
+                  <%= req_f.hidden_field :code %>
+
+                  <tr>
+                    <th> <%=  requeriment.full_code %></th>
+                    <td> <%=  requeriment.description %> </td>
+                    <td class="text-center"><%= req_f.check_box :initial_check, label: false%></td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+      </fieldset>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="medium-1 small-12 columns">
+        <%= f.submit t('actions.save'), class: 'button hollow' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

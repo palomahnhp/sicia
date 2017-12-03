@@ -65,3 +65,6 @@ en:
     target_blank_html: Nueva pestaña
     top_links:
       no_user: Ningun usuario conectado
+  proposal_requeriment:
+    verification:
+      pending: "Pendiente de verificación"

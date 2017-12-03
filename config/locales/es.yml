@@ -11,6 +11,7 @@ es:
     remove: Eliminar
     search: Buscar
     update: Editar %{resource}
+    save: "Guardar"
   admin:
     menu:
       admin: Administración
@@ -49,7 +50,7 @@ es:
       search: Busqueda de propuestas
       title: Listado de Propuestas
     mark_requeriment:
-      title: Marcar requisitos
+      title: Verificación de requisitos
     new:
       title: Alta de propuestas
     show:
@@ -65,3 +66,9 @@ es:
     target_blank_html: Nueva pestaña
     top_links:
       no_user: Ningun usuario conectado
+  proposal_requeriment:
+    verification:
+      pending: "Pendiente de verificación"
+      true: CUMPLE
+      false: NO CUMPLE
+      not applicable: NO PROCEDE

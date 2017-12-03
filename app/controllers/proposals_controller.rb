@@ -29,10 +29,11 @@ class ProposalsController < ApplicationController
   def new
     @proposal = Proposal.new()
     @proposal.fill_sap_proposal(params[:sap_proposal]) if params[:sap_proposal].present?
-  end
+   end
 
   def create
     @proposal = Proposal.new(proposal_params)
+    @proposal.requeriments << @proposal.ic_action.requeriments
     if @proposal.save
       flash[:notice] = t('flash.create.success', resource: t('activerecord.models.proposal.one'))
       redirect_to mark_requeriment_proposal_path(@proposal)
@@ -47,7 +48,6 @@ class ProposalsController < ApplicationController
   end
 
   def mark_requeriment
-    @requeriments
 
   end
 
@@ -76,7 +76,13 @@ class ProposalsController < ApplicationController
                                      :observations,
                                      :received_at,
                                      :notify_to,
-                                     :notify_to_confirmation
+                                     :notify_to_confirmation,
+                                     proposal_requeriments_attributes: [
+                                         :requeriment_id,
+                                         :revision_updated_at,
+                                         :revision_updated_by,
+                                         :initial_check,
+                                         :revised_check ]
     )
   end
 

@@ -62,6 +62,8 @@ es:
         one: Propuesta
         other: Propuestas
       requeriment:
+        one: Requisitos
+        other: Requisitos
         CP:
           one: Requisito de control permanente
           other: Requisitos de control permanente
@@ -71,8 +73,10 @@ es:
         RB:
           one: Requisito básico
           other: Requisitos básicos
+        code: Código
+        description: Descripción
         no_observance_level: Nivel de incumplimiento
-        observance: Cumplimiento
+        observance: Verificado
         one: Requisito
         other: Requisitos
         update_data: Datos de actualización
