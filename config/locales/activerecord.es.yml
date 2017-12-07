@@ -68,8 +68,8 @@ es:
           one: Requisito de control permanente
           other: Requisitos de control permanente
         DOC:
-          one: Documento
-          other: Documentos
+          one: Informe preceptivo
+          other: Informes preceptivos
         RB:
           one: Requisito básico
           other: Requisitos básicos

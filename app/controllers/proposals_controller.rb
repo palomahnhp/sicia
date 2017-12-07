@@ -78,7 +78,9 @@ class ProposalsController < ApplicationController
                                      :notify_to,
                                      :notify_to_confirmation,
                                      proposal_requeriments_attributes: [
+                                         :id,
                                          :requeriment_id,
+                                         :proposal_id,
                                          :revision_updated_at,
                                          :revision_updated_by,
                                          :initial_check,

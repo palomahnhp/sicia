@@ -1,0 +1,23 @@
+<div class="tabs-panel <%= active %>" id="<%= tab %>" >
+  <fieldset>
+    <table>
+      <tr class="requeriment">
+        <th class="text-left requeriment-code"> <%= t('activerecord.models.requeriment.code') %> </th>
+        <th class="text-left requeriment-description"> <%= t('activerecord.models.requeriment.description') %> </th>
+        <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
+      </tr>
+      <% proposal_requeriments(proposal, kind).each do |pr| %>
+        <%= f.fields_for :proposal_requeriment do |p_req_f| %>
+          <%= p_req_f.hidden_field :id %>
+          <%= p_req_f.hidden_field :code %>
+          <tr>
+            <th> <%= pr.requeriment.full_code %></th>
+            <td> <%= pr.requeriment.description %> </td>
+            <td class="text-center"><%= p_req_f.check_box :initial_check, label: false %></td>
+           </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </fieldset>
+</div>
+

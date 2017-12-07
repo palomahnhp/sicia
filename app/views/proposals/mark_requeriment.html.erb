@@ -4,6 +4,7 @@
     <%= render 'proposal_data', proposal: @proposal %>
   </div>
 </div>
+
 <div class="row">
   <div class="small-12 columns">
     <h5><%= t('proposals.show.data_sicia') %></h5>
@@ -11,4 +12,27 @@
   </div>
 </div>
 
-<%= render 'mark_requeriment', proposal: @proposal %>
+<%= form_for @proposal do |f| %>
+  <div class="row">
+    <ul class="tabs" data-tabs id="example-tabs">
+      <li class="tabs-title is-active"><a href="#basic_req" aria-selected="true"><%= t("activerecord.models.requeriment.RB.other") %></a></li>
+      <li class="tabs-title"><a data-tabs-target="document" href="#document"><%= t("activerecord.models.requeriment.DOC.other") %></a></li>
+      <li class="tabs-title"><a data-tabs-target="permanent_control" href="#permanent_control"><%= t("activerecord.models.requeriment.CP.other") %></a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="tabs-content" data-tabs-content="example-tabs">
+      <%= render 'requeriments_tab', tab: "basic_req", kind: "RB", proposal: @proposal, f: f, active: "is-active" %>
+      <%= render 'requeriments_tab', tab: "document",  kind: "DOC", proposal: @proposal, f: f, active: "" %>
+      <%= render 'requeriments_tab', tab: "permanent_control", kind: "CP", proposal: @proposal, f: f , active: "" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="medium-1 small-12 columns">
+        <%= f.submit t('actions.save'), class: 'button hollow' %>
+      </div>
+    </div>
+  </div>
+<% end %>

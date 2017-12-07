@@ -1,23 +1,23 @@
 <div class="row">
   <div class="small-12 columns">
-    <h5><%= t('activerecord.models.requeriment.RB.other') %></h5>
+    <h5><%= title %></h5>
     <fieldset>
       <table>
         <tr class="requeriment">
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.code') %> </th>
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.description') %> </th>
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.update_data') %></th>
+          <th class="text-left"> <%= t('activerecord.models.requeriment.code') %> </th>
+          <th class="text-left"> <%= t('activerecord.models.requeriment.description') %> </th>
+          <th class="text-left"> <%= t('activerecord.models.requeriment.observance') %> </th>
+          <th class="text-left"> <%= t('activerecord.models.requeriment.update_data') %></th>
         </tr>
-        <% @proposal.requeriments.basic_req.each do |req| %>
+        <% requeriments.each do |req| %>
             <tr>
               <td> <%= req.full_code %></td>
               <td> <%= req.description %></td>
               <td class= "text-center" > <%= req.proposal_requeriment(@proposal).humanize_initial_check %></td>
-              <td> <%= req.proposal_requeriment(@proposal).update_data %> </td>
+              <td> <%= req.proposal_requeriment(@proposal).updated_by %> - <%= show_simple_date(req.proposal_requeriment(@proposal).updated_at) %> </td>
             </tr>
         <% end %>
-        <% if @proposal.requeriments.basic_req.count == 0 %>
+        <% if requeriments.count == 0 %>
             <tr>
               <td class= "text-center" colspan="3"> <%= t('proposal.show.requeriments.empty')%> </td>
             </tr>
@@ -27,58 +27,3 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="small-12 columns">
-    <h5><%= t('activerecord.models.requeriment.CP.other') %></h5>
-    <fieldset>
-      <table>
-        <tr class="requeriment">
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.code') %> </th>
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.description') %> </th>
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.update_data') %></th>
-        </tr>
-        <% @proposal.requeriments.permanent_control.each do |req| %>
-            <tr>
-              <td> <%= req.full_code %></td>
-              <td> <%= req.description %></td>
-              <td class= "text-center" > <%= req.proposal_requeriment(@proposal).humanize_initial_check %></td>
-              <td> <%= req.proposal_requeriment(@proposal).update_data %> </td>
-            </tr>
-        <% end %>
-        <% if @proposal.requeriments.permanent_control.count == 0 %>
-            <tr>
-              <td class= "text-center" colspan="3"> <%= t('proposal.show.requeriments.empty')%> </td>
-            </tr>
-        <% end %>
-      </table>
-    </fieldset>
-  </div>
-</div>
-<div class="row">
-  <div class="small-12 columns">
-    <h5><%= t('activerecord.models.requeriment.DOC.other') %></h5>
-    <fieldset>
-      <table>
-        <tr class="requeriment">
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.DOC.one') %> </th>
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
-          <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.update_data') %></th>
-        </tr>
-        <% @proposal.requeriments.document.each do |req| %>
-            <tr>
-              <td> <%= req.full_code %></td>
-              <td> <%= req.description %></td>
-              <td class= "text-center" > <%= req.proposal_requeriment(@proposal).humanize_initial_check %></td>
-              <td> <%= req.proposal_requeriment(@proposal).update_data %> </td>
-            </tr>
-        <% end %>
-        <% if @proposal.requeriments.document.count == 0 %>
-            <tr>
-              <td class= "text-center" colspan="3"> <%= t('proposal.show.requeriments.empty')%> </td>
-            </tr>
-        <% end %>
-      </table>
-    </fieldset>
-  </div>
-</div>

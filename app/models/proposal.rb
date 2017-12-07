@@ -15,7 +15,6 @@ class Proposal < ApplicationRecord
   has_many :requeriments, through: :proposal_requeriments
 
   accepts_nested_attributes_for :proposal_requeriments
-  accepts_nested_attributes_for :requeriments
 
   validates :ic_file,
             :ic_procedure,

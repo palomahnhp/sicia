@@ -12,4 +12,8 @@
   </div>
 </div>
 
-<%= render 'show_requeriments', proposal: @proposal %>
+<%= render 'show_requeriments', requeriments: @proposal.requeriments.basic_req, title: t('activerecord.models.requeriment.RB.other') %>
+
+<%= render 'show_requeriments', requeriments: @proposal.requeriments.permanent_control, title: t('activerecord.models.requeriment.CP.other') %>
+
+<%= render 'show_requeriments', requeriments: @proposal.requeriments.document, title: t('activerecord.models.requeriment.DOC.other') %>

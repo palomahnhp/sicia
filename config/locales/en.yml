@@ -41,7 +41,7 @@ en:
   proposal:
     show:
       requeriments:
-        empty: Esta propuesta no tiene requisitos básicos asociados
+        empty: Esta propuesta no tiene items asociados
   proposals:
     edit:
       title: Editar propuestas
@@ -53,7 +53,7 @@ en:
     new:
       title: Alta de propuestas
     show:
-      data_proposal: 'Datos de la propuesta:'
+      data_proposal: Cabecera de la propuesta
       data_sicia: Datos SICIA
       title: Consulta de propuesta
   shared:

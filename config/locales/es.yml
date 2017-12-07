@@ -42,7 +42,7 @@ es:
   proposal:
     show:
       requeriments:
-        empty: Esta propuesta no tiene requisitos asociados
+        empty: Esta propuesta no tiene items asociados
   proposals:
     edit:
       title: Editar propuestas
@@ -54,7 +54,7 @@ es:
     new:
       title: Alta de propuestas
     show:
-      data_proposal: 'Datos de la propuesta:'
+      data_proposal: 'Cabecera de la propuesta:'
       data_sicia: Datos SICIA
       title: Consulta de propuesta
   shared:
@@ -69,6 +69,6 @@ es:
   proposal_requeriment:
     verification:
       pending: "Pendiente de verificación"
-      true: CUMPLE
-      false: NO CUMPLE
+      "true": CUMPLE
+      "false": NO CUMPLE
       not applicable: NO PROCEDE
