@@ -28,7 +28,7 @@ en:
         expense_nature: Naturaleza del gasto
         file_number: Número de expediente
         ic_action: Trámite
-        ic_file: Tipo de expediente
+        ic_file: Expediente
         ic_procedure: Procedimiento
         manager_body: Órgano gestor
         notify_to: Email para notificaciones
@@ -66,13 +66,15 @@ en:
           one: Requisito de control permanente
           other: Requisitos de control permanente
         DOC:
-          one: Documento
-          other: Documentos
+          one: Informe preceptivo
+          other: Informes preceptivos
         RB:
           one: Requisito básico
           other: Requisitos básicos
+        code: Código
+        description: Descripción
         no_observance_level: Nivel de incumplimiento
-        observance: Cumplimiento
+        observance: Verificado
         one: Requisito
         other: Requisitos
         update_data: Datos de actualización

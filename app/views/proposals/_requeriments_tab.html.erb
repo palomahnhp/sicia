@@ -5,16 +5,28 @@
         <th class="text-left requeriment-code"> <%= t('activerecord.models.requeriment.code') %> </th>
         <th class="text-left requeriment-description"> <%= t('activerecord.models.requeriment.description') %> </th>
         <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
+        <% if action_name == 'show' %>
+         <th class="text-left"> <%= t('activerecord.models.requeriment.update_data') %></th>
+        <% end %>
       </tr>
       <% proposal_requeriments(proposal, kind).each do |pr| %>
-        <%= f.fields_for :proposal_requeriment do |p_req_f| %>
-          <%= p_req_f.hidden_field :id %>
-          <%= p_req_f.hidden_field :code %>
-          <tr>
-            <th> <%= pr.requeriment.full_code %></th>
-            <td> <%= pr.requeriment.description %> </td>
-            <td class="text-center"><%= p_req_f.check_box :initial_check, label: false %></td>
-           </tr>
+        <% if action_name == 'mark_requeriment' %>
+          <%= f.fields_for :proposal_requeriment do |p_req_f| %>
+            <%= p_req_f.hidden_field :id %>
+            <%= p_req_f.hidden_field :code %>
+            <tr>
+              <th> <%= pr.requeriment.full_code %></th>
+              <td> <%= pr.requeriment.description %> </td>
+              <td class="text-center"><%= p_req_f.check_box :initial_check, label: false %></td>
+             </tr>
+          <% end %>
+        <% else %>
+            <tr>
+              <td> <%= pr.requeriment.full_code %></td>
+              <td> <%= pr.requeriment.description %></td>
+              <td class= "text-center" > <%= pr.humanize_initial_check %></td>
+              <td> <%= pr.updated_by %> - <%= show_simple_date(pr.updated_at) %> </td>
+            </tr>
         <% end %>
       <% end %>
     </table>

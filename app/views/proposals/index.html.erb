@@ -1,39 +1,24 @@
-<%= search_form_for @search, url: search_proposals_path, method: :post do |f| %>
-    <div class= "row" >
-      <div class="small-12 columns ">
-        <p>
-        <h4><%= t('proposals.index.search') %> </h4>
-        <small>Para añadir una condición selecciona el campo de búsqueda, para eliminarla dejalo en blanco.</small>
-        <br>
-        </p>
-        <%= f.condition_fields do |c| %>
-            <%= render 'condition_fields', f: c %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class= "row" >
-      <div class="medium-12 small-3 columns">
-        <div class="medium-4 small-3 columns">
-          <p><%= f.submit t('actions.search'), class: "hollow button" %></p>
-        </div>
-        <div class="medium-4 small-3 columns">
-          <p><%= link_to t('actions.new', resource: t('activerecord.models.proposal.one')), select_type_proposals_path, class: "hollow button" %></p>
-        </div>
-      </div>
-    </div>
-<% end %>
+<%= render "search_form" %>
 
 <div class= "row" >
   <div class= "small-12 columns">
+    <div class="medium-9 medium-centered small-12 columns">
+      <h1><%= t('proposals.index.title') %> </h1>
+    </div>
+    <div class="medium-2 small-12 columns">
+      <%= link_to t('actions.new', resource: t('activerecord.models.proposal.one')), select_type_proposals_path, class: "hollow button" %>
+    </div>
+  </div>
+</div>
 
+<div class= "row" >
+  <div class= "small-12 columns">
     <table>
-      <caption><h1><%= t('proposals.index.title') %> </h1></caption>
       <tr>
         <% Proposal.index_columns.each do |field| %>
             <th><%= sort_link @search, field, t("activerecord.attributes.proposal.#{field}") %></th>
         <% end %>
-        <th><%= t('actions.column') %></thcolspan>
+        <th><%= t('proposals.index.actions_column') %></th>
       </tr>
 
       <% @proposals.each do |proposal| %>
@@ -47,7 +32,6 @@
               <%= link_to("", mark_requeriment_proposal_path(proposal), title: 'Marcar requisitos', class: "icon-check-square-o") %>
             </td>
           </tr>
-
       <% end %>
     </table>
   </div>

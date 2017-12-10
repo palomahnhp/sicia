@@ -1,4 +1,4 @@
-<div class="medium-3 small-6 columns end ">
+<div class="medium-4 small-6 columns end ">
   <%= f.attribute_fields do |a| %>
       <%= a.attribute_select associations: [:ic_file, :ic_procedure, :ic_action]%>
   <% end %>
@@ -6,7 +6,7 @@
 <div class="medium-3 small-6 columns end ">
   <%= f.predicate_select  compounds: false,  only: %i(cont not_cont eq not_eq gt lt blank null) %>
 </div>
-<div class="medium-3 small-8 columns end ">
+<div class="medium-4 small-8 columns end ">
   <%= f.value_fields do |v| %>
       <%= v.text_field :value %>
   <% end  %>

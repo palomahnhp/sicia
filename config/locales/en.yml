@@ -4,13 +4,13 @@ en:
     add_condition: Añadir condición
     back: Volver
     close: Desconectar
-    column: Acciones
     create: Crear %{resource}
-    edit: Editar %{resource}
+    edit: Guardar %{resource}
     new: Crear %{resource}
     remove: Eliminar
+    save: Guardar
     search: Buscar
-    update: Editar %{resource}
+    update: Guardar %{resource}
   admin:
     menu:
       admin: Administración
@@ -38,22 +38,27 @@ en:
       logo: Madrid
   mailers:
     no_reply: no_reply.madrid.es
-  proposal:
-    show:
-      requeriments:
-        empty: Esta propuesta no tiene items asociados
+  proposal_requeriment:
+    verification:
+      'false': NO CUMPLE
+      not applicable: NO PROCEDE
+      pending: Pendiente de verificación
+      'true': CUMPLE
   proposals:
     edit:
-      title: Editar propuestas
+      title: Editar propuesta
     index:
-      search: Busqueda de propuestas
+      actions_column: Acciones
+      search:
+        information: Para añadir una condición selecciona el campo de búsqueda, para eliminarla dejalo en blanco.
+        title: Buscar propuestas
       title: Listado de Propuestas
     mark_requeriment:
-      title: Marcar requisitos
+      title: Verificación de requisitos
     new:
       title: Alta de propuestas
     show:
-      data_proposal: Cabecera de la propuesta
+      data_proposal: 'Cabecera de la propuesta:'
       data_sicia: Datos SICIA
       title: Consulta de propuesta
   shared:
@@ -65,6 +70,3 @@ en:
     target_blank_html: Nueva pestaña
     top_links:
       no_user: Ningun usuario conectado
-  proposal_requeriment:
-    verification:
-      pending: "Pendiente de verificación"

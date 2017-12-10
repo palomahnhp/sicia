@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="medium-11 medium-centered short-12 columns">
+    <fieldset class="fieldset">
+      <legend><h4><%= t('proposals.index.search.title') %> </h4></legend>
+      <%= search_form_for @search, url: search_proposals_path, method: :post do |f| %>
+        <div class= "row" >
+          <div class="small-12 columns ">
+            <p>
+            <small><%= t('proposals.index.search.information') %></small>
+            </p>
+            <%= f.condition_fields do |c| %>
+                <%= render 'condition_fields', f: c %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class= "row" >
+          <div class="medium-4 small-3 columns">
+            <p><%= f.submit t('actions.search'), class: "hollow button" %></p>
+          </div>
+        </div>
+      <% end %>
+    </fieldset>
+  </div>
+</div>

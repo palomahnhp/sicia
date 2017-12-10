@@ -12,8 +12,18 @@
   </div>
 </div>
 
-<%= render 'show_requeriments', requeriments: @proposal.requeriments.basic_req, title: t('activerecord.models.requeriment.RB.other') %>
+<div class="row">
+  <ul class="tabs" data-tabs id="requeriment-tabs">
+    <li class="tabs-title is-active"><a href="#basic_req" aria-selected="true"><%= t("activerecord.models.requeriment.RB.other") %></a></li>
+    <li class="tabs-title"><a data-tabs-target="document" href="#document"><%= t("activerecord.models.requeriment.DOC.other") %></a></li>
+    <li class="tabs-title"><a data-tabs-target="permanent_control" href="#permanent_control"><%= t("activerecord.models.requeriment.CP.other") %></a></li>
+  </ul>
+</div>
 
-<%= render 'show_requeriments', requeriments: @proposal.requeriments.permanent_control, title: t('activerecord.models.requeriment.CP.other') %>
-
-<%= render 'show_requeriments', requeriments: @proposal.requeriments.document, title: t('activerecord.models.requeriment.DOC.other') %>
+<div class="row">
+  <div class="tabs-content" data-tabs-content="requeriment-tabs">
+    <%= render 'requeriments_tab', tab: "basic_req", kind: "RB", proposal: @proposal, active: "is-active" %>
+    <%= render 'requeriments_tab', tab: "document",  kind: "DOC", proposal: @proposal, active: "" %>
+    <%= render 'requeriments_tab', tab: "permanent_control", kind: "CP", proposal: @proposal, active: "" %>
+  </div>
+</div>

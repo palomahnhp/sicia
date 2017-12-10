@@ -13,7 +13,7 @@ class ProposalsController < ApplicationController
   end
 
   def edit
-
+    @proposal.notify_to_confirmation = @proposal.notify_to
   end
 
   def update

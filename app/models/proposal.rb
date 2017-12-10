@@ -47,6 +47,10 @@ class Proposal < ApplicationRecord
     !sap_proposal.present?
   end
 
+  def sicia_number
+    trading_year.to_s + '/' + id.to_s.rjust(6, "0")
+  end
+
   def self.main_columns_automatic_sap
     %i(trading_year
        sap_kind
@@ -78,15 +82,12 @@ class Proposal < ApplicationRecord
   end
 
   def self.index_columns
-    %i(trading_year
+    %i(sicia_number
        file_number
        sap_proposal
        amount
        manager_body
        approval_body
-       third_party_name
-       third_party_id
-       third_party_nit
        title
        received_at )
   end
@@ -118,7 +119,9 @@ class Proposal < ApplicationRecord
     self.third_party_nit = rand(100000..900000)
     self.received_at = Date.today
   end
+
   def proposal_requeriment(requeriment)
     proposal_requeriments.where(requeriment_id: requeriment.id).take
   end
+
 end
