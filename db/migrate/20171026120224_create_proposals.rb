@@ -5,9 +5,9 @@ class CreateProposals < ActiveRecord::Migration[5.0]
       t.string  :sap_proposal
       t.string  :file_number
 
-      t.belongs_to :internal_control_file, index: true, foreign_key: true
-      t.belongs_to :internal_control_procedure, index: true, foreign_key: true
-      t.belongs_to :internal_control_action, index: true, foreign_key: true
+      t.belongs_to :ic_file, index: true, foreign_key: true
+      t.belongs_to :ic_procedure, index: true, foreign_key: true
+      t.belongs_to :ic_action, index: true, foreign_key: true
       t.string :title
 
       t.string :manager_body

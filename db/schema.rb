@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123111752) do
+ActiveRecord::Schema.define(version: 20171128135428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,41 +31,51 @@ ActiveRecord::Schema.define(version: 20171123111752) do
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
   end
 
-  create_table "internal_control_actions", force: :cascade do |t|
+  create_table "ic_action_requeriments", force: :cascade do |t|
+    t.integer  "ic_action_id"
+    t.integer  "requeriment_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "updated_by"
+    t.index ["ic_action_id"], name: "index_ic_action_requeriments_on_ic_action_id", using: :btree
+    t.index ["requeriment_id"], name: "index_ic_action_requeriments_on_requeriment_id", using: :btree
+  end
+
+  create_table "ic_actions", force: :cascade do |t|
     t.integer  "trading_year"
     t.integer  "code"
     t.string   "description"
-    t.integer  "internal_control_procedure_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "ic_procedure_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "updated_by"
-    t.index ["code"], name: "index_internal_control_actions_on_code", using: :btree
-    t.index ["internal_control_procedure_id"], name: "index_internal_control_actions_on_internal_control_procedure_id", using: :btree
-    t.index ["trading_year"], name: "index_internal_control_actions_on_trading_year", using: :btree
+    t.index ["code"], name: "index_ic_actions_on_code", using: :btree
+    t.index ["ic_procedure_id"], name: "index_ic_actions_on_ic_procedure_id", using: :btree
+    t.index ["trading_year"], name: "index_ic_actions_on_trading_year", using: :btree
   end
 
-  create_table "internal_control_files", force: :cascade do |t|
+  create_table "ic_files", force: :cascade do |t|
     t.integer  "trading_year"
     t.string   "code"
     t.string   "description"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "updated_by"
-    t.index ["code"], name: "index_internal_control_files_on_code", using: :btree
-    t.index ["trading_year"], name: "index_internal_control_files_on_trading_year", using: :btree
+    t.index ["code"], name: "index_ic_files_on_code", using: :btree
+    t.index ["trading_year"], name: "index_ic_files_on_trading_year", using: :btree
   end
 
-  create_table "internal_control_procedures", force: :cascade do |t|
+  create_table "ic_procedures", force: :cascade do |t|
     t.integer  "trading_year"
     t.integer  "code"
     t.string   "description"
-    t.integer  "internal_control_file_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "ic_file_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "updated_by"
-    t.index ["code"], name: "index_internal_control_procedures_on_code", using: :btree
-    t.index ["internal_control_file_id"], name: "index_internal_control_procedures_on_internal_control_file_id", using: :btree
-    t.index ["trading_year"], name: "index_internal_control_procedures_on_trading_year", using: :btree
+    t.index ["code"], name: "index_ic_procedures_on_code", using: :btree
+    t.index ["ic_file_id"], name: "index_ic_procedures_on_ic_file_id", using: :btree
+    t.index ["trading_year"], name: "index_ic_procedures_on_trading_year", using: :btree
   end
 
   create_table "manager_bodies", force: :cascade do |t|
@@ -79,17 +89,31 @@ ActiveRecord::Schema.define(version: 20171123111752) do
     t.index ["trading_year"], name: "index_manager_bodies_on_trading_year", using: :btree
   end
 
+  create_table "proposal_requeriments", force: :cascade do |t|
+    t.integer  "proposal_id"
+    t.integer  "requeriment_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "updated_by"
+    t.datetime "revision_updated_at"
+    t.string   "revision_updated_by"
+    t.boolean  "initial_check"
+    t.boolean  "revised_check"
+    t.index ["proposal_id"], name: "index_proposal_requeriments_on_proposal_id", using: :btree
+    t.index ["requeriment_id"], name: "index_proposal_requeriments_on_requeriment_id", using: :btree
+  end
+
   create_table "proposals", force: :cascade do |t|
     t.integer  "trading_year"
     t.string   "sap_proposal"
     t.string   "file_number"
-    t.integer  "internal_control_file_id"
-    t.integer  "internal_control_procedure_id"
-    t.integer  "internal_control_action_id"
+    t.integer  "ic_file_id"
+    t.integer  "ic_procedure_id"
+    t.integer  "ic_action_id"
     t.string   "title"
     t.string   "manager_body"
     t.string   "approval_body"
-    t.decimal  "amount",                        precision: 15, scale: 2
+    t.decimal  "amount",              precision: 15, scale: 2
     t.string   "sap_kind"
     t.string   "accounting_document"
     t.string   "expense_nature"
@@ -102,25 +126,13 @@ ActiveRecord::Schema.define(version: 20171123111752) do
     t.date     "received_at"
     t.string   "notify_to"
     t.text     "observations"
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "updated_by"
-    t.index ["internal_control_action_id"], name: "index_proposals_on_internal_control_action_id", using: :btree
-    t.index ["internal_control_file_id"], name: "index_proposals_on_internal_control_file_id", using: :btree
-    t.index ["internal_control_procedure_id"], name: "index_proposals_on_internal_control_procedure_id", using: :btree
+    t.index ["ic_action_id"], name: "index_proposals_on_ic_action_id", using: :btree
+    t.index ["ic_file_id"], name: "index_proposals_on_ic_file_id", using: :btree
+    t.index ["ic_procedure_id"], name: "index_proposals_on_ic_procedure_id", using: :btree
     t.index ["trading_year"], name: "index_proposals_on_trading_year", using: :btree
-  end
-
-  create_table "proposals_requeriments", id: false, force: :cascade do |t|
-    t.integer  "proposal_id"
-    t.integer  "requeriment_id"
-    t.datetime "created_at",          null: false
-    t.datetime "initial_updated_at",  null: false
-    t.string   "initial_updated_by"
-    t.boolean  "revision_updated_at"
-    t.string   "revision_updated_by"
-    t.index ["proposal_id"], name: "index_proposals_requeriments_on_proposal_id", using: :btree
-    t.index ["requeriment_id"], name: "index_proposals_requeriments_on_requeriment_id", using: :btree
   end
 
   create_table "requeriments", force: :cascade do |t|
@@ -137,6 +149,16 @@ ActiveRecord::Schema.define(version: 20171123111752) do
     t.index ["code"], name: "index_requeriments_on_code", using: :btree
     t.index ["kind"], name: "index_requeriments_on_kind", using: :btree
     t.index ["trading_year"], name: "index_requeriments_on_trading_year", using: :btree
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+    t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
   create_table "sap_codes", force: :cascade do |t|
@@ -186,9 +208,9 @@ ActiveRecord::Schema.define(version: 20171123111752) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "internal_control_actions", "internal_control_procedures"
-  add_foreign_key "internal_control_procedures", "internal_control_files"
-  add_foreign_key "proposals", "internal_control_actions"
-  add_foreign_key "proposals", "internal_control_files"
-  add_foreign_key "proposals", "internal_control_procedures"
+  add_foreign_key "ic_actions", "ic_procedures"
+  add_foreign_key "ic_procedures", "ic_files"
+  add_foreign_key "proposals", "ic_actions"
+  add_foreign_key "proposals", "ic_files"
+  add_foreign_key "proposals", "ic_procedures"
 end

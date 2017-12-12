@@ -25,7 +25,7 @@ gem 'i18n_data'
 # gem 'initialjs-rails', '0.2.0.1' TODO agendas ¿?
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jquery-rails' # Use jquery as the JavaScript library
-gem "jquery-ui-rails"
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'nested_form', '~> 0.3.2' # TODO Gem to conveniently handle multiple models in a single form with Rails 3 and jQuery or Prototype. o cocoon
 gem 'pg', '~> 0.21.0' #  Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]. It works with {PostgreSQL 9.1 and later}
 gem 'pg_search', '~> 2.1', '>= 2.1.1'
@@ -33,7 +33,7 @@ gem 'paperclip' # Easy upload management for ActiveRecord
 gem 'paranoia', '~> 2.3', '>= 2.3.1' # when you called destroy on an Active Record object that it didn't actually destroy it, but just "hid" the record.
 gem 'public_activity', '~> 1.5' # Easy activity tracking for your ActiveRecord models.
 gem 'rails-i18n', :git => 'https://github.com/svenfuchs/rails-i18n.git', branch: 'master' # For 4.x
-# gem 'ransack', '~> 1.8', '>= 1.8.3'
+gem 'ransack', '~> 1.8', '>= 1.8.4'
 gem 'responders', '~> 2.4' # A set of Rails responders to dry up your application
 gem 'rubyzip', '~> 1.2', '>= 1.2.1' # is a ruby module for reading and writing zip files
 gem 'spreadsheet', '~> 1.1', '>= 1.1.2'
@@ -43,6 +43,7 @@ gem 'savon', '~> 2.11', '>= 2.11.2' # Heavy metal SOAP client
 gem 'sidekiq', '~> 5.0', '>= 5.0.5' # Simple, efficient background processing for Ruby
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
+gem 'rails_admin', '~> 1.2'
 
 group :development, :test do
   gem 'bullet', '~> 5.6', '>= 5.6.1' # help to kill N+1 queries and unused eager loading.
@@ -54,6 +55,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.49.1', require: false
   gem 'spring', '~> 2.0.1'
   gem 'spring-commands-rspec', '~> 1.0.4'
+  gem 'rspec-rails', '~> 3.6'
 end
 
 group :test do
@@ -62,7 +64,6 @@ group :test do
   gem 'database_cleaner', '~> 1.6.1'
   gem 'email_spec', '~> 2.1.0'
   gem 'poltergeist', '~> 1.15.0'
-  gem 'rspec-rails', '~> 3.6'
 end
 
 group :development do
@@ -70,9 +71,6 @@ group :development do
   gem 'capistrano-bundler', '~> 1.3', require: false
   gem 'capistrano-rails', '~> 1.3', require: false
   gem 'capistrano-rvm', '~> 0.1.2' # TODO cer que gema utilizar, esta es la mas antigua
-#  gem 'rvm-capistrano', '~> 1.5', '>= 1.5.6' # TODO revisar despliegues con esta gema
-#  gem 'rvm1-capistrano3', '~> 1.4' # TODO revisar despliegues con esta gema
-#  gem 'capistrano3-delayed-job', '~> 1.7.3'
   gem 'mdl', '~> 0.4.0', require: false
   gem 'rvm1-capistrano3', '~> 1.4.0', require: false
   gem 'scss_lint', '~> 0.54.0', require: false

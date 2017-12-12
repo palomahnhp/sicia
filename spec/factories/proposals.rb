@@ -13,15 +13,15 @@ FactoryGirl.define do
     received_at Date.today
     notify_to 'correo@madrid.es'
     notify_to_confirmation 'correo@madrid.es'
-    association :internal_control_file
+    association :ic_file
 
     trait :sap_proposal do
       sequence(:sap_proposal, 10000000, 90000000)
       accounting_document 'A'
       sap_kind 'CONTA'
       expense_nature 'ANUAL'
-      association :internal_control_procedure
-      association :internal_control_action
+      association :ic_procedure
+      association :ic_action
     end
 
   end

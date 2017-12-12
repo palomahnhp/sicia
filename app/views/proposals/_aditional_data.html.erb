@@ -1,0 +1,25 @@
+<fieldset>
+  <table>
+    <tr>
+      <th class="text-left"><%= t('activerecord.attributes.proposal.received_at') %>:</th>
+      <td><%= @proposal.received_at %></td>
+    </tr>
+    <tr>
+      <th class="text-left"><%= t('activerecord.attributes.proposal.ic_file') %>:</th>
+      <td>
+        <%= " #{@proposal.ic_file.code}
+            #{@proposal.ic_procedure.code.to_s.rjust(5, "0")}
+            #{@proposal.ic_action.code.to_s.rjust(5, "0")} -
+                  #{@proposal.ic_file.description}
+            #{@proposal.ic_procedure.description}
+            #{@proposal.ic_action.description}" %>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-left"><%= t('activerecord.attributes.proposal.updated_at') %>:</th>
+      <td><%= @proposal.updated_at %></td>
+      <th class="text-left"><%= t('activerecord.attributes.proposal.updated_by') %>:</th>
+      <td><%= @proposal.updated_by %> </td>
+    </tr>
+  </table>
+</fieldset>

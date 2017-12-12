@@ -4,18 +4,19 @@ class Proposal < ApplicationRecord
 
   tracked owner: ->(controller, model) { controller && controller.current_user },
           params: {
-              aci_file:  -> (controller, model) { controller && controller.params[:proposal][:internal_control_file]},
-              aci_procedure: -> (controller, model) { controller && controller.params[:proposal][:internal_control_procedure]},
-              aci_action: -> (controller, model) { controller && controller.params[:proposal][:internal_control_action]}
+              aci_file:  -> (controller, model) { controller && controller.params[:proposal][:ic_file]},
+              aci_procedure: -> (controller, model) { controller && controller.params[:proposal][:ic_procedure]},
+              aci_action: -> (controller, model) { controller && controller.params[:proposal][:ic_action]}
           }
-  belongs_to :internal_control_file
-  belongs_to :internal_control_procedure
-  belongs_to :internal_control_action
-  has_and_belongs_to_many :requeriments
+  belongs_to :ic_file
+  belongs_to :ic_procedure
+  belongs_to :ic_action
+  has_many :proposal_requeriments
+  has_many :requeriments, through: :proposal_requeriments
 
-  validates :internal_control_file,
-            :internal_control_procedure,
-            :internal_control_action,
+  validates :ic_file,
+            :ic_procedure,
+            :ic_action,
             :accounting_document,
             :expense_nature,
             presence: true,
@@ -47,6 +48,7 @@ class Proposal < ApplicationRecord
   def self.main_columns_automatic_sap
     %i(trading_year
        sap_kind
+       sap_proposal
        file_number
        accounting_document
        amount
@@ -73,9 +75,10 @@ class Proposal < ApplicationRecord
        third_party_nit)
   end
 
-  def self.main_columns
+  def self.index_columns
     %i(trading_year
        file_number
+       sap_proposal
        amount
        manager_body
        approval_body
@@ -84,6 +87,10 @@ class Proposal < ApplicationRecord
        third_party_nit
        title
        received_at )
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w(trading_year sap_proposal file_number title third_party_name third_party_id third_party_nit received_at amount ) + _ransackers.keys
   end
 
   def fill_sap_proposal(sap_proposal)
