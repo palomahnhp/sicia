@@ -8,6 +8,7 @@ class SapApi
   def call_operation(operation)
     @wsdl = Rails.application.secrets.sap_api[operation]['wsdl']
     p "wsdl: #{@wsdl}"
+
     operation = Rails.application.secrets.sap_api[operation]['operation']
     p "operation: #{operation}"
     message_params = @params
@@ -25,10 +26,10 @@ class SapApi
   def client
     Rails.logger.info {"  INFO - SAPApi#wsdl: :  #{@wsdl.to_s}" }
 
-    @client =Savon.client do
-      wsdl @wsdl
-      headers "Authorization" => "Basic #{@realm}"
-    end
+    @client = Savon.client(
+      wsdl: @wsdl,
+      headers: {'Authorization' => "Basic #{@realm}"}
+    )
 
   end
 
