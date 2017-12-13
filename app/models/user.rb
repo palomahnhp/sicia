@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def full_name
-    name = self.name.nil? ? '' : self.name
-    surname = self.first_surname.nil? ? '' : self.first_surname
-    second_surname = self.second_surname.nil? ? '' : self.second_surname
+    "#{self.name} #{self.first_surname} #{self.second_surname}"
+  end
 
-    name + ' ' + surname + ' ' + second_surname
+  def full_name_ayre
+    "#{self.ayre} - #{full_name}"
   end
 end
