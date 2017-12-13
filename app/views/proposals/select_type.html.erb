@@ -6,9 +6,9 @@
       <fieldset class="fieldset">
         <legend>Selecciona la propuesta</legend>
         <%= form_tag({action: "new"}, method: "get" ) do %>
-            <%= label_tag(:sap_proposal, t('ransack.attributes.proposal.sap_proposal'))  %>
+            <%= label_tag(:sap_proposal, t('activerecord.attributes.proposal.sap_proposal'))  %>
             <%= text_field_tag(:sap_proposal)%>
-            <%= submit_tag t('actions.search', resource: t('ransack.models.proposal.one').downcase), class:"hollow  button" %>
+            <%= submit_tag t('actions.search', resource: t('activerecord.models.proposal.one').downcase), class:"hollow  button" %>
         <% end %>
       </fieldset>
     </div>

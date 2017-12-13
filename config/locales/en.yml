@@ -34,7 +34,6 @@ en:
     footer:
       copyright: Copyrigth %{year} Ayuntamiento de Madrid.
     header:
-      administration: admin
       logo: Madrid
   mailers:
     no_reply: no_reply.madrid.es
@@ -56,12 +55,6 @@ en:
       data_proposal: 'Datos de la propuesta:'
       data_sicia: Datos SICIA
       title: Consulta de propuesta
-  ransack:
-    models:
-      requeriment:
-        no_observance_level: Grado de incumplimiento
-        observance: Cumplimiento
-        update_data: Datos de actualización
   shared:
     print:
       print_button: Imprimir

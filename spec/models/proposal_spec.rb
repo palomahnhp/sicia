@@ -78,18 +78,18 @@ RSpec.describe Proposal, type: :model do
     end
 
     it "isn't valid without a aci file type" do
-      proposal.internal_control_file = nil
+      proposal.ic_file = nil
       expect(proposal).to be_invalid
     end
 
     it "isn't valid without a aci procedure type" do
-      proposal.internal_control_procedure = nil
+      proposal.ic_procedure = nil
 
       expect(proposal).to be_invalid
     end
 
     it "isn't valid without a aci action type" do
-      proposal.internal_control_action = nil
+      proposal.ic_action = nil
 
       expect(proposal).to be_invalid
     end

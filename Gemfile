@@ -17,6 +17,7 @@ gem "cocoon" # TODO Unobtrusive nested forms handling, using jQuery. este o nes
 gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 # gem 'dalli', '~> 2.7', '>= 2.7.6' # TODO High performance memcached client for Ruby usado en consul
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.2' # TODO ActiveRecord backend for Delayed::Job, usado en consul
+gem 'devise', '~> 4.2'
 gem 'foundation-rails', '~> 6.4', '>= 6.4.1.2'
 gem 'foundation_rails_helper', '~> 3.0' # Rails for zurb foundation CSS framework. Form builder, flash message, ...
 gem 'friendly_id', '~> 5.1.0' # TODO ¿?
@@ -24,7 +25,7 @@ gem 'i18n_data'
 # gem 'initialjs-rails', '0.2.0.1' TODO agendas ¿?
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jquery-rails' # Use jquery as the JavaScript library
-gem "jquery-ui-rails"
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'nested_form', '~> 0.3.2' # TODO Gem to conveniently handle multiple models in a single form with Rails 3 and jQuery or Prototype. o cocoon
 gem 'pg', '~> 0.21.0' #  Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]. It works with {PostgreSQL 9.1 and later}
 gem 'pg_search', '~> 2.1', '>= 2.1.1'
@@ -34,7 +35,6 @@ gem 'public_activity', '~> 1.5' # Easy activity tracking for your ActiveRecord m
 gem 'rails-i18n', :git => 'https://github.com/svenfuchs/rails-i18n.git', branch: 'master' # For 4.x
 gem 'ransack', '~> 1.8', '>= 1.8.4'
 gem 'responders', '~> 2.4' # A set of Rails responders to dry up your application
-gem 'rolify'
 gem 'rubyzip', '~> 1.2', '>= 1.2.1' # is a ruby module for reading and writing zip files
 gem 'spreadsheet', '~> 1.1', '>= 1.1.2'
 gem 'simple_form', '~> 3.5' # Forms made easy!
@@ -43,6 +43,7 @@ gem 'savon', '~> 2.11', '>= 2.11.2' # Heavy metal SOAP client
 gem 'sidekiq', '~> 5.0', '>= 5.0.5' # Simple, efficient background processing for Ruby
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
+gem 'rails_admin', '~> 1.2'
 
 group :development, :test do
   gem 'bullet', '~> 5.6', '>= 5.6.1' # help to kill N+1 queries and unused eager loading.
