@@ -1,19 +1,21 @@
 class SapApi
 
-  def initialize(service, param=nil)
-    @wsdl = Rails.application.secrets.sap_api['wsdl'][service]
-    params(param)
+  def initialize(param=nil)
+    @realm = Base64.strict_encode64("#{Rails.application.secrets.sap_api['user']}:#{Rails.application.secrets.sap_api['password']}")
+    @params = params(param)
   end
 
-  def ConsultaCentroGestor()
+  def call_operation(operation)
+    @wsdl = Rails.application.secrets.sap_api[operation]['wsdl']
+    p "wsdl: #{@wsdl}"
+    operation = Rails.application.secrets.sap_api[operation]['operation']
+    p "operation: #{operation}"
     message_params = @params
-    message_params[:keyUserRelation] = in_params
-    message_params[:loginUserRelation] = in_params
-    request(:insert_profile_login, message_params)
+    request(operation.to_sym, message_params)
   end
 
   def request(operation, message_params)
-    response = client.call(operation.to_sym, message: { ub: message_params }).body
+    response = client.call(operation.to_sym, message: message_params).body
     parsed_response = parser.parse(response[(operation.to_s + '_response').to_sym][(operation.to_s + '_return').to_sym])
   rescue Savon::Error => e
     puts "#{operation} - #{message_params} - Error Savon: #{e}"
@@ -22,24 +24,25 @@ class SapApi
 
   def client
     Rails.logger.info {"  INFO - SAPApi#wsdl: :  #{@wsdl.to_s}" }
-    @client ||= Savon.client(wsdl: @wsdl, encoding: 'ISO-8859-1', raise_errors: true)
+
+    @client =Savon.client do
+      wsdl @wsdl
+      headers "Authorization" => "Basic #{@realm}"
+    end
+
   end
 
   private
+
   def parser
     @parser ||= Nori.new
   end
 
-  def params(user_key)
-    @params ||= {
-        keyApp:      Rails.application.secrets.uweb_update_app,
-        keyProfileConnect:  Rails.application.secrets.uweb_update_profile,
-        keyProfileRelation: Rails.application.secrets.uweb_update_key_profile_connect,
-        keyUserConnect: user_key ,
-        keyUserRelation: ' ' ,
-        keyWService: Rails.application.secrets.uweb_update_key,
-        loginUserRelation: ' ' ,
-        pwdWservice: Rails.application.secrets.uweb_update_pwd
-    }
+  def params(param=nil )
+    if param.nil?
+      @params ||= {
+        ConsultaGeneral: ''
+      }
+    end
   end
 end
