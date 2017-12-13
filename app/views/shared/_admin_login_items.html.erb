@@ -1,16 +1,8 @@
+<li>
 <% if current_user %>
-
-  <% if current_user.has_role? :admin, :any %>
-    <li>
-      <%= link_to t('layouts.header.administration'), admin_root_path %>
-    </li>
-  <% end %>
-
-  <li>
-    <%= link_to  session_path, method: :DELETE do %>
-        <span class="icon-power-off"></span>
-        <%= t('actions.close') %>
-    <% end %>
-  </li>
-
+  <%= link_to 'Edit', edit_user_registration_path %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Login', new_user_session_path %>
 <% end %>
+</li>
