@@ -67,12 +67,10 @@ group :test do
 end
 
 group :development do
-  gem 'capistrano', '~> 3.9', '>= 3.9.1', require: false
-  gem 'capistrano-bundler', '~> 1.3', require: false
-  gem 'capistrano-rails', '~> 1.3', require: false
-  gem 'capistrano-rvm', '~> 0.1.2' # TODO cer que gema utilizar, esta es la mas antigua
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-rails', '~> 1.3'
+
   gem 'mdl', '~> 0.4.0', require: false
-  gem 'rvm1-capistrano3', '~> 1.4.0', require: false
   gem 'scss_lint', '~> 0.54.0', require: false
   gem 'web-console', '~> 3.5', '>= 3.5.1'
   gem 'listen', '~> 3.0.5'
