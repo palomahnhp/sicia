@@ -4,7 +4,8 @@ namespace :test_api do
     sap = SapApi.new
     operation = 'consulta_exp_formas_adjudicacion'
     response = sap.call_operation(operation)
-    puts 'Finaliza'
+    puts 'Finaliza con respuesta:'
+    puts response
   end
 
 end
