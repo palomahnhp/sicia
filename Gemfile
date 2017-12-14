@@ -69,7 +69,7 @@ end
 group :development do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.3'
-
+  gem 'capistrano-rvm', '~> 0.1.2'
   gem 'mdl', '~> 0.4.0', require: false
   gem 'scss_lint', '~> 0.54.0', require: false
   gem 'web-console', '~> 3.5', '>= 3.5.1'

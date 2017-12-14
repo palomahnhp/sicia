@@ -16,7 +16,6 @@ set :rvm_type, :user
 set :server_name, deploysecret(:server_name)
 set :full_app_name, fetch(:application)
 
-set :scm, :git
 set :revision, `git rev-parse --short #{fetch(:branch)}`.strip
 
 set :log_level, :info
