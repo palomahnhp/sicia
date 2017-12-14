@@ -9,9 +9,9 @@ es:
     edit: Editar %{resource}
     new: Crear %{resource}
     remove: Eliminar
+    save: Guardar
     search: Buscar
     update: Editar %{resource}
-    save: "Guardar"
   admin:
     menu:
       admin: Administración
@@ -43,6 +43,12 @@ es:
     show:
       requeriments:
         empty: Esta propuesta no tiene requisitos asociados
+  proposal_requeriment:
+    verification:
+      'false': NO CUMPLE
+      not applicable: NO PROCEDE
+      pending: Pendiente de verificación
+      'true': CUMPLE
   proposals:
     edit:
       title: Editar propuestas
@@ -66,9 +72,3 @@ es:
     target_blank_html: Nueva pestaña
     top_links:
       no_user: Ningun usuario conectado
-  proposal_requeriment:
-    verification:
-      pending: "Pendiente de verificación"
-      true: CUMPLE
-      false: NO CUMPLE
-      not applicable: NO PROCEDE

@@ -62,8 +62,6 @@ es:
         one: Propuesta
         other: Propuestas
       requeriment:
-        one: Requisitos
-        other: Requisitos
         CP:
           one: Requisito de control permanente
           other: Requisitos de control permanente

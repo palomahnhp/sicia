@@ -54,35 +54,18 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit(:trading_year,
-                                     :ic_file_id,
-                                     :ic_procedure_id,
-                                     :ic_action_id,
-                                     :title,
-                                     :file_number,
-                                     :manager_body,
-                                     :approval_body,
-                                     :amount,
-                                     :sap_proposal,
-                                     :sap_kind,
-                                     :accounting_document,
-                                     :expense_nature,
-                                     :contract_type,
-                                     :adjudication_way,
-                                     :third_party_name,
-                                     :third_party_id,
-                                     :third_party_nit,
-                                     :gexap_task,
-                                     :observations,
-                                     :received_at,
-                                     :notify_to,
-                                     :notify_to_confirmation,
+    params.require(:proposal).permit(:trading_year, :ic_file_id, :ic_procedure_id,
+                                     :ic_action_id, :title,      :file_number,
+                                     :manager_body, :approval_body, :amount,
+                                     :sap_proposal, :sap_kind,   :accounting_document,
+                                     :expense_nature, :contract_type, :adjudication_way,
+                                     :third_party_name, :third_party_id,
+                                     :third_party_nit, :gexap_task,
+                                     :observations, :received_at,
+                                     :notify_to, :notify_to_confirmation,
                                      proposal_requeriments_attributes: [
-                                         :requeriment_id,
-                                         :revision_updated_at,
-                                         :revision_updated_by,
-                                         :initial_check,
-                                         :revised_check ]
+                                         :requeriment_id, :revision_updated_at,  :revision_updated_by,
+                                         :initial_check, :revised_check ]
     )
   end
 
