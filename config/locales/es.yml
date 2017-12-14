@@ -35,7 +35,6 @@ es:
     footer:
       copyright: Copyrigth %{year} Ayuntamiento de Madrid.
     header:
-      administration: admin
       logo: Madrid
   mailers:
     no_reply: no_reply.madrid.es
