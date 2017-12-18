@@ -9,6 +9,7 @@ en:
     edit: Editar %{resource}
     new: Crear %{resource}
     remove: Eliminar
+    save: Guardar
     search: Buscar
     update: Editar %{resource}
   admin:
@@ -40,7 +41,13 @@ en:
   proposal:
     show:
       requeriments:
-        empty: Esta propuesta no tiene requisitos básicos asociados
+        empty: Esta propuesta no tiene requisitos asociados
+  proposal_requeriment:
+    verification:
+      'false': NO CUMPLE
+      not applicable: NO PROCEDE
+      pending: Pendiente de verificación
+      'true': CUMPLE
   proposals:
     edit:
       title: Editar propuestas
@@ -48,7 +55,7 @@ en:
       search: Busqueda de propuestas
       title: Listado de Propuestas
     mark_requeriment:
-      title: Marcar requisitos
+      title: Verificación de requisitos
     new:
       title: Alta de propuestas
     show:
