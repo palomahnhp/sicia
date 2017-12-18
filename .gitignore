@@ -4,8 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# ignore
-/lib/wsdl/*
 
 # Ignore bundler config.
 /.bundle
@@ -14,6 +12,7 @@
 /config/database.yml
 /config/secrets.yml
 /config/deploy-secrets.yml
+/config/wsdl/*
 
 # Ignore coverage files
 /coverage/*
