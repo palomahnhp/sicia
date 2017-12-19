@@ -71,3 +71,9 @@ es:
     target_blank_html: Nueva pestaña
     top_links:
       no_user: Ningun usuario conectado
+  sap_codes:
+    index:
+      title: "Actualización de códigos SAP"
+      ORGAPRO: Órgano de Aprobación
+
+

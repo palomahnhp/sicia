@@ -1,5 +1,8 @@
 require 'database_cleaner'
+require 'factory_girl'
+
 Faker::Config.locale = :es
+
 
 DatabaseCleaner.clean_with :truncation
 
@@ -7,16 +10,9 @@ Rake::Task["db:seed"].invoke
 
 puts " ✅"
 
-print "Creating Settings"
-Setting["ayre_url"] = "http://ayre.munimadrid.es/"
-Setting["org_name"] = "Intervención General del Ayuntamiento de Madrid"
-Setting["app_name"] = "Sistema Integral de gestión de Control Interno"
-
-puts " ✅"
-
 print "Creating Users"
 
-2.times { User.create }
+2.times { FactoryGirl.create :user}
 
 puts " ✅"
 

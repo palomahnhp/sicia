@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users, controllers: { session: "users/sessions", registration: "users/registration" }
   resources :users
 
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
     }
 
   end
+
+  resources :sap_code
 
   resources :activities
 end

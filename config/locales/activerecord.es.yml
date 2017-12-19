@@ -51,6 +51,11 @@ es:
         discrepancy_allowed: Admite discrepancias
         name: Tipo
         non_observance_level: Grado de cumplimiento
+      sap_code:
+        sap_field: Nombre en SAP
+        sap_att: Nombre en SICI
+        code: Código
+        description: Descripción
       setting:
         key: Clave
         value: Valor
@@ -78,3 +83,6 @@ es:
         one: Requisito
         other: Requisitos
         update_data: Datos de actualización
+      sap_code:
+        one: Código SAP
+        other: Códigos SAP

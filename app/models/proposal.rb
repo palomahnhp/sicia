@@ -8,9 +8,12 @@ class Proposal < ApplicationRecord
               aci_procedure: -> (controller, model) { controller && controller.params[:proposal][:ic_procedure]},
               aci_action: -> (controller, model) { controller && controller.params[:proposal][:ic_action]}
           }
+  belongs_to :society
+
   belongs_to :ic_file
   belongs_to :ic_procedure
   belongs_to :ic_action
+
   has_many :proposal_requeriments
   has_many :requeriments, through: :proposal_requeriments
 
@@ -28,11 +31,11 @@ class Proposal < ApplicationRecord
   validates_uniqueness_of :sap_proposal
 
   validates :file_number,
-            :manager_body,
-            :title,
-            :approval_body,
-            :received_at,
-            presence: true
+  :manager_body,
+  :title,
+  :approval_body,
+  :received_at,
+  presence: true
 
   validates :amount, presence: true, numericality: true
 

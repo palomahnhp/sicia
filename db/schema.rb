@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206100736) do
+ActiveRecord::Schema.define(version: 20171219090417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,26 +31,15 @@ ActiveRecord::Schema.define(version: 20171206100736) do
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
   end
 
-  create_table "ejemplo_appointments", force: :cascade do |t|
-    t.integer  "patient_id"
-    t.integer  "physician_id"
-    t.date     "appointment_date"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["patient_id"], name: "index_ejemplo_appointments_on_patient_id", using: :btree
-    t.index ["physician_id"], name: "index_ejemplo_appointments_on_physician_id", using: :btree
-  end
-
-  create_table "ejemplo_patients", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ejemplo_physicians", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "approval_bodies", force: :cascade do |t|
+    t.integer  "trading_year"
+    t.string   "code"
+    t.string   "description"
+    t.date     "valid_to"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["code"], name: "index_approval_bodies_on_code", using: :btree
+    t.index ["trading_year"], name: "index_approval_bodies_on_trading_year", using: :btree
   end
 
   create_table "ic_action_requeriments", force: :cascade do |t|
@@ -103,11 +92,12 @@ ActiveRecord::Schema.define(version: 20171206100736) do
   create_table "manager_bodies", force: :cascade do |t|
     t.integer  "trading_year"
     t.string   "code"
-    t.string   "budget_center"
-    t.string   "budget_section"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "society_id"
     t.index ["code"], name: "index_manager_bodies_on_code", using: :btree
+    t.index ["society_id"], name: "index_manager_bodies_on_society_id", using: :btree
     t.index ["trading_year"], name: "index_manager_bodies_on_trading_year", using: :btree
   end
 
@@ -151,6 +141,8 @@ ActiveRecord::Schema.define(version: 20171206100736) do
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
     t.string   "updated_by"
+    t.integer  "proposal_number"
+    t.string   "society"
     t.index ["ic_action_id"], name: "index_proposals_on_ic_action_id", using: :btree
     t.index ["ic_file_id"], name: "index_proposals_on_ic_file_id", using: :btree
     t.index ["ic_procedure_id"], name: "index_proposals_on_ic_procedure_id", using: :btree
@@ -201,6 +193,14 @@ ActiveRecord::Schema.define(version: 20171206100736) do
     t.string   "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "societies", force: :cascade do |t|
+    t.string   "code"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["code"], name: "index_societies_on_code", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
