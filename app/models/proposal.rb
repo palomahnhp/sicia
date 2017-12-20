@@ -99,7 +99,7 @@ class Proposal < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    %w(trading_year sap_proposal file_number title third_party_name third_party_id third_party_nit received_at amount ) + _ransackers.keys
+    %w(trading_year sicia_number sap_proposal file_number title third_party_name third_party_id third_party_nit received_at amount ) + _ransackers.keys
   end
 
   def fill_sap_proposal(sap_proposal)

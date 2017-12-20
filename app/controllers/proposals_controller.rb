@@ -4,6 +4,7 @@ class ProposalsController < ApplicationController
 
   def index
     @search = Proposal.search(params[:q])
+    @search.sorts = 'sicia_number desc' if @search.sorts.empty?
     @proposals = @search.result
     @search.build_condition
   end

@@ -2,6 +2,9 @@
 es:
   activerecord:
     attributes:
+      approval_body:
+        code: Código
+        description: Descripción
       ic_action:
         code: Código
         description: Descripción
@@ -17,16 +20,23 @@ es:
         description: Descripción
         one: Procedimiento
         others: Procedimientos
+      manager_body:
+        code: Código
+        description: Descripción
       proposal:
         accounting_document: Documento contable
         adjudication_way: Forma de adjudicación
         amount: Importe total
+        approval_body: Órgano de aprobación
+        approval_body_id: Órgano de aprobación
         contract_type: Tipo de contrato
         expense_nature: Naturaleza del gasto
         file_number: Número de expediente
         ic_action: Trámite
         ic_file: Tipo de expediente
         ic_procedure: Procedimiento
+        manager_body: Órgano gestor
+        manager_body_id: Órgano gestor
         notify_to: Email para notificaciones
         notify_to_confirmation: Confirmación de email
         observations: Observaciones
@@ -34,15 +44,14 @@ es:
         sap_kind: Clase de propuesta SAP
         sap_proposal: Número de propuesta SAP
         sicia_number: Número de propuesta SICI
+        society: Sociedad
+        society_id: Sociedad
         third_party: Tercero
         third_party_id: NIF/CIF
         third_party_name: Nombre
         third_party_nit: NIT
         title: Título
         trading_year: Ejercicio
-        manager_body_id: Órgano gestor
-        approval_body_id: Órgano de aprobación
-        society_id: Sociedad
         updated_at: Última modificación
         updated_by: Usuario
       requeriment:
@@ -52,17 +61,24 @@ es:
         name: Tipo
         non_observance_level: Grado de cumplimiento
       sap_code:
-        sap_field: Nombre en SAP
-        sap_att: Nombre en SICI
         code: Código
         description: Descripción
+        sap_att: Nombre en SICI
+        sap_field: Nombre en SAP
       setting:
         key: Clave
         value: Valor
+      society:
+        code: Código
+        description: Descripción
     models:
+      approval_body:
+        one: Órgano de aprobación
       ic_action: Trámite
       ic_file: Tipo de expediente
       ic_procedure: Procedimiento
+      manager_body:
+        one: Órgano gestor
       proposal:
         one: Propuesta
         other: Propuestas
@@ -86,3 +102,5 @@ es:
       sap_code:
         one: Código SAP
         other: Códigos SAP
+      society:
+        one: Sociedad

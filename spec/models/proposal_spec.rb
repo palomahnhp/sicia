@@ -26,7 +26,6 @@ RSpec.describe Proposal, type: :model do
       expect(proposal).to be_invalid
     end
     it "is valid with a manager_body" do
-      proposal.manager_body = '001010'
       expect(proposal).to be_valid
     end
     it "isn't valid without manager_body" do
@@ -34,7 +33,6 @@ RSpec.describe Proposal, type: :model do
       expect(proposal).to be_invalid
     end
     it "is valid with a approval_body" do
-      proposal.approval_body = '01'
       expect(proposal).to be_valid
     end
     it "isn't valid without approval_body" do
@@ -49,12 +47,14 @@ RSpec.describe Proposal, type: :model do
       proposal.title = nil
       expect(proposal).to be_invalid
     end
+
     it "is valid with a valid amount" do
-      proposal.approval_body = 9999,99
+      proposal.amount = 9999.99
       expect(proposal).to be_valid
     end
+
     it "isn't valid without amount" do
-      proposal.amount = nil
+      proposal.amount = 9999,99
       expect(proposal).to be_invalid
     end
     it "isn't valid without a valid amount" do
