@@ -133,7 +133,7 @@ class Proposal < ApplicationRecord
 
   def assign_sicia_number
     prop =  Proposal.where(trading_year: trading_year, society: society).order("sicia_number DESC").first
-    self.sicia_number = prop.present? && prop.sicia_number.nil? ?  prop.sicia_number + 1 :  1
+    self.sicia_number = prop.present? && prop.sicia_number.present? ?  prop.sicia_number + 1 :  1
   end
 
   def society_from_manager_body

@@ -36,7 +36,7 @@ namespace :sap_import do
   task :approval_bodies => :environment do
     operation = 'consulta_organo_aprobacion'
     response = call_sap(operation)
-    p 'Importing approval bodies, updating : ' + response.count.to_s + ' regs...'
+    p '.. importing approval bodies, updating : ' + response.count.to_s + ' regs...'
     response.each do |sap_approval_body|
       approval_body = ApprovalBody.find_or_create_by(trading_year: set_trading_year, code: sap_approval_body[:id_organo_aprobacion],
                                                    description: sap_approval_body[:descripcion])
@@ -50,7 +50,7 @@ namespace :sap_import do
   task :adjudication_ways => :environment do
     operation = 'consulta_forma_adjudicacion'
     response = call_sap(operation)
-    p 'Importing adjudication ways, updating : ' + response.count.to_s + ' regs...'
+    p '... importing adjudication ways, updating : ' + response.count.to_s + ' regs...'
 
     response.each do |sap_adjudication_way|
       adjudication_way = SapCode.find_or_create_by(sap_field: 'FORMA_ADJUD', sicia_att: 'adjudication_way',
@@ -68,7 +68,7 @@ namespace :sap_import do
   task :contract_types => :environment do
     operation = 'consulta_tipo_contrato'
     response = call_sap(operation)
-    p 'Importing contract type, updating : ' + response.count.to_s + ' regs...'
+    p '... importing contract type, updating : ' + response.count.to_s + ' regs...'
     p response
     response.each do |sap_contract_type|
       contract_type = SapCode.find_or_create_by(sap_field: 'TIPO_CONTRATO', sicia_att: 'contract_type',
