@@ -9,6 +9,8 @@ class Proposal < ApplicationRecord
               aci_action: -> (controller, model) { controller && controller.params[:proposal][:ic_action]}
           }
   belongs_to :society
+  belongs_to :manager_body
+  belongs_to :approval_body
 
   belongs_to :ic_file
   belongs_to :ic_procedure
@@ -20,7 +22,8 @@ class Proposal < ApplicationRecord
   accepts_nested_attributes_for :proposal_requeriments
   accepts_nested_attributes_for :requeriments
 
-  validates :ic_file,
+  validates :sicia_number,
+            :ic_file,
             :ic_procedure,
             :ic_action,
             :accounting_document,
@@ -52,21 +55,24 @@ class Proposal < ApplicationRecord
   end
 
   def self.main_columns_automatic_sap
-    %i(trading_year
-       sap_kind
-       sap_proposal
+    %i(sicia_number
        file_number
-       accounting_document
+       sap_proposal
+       title
        amount
+       accounting_document
+       contract_type
        expense_nature
-       manager_body
-       approval_body
        adjudication_way
+       manager_body_id
+       approval_body_id
+       society_id
+       sap_kind
        third_party_name
        third_party_id
        third_party_nit
-       contract_type
-       title)
+       trading_year
+       )
   end
 
   def self.main_columns_manual
@@ -82,16 +88,13 @@ class Proposal < ApplicationRecord
   end
 
   def self.index_columns
-    %i(trading_year
+    %i(sicia_number
        file_number
        sap_proposal
-       amount
        manager_body
        approval_body
-       third_party_name
-       third_party_id
-       third_party_nit
        title
+       amount
        received_at )
   end
 
@@ -102,13 +105,14 @@ class Proposal < ApplicationRecord
   def fill_sap_proposal(sap_proposal)
     self.sap_proposal = sap_proposal
     self.trading_year = 2017
+    self.manager_body = ManagerBody.all.reorder("RANDOM()").first
+    self.approval_body = ApprovalBody.all.reorder("RANDOM()").first
+    self.society_from_manager_body
     self.sap_kind = 'CONTA'
     self.file_number = '300/2017/012356'
     self.accounting_document = SapCode.accounting_document.reorder("RANDOM()").first.description
     self.amount = rand(100000..90000000) / 100
     self.title = Faker::Lorem.sentence
-    self.manager_body = '001010'
-    self.approval_body = '01'
     self.expense_nature = SapCode.expense_nature.reorder("RANDOM()").first.description
     self.contract_type = SapCode.contract_type.reorder("RANDOM()").first.description
     self.adjudication_way = SapCode.adjudication_way.reorder("RANDOM()").first.description
@@ -122,7 +126,23 @@ class Proposal < ApplicationRecord
     self.third_party_nit = rand(100000..900000)
     self.received_at = Date.today
   end
+
   def proposal_requeriment(requeriment)
     proposal_requeriments.where(requeriment_id: requeriment.id).take
+  end
+
+  def assign_sicia_number
+    prop =  Proposal.where(trading_year: trading_year, society: society).order("sicia_number DESC").first
+    self.sicia_number = prop.present? && prop.sicia_number.nil? ?  prop.sicia_number + 1 :  1
+  end
+
+  def society_from_manager_body
+   society_code = self.manager_body.code[0..2]
+   society_code = society_code == '001' ? 'MDRD' : society_code
+   self.society = Society.find_by_code(society_code)
+  end
+
+  def formatted_sicia_number
+    "#{self.society.code}/#{self.trading_year}/#{self.sicia_number.to_s.rjust(6, "0")}"
   end
 end

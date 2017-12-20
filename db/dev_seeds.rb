@@ -103,14 +103,17 @@ print "Creating Proposals"
   proposal.ic_file      = IcFile.all.reorder("RANDOM()").first
   proposal.ic_procedure = proposal.ic_file.ic_procedures.reorder("RANDOM()").first
   proposal.ic_action    = proposal.ic_procedure.ic_actions.reorder("RANDOM()").first
-  proposal.save
+  proposal.society_from_manager_body
+  proposal.assign_sicia_number
+  proposal.save!
 
   proposal.requeriments << proposal.ic_action.requeriments
 end
+puts " ✅"
 
-print "Update user and time in proposal_requeriment "
+p "Update user and time in proposal_requeriment..."
 
-print "A actualizar #{ProposalRequeriment.count.to_s}"
+p "A actualizar #{ProposalRequeriment.count.to_s}"
 
 ProposalRequeriment.all.each do |prop_req|
 #  prop_req.initial_ckeck = [true, true, true, false, nil].sample
@@ -118,6 +121,7 @@ ProposalRequeriment.all.each do |prop_req|
   prop_req.updated_at = rand((Time.current - 2.months) .. (Time.current - 1.day))
   prop_req.save
 end
-
 puts " ✅"
+
 puts "All dev seeds created successfuly "
+puts " ✅"
