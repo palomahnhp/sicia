@@ -5,7 +5,7 @@ namespace :test_api do
 
   task :sap_ws => :environment do
     sap = SapApi.new
-    operation = ENV['operation'].nil? ? 'consulta_organo_aprobacion' : ENV['operation']
+    operation = ENV['operation'].nil? ? 'consulta_centro_gestor' : ENV['operation']
     response = sap.call_operation(operation)
     puts 'Finaliza con respuesta:'
     puts response
