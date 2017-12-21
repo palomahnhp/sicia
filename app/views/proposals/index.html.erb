@@ -33,13 +33,13 @@
         <% Proposal.index_columns.each do |field| %>
             <th><%= sort_link @search, field, t("activerecord.attributes.proposal.#{field}") %></th>
         <% end %>
-        <th><%= t('actions.column') %></thcolspan>
+        <th><%= t('actions.column') %></th>
       </tr>
 
       <% @proposals.each do |proposal| %>
           <tr class= "proposal-row" id="proposal_<%=proposal.id%>">
             <% Proposal.index_columns.each do |field| %>
-                <td> <%= proposal.send(field) %></td>
+                <td> <%= format_proposal_field(proposal, field) %></td>
             <% end %>
             <td>
               <%= link_to("", proposal, title: 'Ver detalle', class: "icon-search") %>

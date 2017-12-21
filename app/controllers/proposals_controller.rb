@@ -4,6 +4,7 @@ class ProposalsController < ApplicationController
 
   def index
     @search = Proposal.search(params[:q])
+    @search.sorts = 'sicia_number desc' if @search.sorts.empty?
     @proposals = @search.result
     @search.build_condition
   end
@@ -29,10 +30,13 @@ class ProposalsController < ApplicationController
   def new
     @proposal = Proposal.new()
     @proposal.fill_sap_proposal(params[:sap_proposal]) if params[:sap_proposal].present?
-  end
+   end
 
   def create
     @proposal = Proposal.new(proposal_params)
+    @proposal.requeriments << @proposal.ic_action.requeriments
+    @proposal.assign_sicia_number
+
     if @proposal.save
       flash[:notice] = t('flash.create.success', resource: t('activerecord.models.proposal.one'))
       redirect_to mark_requeriment_proposal_path(@proposal)
@@ -47,36 +51,25 @@ class ProposalsController < ApplicationController
   end
 
   def mark_requeriment
-    @requeriments
 
   end
 
   private
 
   def proposal_params
-    params.require(:proposal).permit(:trading_year,
-                                     :ic_file_id,
-                                     :ic_procedure_id,
-                                     :ic_action_id,
-                                     :title,
-                                     :file_number,
-                                     :manager_body,
-                                     :approval_body,
-                                     :amount,
-                                     :sap_proposal,
-                                     :sap_kind,
-                                     :accounting_document,
-                                     :expense_nature,
-                                     :contract_type,
-                                     :adjudication_way,
-                                     :third_party_name,
-                                     :third_party_id,
-                                     :third_party_nit,
-                                     :gexap_task,
-                                     :observations,
-                                     :received_at,
-                                     :notify_to,
-                                     :notify_to_confirmation
+    params.require(:proposal).permit(:trading_year, :ic_file_id, :ic_procedure_id,
+                                     :ic_action_id, :title,      :file_number,
+                                     :manager_body_id, :approval_body_id, :amount,
+                                     :sap_proposal, :sap_kind,   :accounting_document,
+                                     :expense_nature, :contract_type, :adjudication_way,
+                                     :third_party_name, :third_party_id,
+                                     :third_party_nit, :gexap_task,
+                                     :observations, :received_at,
+                                     :notify_to, :notify_to_confirmation,
+                                     :society_id, :sicia_number,
+                                     proposal_requeriments_attributes: [
+                                         :requeriment_id, :revision_updated_at,  :revision_updated_by,
+                                         :initial_check, :revised_check ]
     )
   end
 

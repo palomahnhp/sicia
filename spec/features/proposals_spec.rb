@@ -12,7 +12,8 @@ RSpec.feature "Proposals", type: :feature do
         expect(page).to have_content proposal.trading_year
         expect(page).to have_content proposal.file_number
         expect(page).to have_content proposal.title
-        expect(page).to have_content proposal.manager_body
+        expect(page).to have_content proposal.manager_body.code_and_description
+        expect(page).to have_content proposal.approval_body.code_and_description
         expect(page).to have_content proposal.amount
       end
     end

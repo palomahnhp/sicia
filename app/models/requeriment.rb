@@ -8,6 +8,9 @@ class Requeriment < ApplicationRecord
   has_many :ic_action_requeriments
   has_many :ic_actions, through: :ic_action_requeriments
 
+  accepts_nested_attributes_for :proposal_requeriments
+  accepts_nested_attributes_for :proposals
+
   validates :kind, presence: true,
                    inclusion: { in: %w(RB CP DOC) }
   validates :code, numericality: { only_integer: true }
@@ -21,4 +24,11 @@ class Requeriment < ApplicationRecord
   scope :document, -> { where(kind: 'DOC') }
   scope :trading_year, lambda { |year| where(trading_year: year) }
 
+  def full_code
+    kind + '/'+ code.to_s.rjust(5, "0")
+  end
+
+  def proposal_requeriment(proposal)
+    proposal_requeriments.where(proposal_id: proposal.id).take
+  end
 end

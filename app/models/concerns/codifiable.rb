@@ -12,6 +12,9 @@ module Codifiable
       %w(code description) + _ransackers.keys
     end
 
+    def code_and_description
+      "#{code} #{description}"
+    end
   end
 
 end
