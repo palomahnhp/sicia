@@ -11,9 +11,7 @@ class ArcheApi
   end
 
   def request(operation, message_params)
-    response = client.call(operation.to_sym, message: message_params, multipart: true)
-    p response
-    return response.to_hash[response.to_hash.keys[0]][:return]
+    client.call(operation.to_sym, message: message_params, multipart: true)
   rescue Savon::Error => e
     puts "Error Savon: #{e.inspect} - #{operation} - #{message_params}"
     false
@@ -21,8 +19,7 @@ class ArcheApi
 
   def client
     Rails.logger.info {"  INFO - archeApi#wsdl: :  #{    wsdl = Rails.application.secrets.arche_api['wsdl']}" }
-    @client ||= Savon.client(wsdl:  Rails.application.secrets.arche_api['wsdl']
-    )
+    @client ||= Savon.client(wsdl:  Rails.application.secrets.arche_api['wsdl'])
   end
 
   private
