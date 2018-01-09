@@ -14,7 +14,7 @@ class ArcheApi
     client.call(operation.to_sym, message: message_params, multipart: true)
   rescue Savon::Error => e
     puts "Error Savon: #{e.inspect} - #{operation} - #{message_params}"
-    false
+    {operation: operation, error: true, message: e.inspect, params: message_params}
   end
 
   def client
