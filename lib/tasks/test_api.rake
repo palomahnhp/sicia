@@ -17,34 +17,41 @@ namespace :test_api do
 
     if operacion == :newWS
       # Operacion newWS
+
       # Datos del expediente
-      doc.add_folder_operation( AeDocument::OPERATION[:normal]) # AeDocument::OPERATION[:eni]
-      doc.add_folder_type(AeDocument::TYPE[:folder])
-      doc.add_folder_name('Titulo del expediente')
-      doc.add_folder_open_date(Date.today())
-      doc.add_folder_cod_folder('0501_2018_10000001')
-      # Documentos que componene el expediente
+      doc.add_folder_property('operacion', AeDocument::OPERATION[:normal]) # AeDocument::OPERATION[:eni]
+      doc.add_folder_property('tipo', AeDocument::AeDocument::TYPE[:folder]) # AeDocument::OPERATION[:eni]
+      doc.add_folder_property('nombre', 'Titulo del expediente') # AeDocument::OPERATION[:eni]
+      doc.add_folder_attribute('cod_expediente', '0501_2018_10000001') # AeDocument::OPERATION[:eni]
+      doc.add_folder_attribute('fecha_apertura', Date.today()) # AeDocument::OPERATION[:eni]
 
-      doc.add_document_operation(AeDocument::OPERATION[:normal]) # AeDocument::ENI
-      doc.add_document_name('Nombre del documento')
-      doc.add_document_type(AeDocument::TYPE[:document])
-      doc.add_document_extension('pdf')
-      doc.add_document_file_b64()
-      doc.add_document_path()
-
-      doc.add_document_date(Date.today)
-      doc.add_document_title()
+      # Documentos que componen el expediente
+      doc.add_document_property('operacion', AeDocument::OPERATION[:normal]) # AeDocument::ENI
+      doc.add_document_property('nombre','Nombre del documento')
+      doc.add_document_property('tipo', AeDocument::TYPE[:document])
+      doc.add_document_property('extension', 'pdf')
+#      doc.add_document_property('fichero', '')
+#      doc.add_document_property('rutaFichero', '')
+      doc.add_document_attribute('fecha_documento', Date.today)
+      doc.add_document_attribute('title', Date.today)
 
       response = doc.new_document
-      p ''
+      if doc.error?
+        puts "AeDocument::NewDocument: #{doc.error_message} parámetros: #{doc.parameters}"
+      else
+        p response
+      end
+
     elsif operacion == :getWS
       # Operacion getWS
-      doc.add_operation(AeDocument::OPERATION[:file] ) # AeDocument::OPERATION[:metadata]
-      params = {identificador: '0901ff6b800929c3'}
-      # type = 0 solo metadatos
-      # type = 1 metadatos y  documentos
-      response = doc.get_document(params)
-      if response
+      doc.add_property('operacion', AeDocument::OPERATION[:metadata] ) # AeDocument::OPERATION[:file]
+      doc.add_criterion('identificador', '0901ff6b800929c3')
+
+      doc.get_document
+
+      if doc.error?
+        puts "AeDocument::GetDocument: #{doc.error_message} parámetros: #{doc.parameters}"
+      else
         puts "Identificador: #{doc.id}"
         puts "Expediente: #{doc.code}"
 

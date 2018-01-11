@@ -2,122 +2,46 @@ class AeDocument
 
   attr_accessor :operation, :response_data
 
-  TYPE = {document: :ayto_d_archivo, folder: :ayto_f_archivo, work_folder: :dm_folder}
+  TYPE = {document: 'ayto_d_archivo', folder: 'ayto_f_archivo', work_folder: 'dm_folder'}
   OPERATION = {normal: 0, eni: 1, metadata: 0, file:1, file_sign: 1, file_eni: 2, validation_eni:3}
+  REQUIRED = {getWS: [:criterio],
+              newWS: [expediente: [:fecha_apertura, :cod_expediente], documentos: [:nombre, :fecha_documento]]
+             }
 
   def initialize()
 
   end
 
-  def get_document(criteria)
-    return false unless criteria.present?
+  def get_document
     @operation = :get_ws
 #    @params = @params.merge(criteria(criteria))
-    add_property(criteria(criteria))
+    valid?
     @response_data = arche_client.call_operation(@operation, @params)
-    @response_data = @response_data.to_hash[@response_data.to_hash.keys[0]][:return]
+    @response_data = @response_data.to_hash[@response_data.to_hash.keys[0]][:return] if @response_data.class.to_s == 'Savon::Multipart::Response'
   end
 
   def new_document
     @operation = :new_ws
+    valid?
     @response_data = arche_client.call_operation(@operation, @params)
-    @response_data = @response_data.to_hash[@response_data.to_hash.keys[0]][:return] if @response_data.present?
+    @response_data = @response_data.to_hash[@response_data.to_hash.keys[0]][:return] if @response_data.class.to_s == 'Savon::Multipart::Response'
   end
 
-  # setters - news
-  def add_operation(param=nil)
-    if param==nil
-      {property: 'operacion', error: true, message: 'Parámetro obligatorio'}
-    else
-      add_property(operacion: param)
+  def valid?
+    # TODO validate required elements for operation REQUIRED[operation]
+    case @operation
+     when :get_ws
+       @params[:criterio].present?
+     when :new_ws
+       true
+     else
+      true
     end
-  end
-
-  def add_folder_operation(param=nil )
-    if param==nil
-      {property: 'expediente:operacion', error: true, message: 'Parámetro obligatorio'}
-    else
-      add_folder_property({operacion: param})
-    end
-  end
-
-  def add_folder_type(param=nil)
-    if param==nil
-      {property: 'expediente:tipo', error: true, message: 'Parámetro obligatorio'}
-    else
-      add_folder_property({tipo: 'ayto_f_archivo'})
-    end
-  end
-
-  def add_folder_name(param=nil )
-    if param==nil
-      {property: 'expediente:nombre', error: true, message: 'Parámetro obligatorio'}
-    else
-      add_folder_property({nombre: param})
-    end
-  end
-
-
-  def add_folder_open_date(param=nil)
-    if param==nil
-      {property: 'expediente:fecha_apertura', error: true, message: 'Parámetro obligatorio'}
-    else
-      add_folder_attribute(fecha_apertura: param)
-    end
-  end
-
-  def add_folder_cod_folder(param=nil)
-    if param==nil
-      {property: 'expediente:cod_expediente', error: true, message: 'Parámetro obligatorio'}
-    else
-      add_folder_attribute(cod_expediente: param)
-    end
-  end
-
-  def add_document_name(param=nil)
-    if param==nil
-      {property: 'documento:nombre', error: true, message: 'Parámetro obligatorio'}
-    else
-      add_document_property(nombre: param)
-    end
-
-  end
-
-  def add_document_operation(param=nil)
-    if param==nil
-      {property: 'documento:operacion', error: true, message: 'Parámetro obligatorio'}
-    else
-      add_document_property(operacion: param)
-    end
-  end
-
-  def add_document_type(param=nil)
-    add_document_property(tipo: param) unless param==nil
-  end
-
-  def add_document_extension(param=nil)
-    add_document_property(extension: param) unless param==nil
-  end
-
-  def add_document_file_b64(param=nil)
-    add_document_property(fichero: param) unless param==nil
-  end
-
-  def add_document_path(param=nil)
-    add_document_property(rutaFicher: param) unless param==nil
-  end
-
-  def add_document_date(param=nil)
-    add_document_attribute(fecha_documento: param) unless param==nil
-  end
-
-  def add_document_title(param=nil)
-    add_document_attribute(title: param) unless param==nil
   end
 
   # getters - getWs response
   def id
-    attribute('identificador')
+    objects[:identificador]
   end
 
 # file data
@@ -203,41 +127,73 @@ class AeDocument
     attribute("cod_expediente").split('_').first
   end
 
-  def add_property(param)
-    @params = {} unless @params.present?
-    @params = @params.merge(param)
+  def add_criterion(key, value)
+    @params[:criterio] = {} unless @params[:criterio].present?
+    criterion = {clave: key, valores: value}
+    @params[:criterio] = @params[:criterio].present? ? @params[:criterio].push(criterion) : @params[:criterio] = [criterion]
   end
 
-
-  def add_folder_property(param)
+  # Add request elements
+  def add_property(element=nil, key, value)
+    property= {key.to_sym=> value}
     @params = {} unless @params.present?
-    @params[:expediente] = {} unless @params[:expediente].present?
-    @params[:expediente] = @params[:expediente].merge(param)
+    if element.present?
+      @params[element] = {} unless @params[element].present?
+      @params[element] = @params[element].merge(property)
+    else
+      @params = @params.merge(property)
+    end
   end
 
-  def add_folder_attribute(param)
+  def add_attribute(element=nil, key, value)
+    attribute = {atributos: {clave: key, valores: value}}
     @params = {} unless @params.present?
-    @params[:expediente] = {} unless @params[:expediente].present?
-    @params[:expediente][:atributos] = {} unless @params[:expediente][:atributos].present?
-    @params[:expediente][:atributos] = @params[:expediente][:atributos].merge(param)
+    if element.present?
+      if @params[element][0].present? && @params[element][0].include?(:atributos)
+        @params[element].push(attribute)
+      else
+        initial_params = @params[element]
+        @params[element] = []
+        @params[element].push(attribute)
+        @params[element].push(initial_params)
+      end
+    else
+      @params[:atributos] = @params[:atributos].merge(attr)
+    end
   end
 
-  def add_document_property(param)
-    @params = {} unless @params.present?
-    @params[:documentos] = {} unless @params[:documentos].present?
-    @params[:documentos] = @params[:documentos].merge(param)
+  def add_folder_property(key, value)
+    add_property(:expediente, key, value)
   end
 
-  def add_document_attribute(param)
-    @params = {} unless @params.present?
-    @params[:documentos] = {} unless @params[:documentos].present?
-    @params[:documentos][:atributos] = {} unless @params[:documentos][:atributos].present?
-    @params[:documentos][:atributos] = @params[:documentos][:atributos].merge(param)
+  def add_folder_attribute(key, value)
+    add_attribute(:expediente, key, value)
+  end
+
+  def add_document_property(key, value)
+    add_property(:documentos, key, value)
+  end
+
+  def add_document_attribute(key, value)
+    add_attribute(:documentos, key, value)
+  end
+
+  def parameters
+    @params
   end
 
   def result
     @response_data[:resultado]
   end
+
+  def error?
+    @response_data[:error].present?
+  end
+
+  def error_message
+    @response_data[:message] if @response_data[:error].present?
+  end
+
 
   private
 
@@ -255,17 +211,8 @@ class AeDocument
     end
   end
 
-  def criteria(criteria)
-    params = {criterio: {}}
-    criteria_array = []
-    criteria.each do |criterion|
-      criteria_array.push({clave: criterion[0], valores: criterion[1]})
-    end
-    params[:criterio] = criteria_array
-    params
-  end
-
   def arche_client
     @arche  ||= ArcheApi.new
   end
+
 end
