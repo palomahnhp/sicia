@@ -1,6 +1,5 @@
 namespace :test_api do
 
-
 # Parameter: operation=nombre_operacion
 # default operation: consulta_organo_aprobacion
   task :sap_ws => :environment do
@@ -13,7 +12,7 @@ namespace :test_api do
 
   task :arche => :environment do
     doc = AeDocument.new
-    operacion = :newWS
+    operacion = :getWS
 
     if operacion == :newWS
       # Operacion newWS
