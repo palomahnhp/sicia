@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title><%= content_for?(:title) ? yield(:title) : Setting['org_name'] %></title>
-    <%= stylesheet_link_tag  "application" %>
-    <!--[if lt IE 9]>
-      <%= stylesheet_link_tag "ie" %>
-    <![endif]-->
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'print', media: 'print' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
-    <!-- favicon_link_tag 'favicon.ico', rel: 'apple-touch-icon', type: 'image/x' -->
+    <%= favicon_link_tag 'apple-touch-icon-200.png',
+                         rel: 'apple-touch-icon',
+                         sizes: '200x200',
+                         type: 'image/png' %>
+    <%= content_for :social_media_meta_tags %>
+
   </head>
   <body class="<%= yield (:body_class) %>">
     <h1 class="show-for-sr"><%= Setting['org_name'] %></h1>
