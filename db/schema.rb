@@ -168,16 +168,6 @@ ActiveRecord::Schema.define(version: 20171221111621) do
     t.index ["trading_year"], name: "index_requeriments_on_trading_year", using: :btree
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.string   "resource_type"
-    t.integer  "resource_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
-    t.index ["name"], name: "index_roles_on_name", using: :btree
-  end
-
   create_table "sap_codes", force: :cascade do |t|
     t.string   "sap_field"
     t.string   "sicia_att"

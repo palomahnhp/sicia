@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :users
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'welcome#index'
+
+  root 'proposals#index'
   get 'welcome/index'
 
   resources :proposals do
