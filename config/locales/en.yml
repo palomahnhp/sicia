@@ -64,7 +64,7 @@ en:
     print:
       print_button: Imprimir
     subnavigation_menu:
-      documentation: Documentación
+      admin: Administración
       proposal: Propuestas
     target_blank_html: Nueva pestaña
     top_links:

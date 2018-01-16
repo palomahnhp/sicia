@@ -74,11 +74,13 @@ es:
     models:
       approval_body:
         one: Órgano de aprobación
+        other: Órganos de aprobación
       ic_action: Trámite
       ic_file: Tipo de expediente
       ic_procedure: Procedimiento
       manager_body:
         one: Órgano gestor
+        other: Órganos gestores
       proposal:
         one: Propuesta
         other: Propuestas
@@ -104,3 +106,4 @@ es:
         other: Códigos SAP
       society:
         one: Sociedad
+        other: Sociedades

@@ -9,7 +9,7 @@ es:
       dashboard:
         breadcrumb: Panel de control
         menu: Panel de control
-        title: Administración del Sitio
+        title: Administración de la aplicaicón
       delete:
         breadcrumb: Eliminar
         done: Eliminado
